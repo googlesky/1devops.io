@@ -1,0 +1,76 @@
+---
+layout: default
+---
+
+<div class="page-header">
+    <div class="container">
+        <h1>{{ page.title }}</h1>
+        <div class="tool-meta">
+            {% if page.category %}
+            <span class="tool-category">{{ page.category }}</span>
+            {% endif %}
+            {% if page.version %}
+            <span class="tool-version">v{{ page.version }}</span>
+            {% endif %}
+            {% if page.updated_date %}
+            <time datetime="{{ page.updated_date | date_to_xmlschema }}">Updated {{ page.updated_date | date: "%B %d, %Y" }}</time>
+            {% endif %}
+        </div>
+        {% if page.description %}
+        <p class="tool-description">{{ page.description }}</p>
+        {% endif %}
+    </div>
+</div>
+
+<div class="page-content">
+    <div class="container">
+        <article class="tool-content">
+            {{ content }}
+        </article>
+        
+        {% if page.download_url or page.github_url or page.docs_url %}
+        <div class="tool-actions">
+            {% if page.download_url %}
+            <a href="{{ page.download_url }}" class="btn btn-primary" target="_blank">Download Tool</a>
+            {% endif %}
+            {% if page.github_url %}
+            <a href="{{ page.github_url }}" class="btn btn-secondary" target="_blank">View on GitHub</a>
+            {% endif %}
+            {% if page.docs_url %}
+            <a href="{{ page.docs_url }}" class="btn btn-outline" target="_blank">Documentation</a>
+            {% endif %}
+        </div>
+        {% endif %}
+        
+        {% if page.requirements %}
+        <div class="tool-requirements">
+            <h3>Requirements</h3>
+            <ul>
+                {% for requirement in page.requirements %}
+                <li>{{ requirement }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        
+        {% if page.platforms %}
+        <div class="tool-platforms">
+            <h3>Supported Platforms</h3>
+            <ul class="platform-list">
+                {% for platform in page.platforms %}
+                <li class="platform-item">{{ platform }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        
+        <div class="tool-navigation">
+            {% if page.previous %}
+            <a href="{{ page.previous.url | relative_url }}" class="btn btn-secondary">← Previous Tool</a>
+            {% endif %}
+            {% if page.next %}
+            <a href="{{ page.next.url | relative_url }}" class="btn btn-secondary">Next Tool →</a>
+            {% endif %}
+        </div>
+    </div>
+</div>

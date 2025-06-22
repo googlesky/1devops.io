@@ -72,7 +72,7 @@ permalink: /contact/
 
             <div class="contact-form">
                 <h2>Send a Message</h2>
-                <form action="#" method="POST">
+                <form action="https://formspree.io/f/your-form-id" method="POST" class="contact-form">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" required>
