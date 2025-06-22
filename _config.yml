@@ -1,0 +1,121 @@
+# Site settings
+title: "1DevOps - Professional DevOps Solutions"
+description: "Professional DevOps tools and solutions for modern development teams"
+baseurl: ""
+url: "https://1devops.io"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - requirements.md
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /news/:year/:month/:day/:title/
+  vulnerabilities:
+    output: true
+    permalink: /vulnerabilities/:name/
+  tools:
+    output: true
+    permalink: /tools/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "vulnerabilities"
+    values:
+      layout: "vulnerability"
+  - scope:
+      path: ""
+      type: "tools"
+    values:
+      layout: "tool"
+
+# Navigation
+navigation:
+  - name: "Home"
+    url: "/"
+  - name: "Resources"
+    url: "#"
+    dropdown: true
+    items:
+      - name: "News"
+        url: "/news/"
+        description: "Latest DevOps news and updates"
+      - name: "Blog"
+        url: "/blog/"
+        description: "Technical insights and tutorials"
+      - name: "Documents"
+        url: "/documents/"
+        description: "Technical documentation"
+      - name: "Tools"
+        url: "/tools/"
+        description: "DevOps tools and utilities"
+      - name: "Downloads"
+        url: "/downloads/"
+        description: "Free resources and templates"
+      - name: "Vulnerabilities"
+        url: "/vulnerabilities/"
+        description: "Security alerts and CVE database"
+  - name: "Profile"
+    url: "/profile/"
+  - name: "Support"
+    url: "/support/"
+  - name: "About"
+    url: "/about/"
+
+# Action buttons in header
+action_buttons:
+  - name: "CLI Interactive"
+    url: "https://hieulp.1devops.io"
+    class: "btn-primary"
+  - name: "Tools"
+    url: "https://1devops.io/tools"
+    class: "btn-secondary"
+
+# Social links
+social:
+  github: "1devops"
+  linkedin: "company/1devops"
+  website: "1devops.io"
+
+# Contact information
+contact:
+  email: "hieulp@1devops.io"
+  phone: "(+84) 975-669-775"
+  location: "Thu Duc, Ho Chi Minh City, Vietnam"
+  website: "1devops.io"
+  cli_interactive: "hieulp.1devops.io"
+
+# Personal information
+author:
+  name: "Lê Phương Hiếu"
+  title: "Senior DevOps/SRE Engineer"
+  bio: "I am a Senior DevOps/SRE and Hunter. I simplify complex things. I am a saver."
+  experience_years: "12+"
+  linux_years: "15+"
+
+# Jekyll version requirement
+jekyll: "~> 4.4.1" 

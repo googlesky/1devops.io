@@ -1,0 +1,86 @@
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-content">
+            
+            <!-- Footer Top Section -->
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="{{ site.title }}">
+                        <span>1DevOps</span>
+                    </div>
+                    <p class="footer-description">{{ site.description }}</p>
+                    
+                    <!-- Newsletter Signup -->
+                    <div class="newsletter-signup">
+                        <h4>Stay Updated</h4>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Enter your email" required>
+                            <button type="submit" class="btn btn-primary">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <!-- Quick Links -->
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            {% for item in site.navigation %}
+                            <li><a href="{{ item.url | relative_url }}">{{ item.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <!-- Services -->
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="{{ '/blog/' | relative_url }}">Blog</a></li>
+                            <li><a href="{{ '/documents/' | relative_url }}">Documentation</a></li>
+                            <li><a href="{{ '/downloads/' | relative_url }}">Downloads</a></li>
+                            <li><a href="{{ '/support/' | relative_url }}">Support</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Community -->
+                    <div class="footer-column">
+                        <h4>Community</h4>
+                        <ul>
+                            <li><a href="https://github.com/{{ site.social.github }}" target="_blank">GitHub</a></li>
+                            <li><a href="https://twitter.com/{{ site.social.twitter }}" target="_blank">Twitter</a></li>
+                            <li><a href="https://linkedin.com/company/{{ site.social.linkedin }}" target="_blank">LinkedIn</a></li>
+                            <li><a href="{{ '/community/' | relative_url }}">Join Community</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact -->
+                    <div class="footer-column">
+                        <h4>Contact</h4>
+                        <ul>
+                            <li><a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a></li>
+                            <li><a href="tel:{{ site.contact.phone }}">{{ site.contact.phone }}</a></li>
+                            <li>{{ site.contact.address }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom Section -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-left">
+                    <p>&copy; {{ 'now' | date: "%Y" }} {{ site.title }}. All rights reserved.</p>
+                    <p>The DevOps Foundation®. All rights reserved. The DevOps Foundation has registered trademarks and uses trademarks.</p>
+                </div>
+                
+                <div class="footer-bottom-right">
+                    <ul class="footer-legal">
+                        <li><a href="{{ '/privacy/' | relative_url }}">Privacy Policy</a></li>
+                        <li><a href="{{ '/terms/' | relative_url }}">Terms of Use</a></li>
+                        <li><a href="{{ '/trademark/' | relative_url }}">Trademark Usage</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer> 

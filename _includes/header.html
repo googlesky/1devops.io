@@ -1,0 +1,112 @@
+<header class="site-header">
+    <div class="container">
+        <div class="header-content">
+            <!-- Logo -->
+            <div class="site-logo">
+                <a href="{{ '/' | relative_url }}">
+                    <img src="{{ '/assets/images/logo.svg' | relative_url }}" alt="{{ site.title }}" class="logo-image">
+                    <span class="logo-text">1DevOps</span>
+                </a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="main-nav" role="navigation">
+                <ul class="nav-list">
+                    {% for item in site.navigation %}
+                    <li class="nav-item {% if item.dropdown %}dropdown{% endif %}">
+                        {% if item.dropdown %}
+                            <a href="{{ item.url | relative_url }}" class="nav-link dropdown-toggle {% if page.url == item.url %}active{% endif %}" aria-expanded="false">
+                                {{ item.name }}
+                                <span class="dropdown-arrow">▼</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                {% for subitem in item.items %}
+                                <li class="dropdown-item">
+                                    <a href="{{ subitem.url | relative_url }}" class="dropdown-link">
+                                        <span class="dropdown-title">{{ subitem.name }}</span>
+                                        {% if subitem.description %}
+                                        <span class="dropdown-desc">{{ subitem.description }}</span>
+                                        {% endif %}
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <a href="{{ item.url | relative_url }}" class="nav-link {% if page.url == item.url %}active{% endif %}">
+                                {{ item.name }}
+                            </a>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+
+            <!-- Action Buttons -->
+            <div class="header-actions">
+                <!-- Primary Action Group -->
+                <div class="action-group primary-group">
+                    <a href="https://hieulp.1devops.io" class="btn btn-primary" target="_blank">
+                        <span class="btn-icon">⚡</span>
+                        CLI Interactive
+                    </a>
+                </div>
+                
+                <!-- Secondary Action Group -->
+                <div class="action-group secondary-group">
+                    <a href="https://1devops.io/tools" class="btn btn-secondary" target="_blank">
+                        <span class="btn-icon">🔧</span>
+                        Tools
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <nav class="mobile-nav" role="navigation">
+            <ul class="mobile-nav-list">
+                {% for item in site.navigation %}
+                {% if item.dropdown %}
+                    <li class="mobile-nav-item mobile-dropdown">
+                        <button class="mobile-nav-link mobile-dropdown-toggle" aria-expanded="false">
+                            {{ item.name }}
+                            <span class="mobile-dropdown-arrow">▼</span>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            {% for subitem in item.items %}
+                            <li class="mobile-dropdown-item">
+                                <a href="{{ subitem.url | relative_url }}" class="mobile-dropdown-link">
+                                    {{ subitem.name }}
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% else %}
+                    <li class="mobile-nav-item">
+                        <a href="{{ item.url | relative_url }}" class="mobile-nav-link">{{ item.name }}</a>
+                    </li>
+                {% endif %}
+                {% endfor %}
+                <li class="mobile-nav-item mobile-action-item">
+                    <a href="https://hieulp.1devops.io" class="mobile-nav-link primary-action" target="_blank">
+                        <span class="btn-icon">⚡</span>
+                        CLI Interactive
+                    </a>
+                </li>
+                <li class="mobile-nav-item mobile-action-item">
+                    <a href="https://1devops.io/tools" class="mobile-nav-link secondary-action" target="_blank">
+                        <span class="btn-icon">🔧</span>
+                        Tools
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header> 

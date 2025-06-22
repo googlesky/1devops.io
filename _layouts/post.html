@@ -1,0 +1,31 @@
+---
+layout: default
+---
+
+<div class="page-header">
+    <div class="container">
+        <h1>{{ page.title }}</h1>
+        <div class="post-meta">
+            <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
+            {% if page.author %} • by {{ page.author }}{% endif %}
+            {% if page.category %} • in {{ page.category }}{% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="page-content">
+    <div class="container">
+        <article class="post-content">
+            {{ content }}
+        </article>
+        
+        <div class="post-navigation">
+            {% if page.previous %}
+            <a href="{{ page.previous.url | relative_url }}" class="btn btn-secondary">← {{ page.previous.title }}</a>
+            {% endif %}
+            {% if page.next %}
+            <a href="{{ page.next.url | relative_url }}" class="btn btn-secondary">{{ page.next.title }} →</a>
+            {% endif %}
+        </div>
+    </div>
+</div> 
