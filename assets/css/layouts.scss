@@ -1,0 +1,239 @@
+/* Additional Layout Styles for Vulnerability and Tool Pages */
+
+/* Vulnerability Layout Styles */
+.vulnerability-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.severity-badge {
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.severity-critical {
+  background: var(--error);
+  color: var(--white);
+}
+
+.severity-high {
+  background: #ff6b35;
+  color: var(--white);
+}
+
+.severity-medium {
+  background: var(--warning);
+  color: var(--white);
+}
+
+.severity-low {
+  background: var(--secondary);
+  color: var(--white);
+}
+
+.cve-id {
+  font-family: monospace;
+  background: var(--gray-100);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  color: var(--gray-700);
+}
+
+.vulnerability-description {
+  font-size: var(--font-size-lg);
+  color: var(--gray-600);
+  margin-bottom: var(--space-xl);
+}
+
+.affected-products,
+.remediation {
+  background: var(--gray-50);
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  margin: var(--space-xl) 0;
+  border-left: 4px solid var(--primary);
+}
+
+.affected-products h3,
+.remediation h3 {
+  color: var(--primary);
+  margin-bottom: var(--space-md);
+}
+
+/* Tool Layout Styles */
+.tool-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.tool-category {
+  background: var(--primary);
+  color: var(--white);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+}
+
+.tool-version {
+  background: var(--secondary);
+  color: var(--white);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  font-family: monospace;
+}
+
+.tool-description {
+  font-size: var(--font-size-lg);
+  color: var(--gray-600);
+  margin-bottom: var(--space-xl);
+}
+
+.tool-actions {
+  display: flex;
+  gap: var(--space-sm);
+  margin: var(--space-xl) 0;
+  flex-wrap: wrap;
+}
+
+.tool-requirements,
+.tool-platforms {
+  background: var(--gray-50);
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  margin: var(--space-xl) 0;
+}
+
+.tool-requirements h3,
+.tool-platforms h3 {
+  color: var(--primary);
+  margin-bottom: var(--space-md);
+}
+
+.platform-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  list-style: none;
+  padding: 0;
+}
+
+.platform-item {
+  background: var(--white);
+  border: 1px solid var(--gray-300);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  color: var(--gray-700);
+}
+
+/* Navigation for both layouts */
+.vulnerability-navigation,
+.tool-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--gray-200);
+}
+
+/* Missing button styles */
+.btn-outline {
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.btn-outline:hover {
+  background: var(--primary);
+  color: var(--white);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Contact form improvements */
+.contact-form {
+  background: var(--white);
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.form-group {
+  margin-bottom: var(--space-lg);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--space-xs);
+  font-weight: 500;
+  color: var(--gray-700);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: var(--space-sm);
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  transition: border-color var(--transition-fast);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+}
+
+.form-error {
+  color: var(--error);
+  font-size: var(--font-size-sm);
+  margin-top: var(--space-xs);
+}
+
+.form-group input.error,
+.form-group select.error,
+.form-group textarea.error {
+  border-color: var(--error);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .vulnerability-meta,
+  .tool-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .tool-actions {
+    flex-direction: column;
+  }
+  
+  .tool-actions .btn {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .vulnerability-navigation,
+  .tool-navigation {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+}

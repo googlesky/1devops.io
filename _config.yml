@@ -99,6 +99,7 @@ action_buttons:
 social:
   github: "1devops"
   linkedin: "company/1devops"
+  twitter: "1devops"
   website: "1devops.io"
 
 # Contact information
@@ -106,6 +107,7 @@ contact:
   email: "hieulp@1devops.io"
   phone: "(+84) 975-669-775"
   location: "Thu Duc, Ho Chi Minh City, Vietnam"
+  address: "Thu Duc, Ho Chi Minh City, Vietnam"
   website: "1devops.io"
   cli_interactive: "hieulp.1devops.io"
 
