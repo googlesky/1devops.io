@@ -1,84 +1,107 @@
 <footer class="site-footer">
     <div class="container">
         <div class="footer-content">
-            
-            <!-- Footer Top Section -->
-            <div class="footer-top">
+            <div class="footer-main">
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="{{ site.title }}">
+                        <img src="{{ '/assets/images/logo.svg' | relative_url }}" alt="{{ site.title }}">
                         <span>1DevOps</span>
                     </div>
-                    <p class="footer-description">{{ site.description }}</p>
-                    
-                    <!-- Newsletter Signup -->
-                    <div class="newsletter-signup">
-                        <h4>Stay Updated</h4>
-                        <form class="newsletter-form">
-                            <input type="email" placeholder="Enter your email" required>
-                            <button type="submit" class="btn btn-primary">Subscribe</button>
-                        </form>
+                    <p class="footer-description">
+                        Professional DevOps consulting and solutions with 12+ years of experience. 
+                        Simplifying complex infrastructure for modern development teams.
+                    </p>
+                    <div class="footer-contact">
+                        <p><strong>Email:</strong> <a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a></p>
+                        <p><strong>Phone:</strong> <a href="tel:{{ site.contact.phone | replace: ' ', '' }}">{{ site.contact.phone }}</a></p>
+                        <p><strong>Location:</strong> {{ site.contact.location }}</p>
                     </div>
                 </div>
 
                 <div class="footer-links">
-                    <!-- Quick Links -->
-                    <div class="footer-column">
-                        <h4>Quick Links</h4>
-                        <ul>
-                            {% for item in site.navigation %}
-                            <li><a href="{{ item.url | relative_url }}">{{ item.name }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-
-                    <!-- Services -->
                     <div class="footer-column">
                         <h4>Services</h4>
                         <ul>
+                            <li><a href="{{ '/services/consulting/' | relative_url }}">DevOps Consulting</a></li>
+                            <li><a href="{{ '/services/infrastructure/' | relative_url }}">Infrastructure Setup</a></li>
+                            <li><a href="{{ '/services/cicd/' | relative_url }}">CI/CD Implementation</a></li>
+                            <li><a href="{{ '/services/security/' | relative_url }}">Security Audits</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
                             <li><a href="{{ '/blog/' | relative_url }}">Blog</a></li>
-                            <li><a href="{{ '/documents/' | relative_url }}">Documentation</a></li>
-                            <li><a href="{{ '/downloads/' | relative_url }}">Downloads</a></li>
-                            <li><a href="{{ '/support/' | relative_url }}">Support</a></li>
+                            <li><a href="{{ '/tools/' | relative_url }}">Tools</a></li>
+                            <li><a href="{{ '/security/' | relative_url }}">Security Alerts</a></li>
+                            <li><a href="{{ '/docs/' | relative_url }}">Documentation</a></li>
                         </ul>
                     </div>
 
-                    <!-- Community -->
                     <div class="footer-column">
-                        <h4>Community</h4>
+                        <h4>Company</h4>
                         <ul>
-                            <li><a href="https://github.com/{{ site.social.github }}" target="_blank">GitHub</a></li>
-                            <li><a href="https://twitter.com/{{ site.social.twitter }}" target="_blank">Twitter</a></li>
-                            <li><a href="https://linkedin.com/company/{{ site.social.linkedin }}" target="_blank">LinkedIn</a></li>
-                            <li><a href="{{ '/community/' | relative_url }}">Join Community</a></li>
+                            <li><a href="{{ '/about/' | relative_url }}">About</a></li>
+                            <li><a href="{{ '/profile/' | relative_url }}">Profile</a></li>
+                            <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
+                            <li><a href="/assets/LePhuongHieu - Resume.pdf" target="_blank" rel="noopener">Resume</a></li>
                         </ul>
                     </div>
 
-                    <!-- Contact -->
                     <div class="footer-column">
-                        <h4>Contact</h4>
-                        <ul>
-                            <li><a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a></li>
-                            <li><a href="tel:{{ site.contact.phone }}">{{ site.contact.phone }}</a></li>
-                            <li>{{ site.contact.address }}</li>
-                        </ul>
+                        <h4>Connect</h4>
+                        <div class="social-links">
+                            {% if site.social.email %}
+                            <a href="mailto:{{ site.social.email }}" class="social-link" aria-label="Email">
+                                <span class="social-icon">📧</span>
+                                Email
+                            </a>
+                            {% endif %}
+                            {% if site.social.linkedin %}
+                            <a href="https://linkedin.com/in/{{ site.social.linkedin }}" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
+                                <span class="social-icon">💼</span>
+                                LinkedIn
+                            </a>
+                            {% endif %}
+                            {% if site.social.github %}
+                            <a href="https://github.com/{{ site.social.github }}" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
+                                <span class="social-icon">🐙</span>
+                                GitHub
+                            </a>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="newsletter-signup">
+                            <h5>Stay Updated</h5>
+                            <p>Get DevOps insights delivered to your inbox</p>
+                            <form class="footer-newsletter-form" action="https://formspree.io/f/your-newsletter-id" method="POST">
+                                <input type="email" name="email" placeholder="Enter email" required class="newsletter-input">
+                                <button type="submit" class="newsletter-button">Subscribe</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Footer Bottom Section -->
             <div class="footer-bottom">
-                <div class="footer-bottom-left">
-                    <p>&copy; {{ 'now' | date: "%Y" }} {{ site.title }}. All rights reserved.</p>
-                    <p>The DevOps Foundation®. All rights reserved. The DevOps Foundation has registered trademarks and uses trademarks.</p>
-                </div>
-                
-                <div class="footer-bottom-right">
-                    <ul class="footer-legal">
-                        <li><a href="{{ '/privacy/' | relative_url }}">Privacy Policy</a></li>
-                        <li><a href="{{ '/terms/' | relative_url }}">Terms of Use</a></li>
-                        <li><a href="{{ '/trademark/' | relative_url }}">Trademark Usage</a></li>
-                    </ul>
+                <div class="footer-bottom-content">
+                    <div class="footer-copyright">
+                        <p>&copy; {{ 'now' | date: "%Y" }} 1DevOps. All rights reserved.</p>
+                        <p>Built with ❤️ and Jekyll by {{ site.author.name }}</p>
+                    </div>
+                    
+                    <div class="footer-meta">
+                        <div class="footer-legal">
+                            <a href="{{ '/privacy/' | relative_url }}">Privacy Policy</a>
+                            <a href="{{ '/terms/' | relative_url }}">Terms of Service</a>
+                        </div>
+                        
+                        <div class="footer-availability">
+                            <span class="availability-indicator">🟢</span>
+                            <span>{{ site.contact.availability | default: "Available for projects" }}</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

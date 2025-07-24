@@ -1,168 +1,179 @@
 ---
 layout: page
-title: Profile
-description: Lê Phương Hiếu - Senior DevOps/SRE Engineer with 12+ years of experience in system administration, cloud infrastructure, and automation.
+title: "Professional Profile"
+description: "Le Phuong Hieu - Senior DevOps/SRE Engineer with 12+ years of experience in system administration, cloud infrastructure, and automation."
 permalink: /profile/
 ---
 
-<div class="page-header">
-    <div class="container">
-        <div class="grid grid-2" style="align-items: center; gap: 2rem;">
-            <div>
-                <h1>Lê Phương Hiếu</h1>
-                <p class="text-xl font-semibold text-primary mb-2">Senior DevOps / SRE Engineer</p>
-                <p class="text-lg">Simplifying complex systems with 12+ years of experience in DevOps, system administration, and cloud infrastructure.</p>
-                <div class="mt-4">
-                    <a href="/assets/LePhuongHieu - Resume.pdf" target="_blank" class="btn btn-primary">
-                        📄 Download Resume
-                    </a>
-                    <a href="/contact/" class="btn btn-secondary">
-                        📧 Contact Me
-                    </a>
+<div class="profile-page">
+    <div class="profile-hero">
+        <div class="container">
+            <div class="profile-intro">
+                <div class="profile-content">
+                    <h1>Le Phuong Hieu</h1>
+                    <h2 class="profile-title">Senior DevOps/SRE Engineer</h2>
+                    <p class="profile-tagline">Simplifying complex systems with 12+ years of experience in DevOps, system administration, and cloud infrastructure.</p>
+                    
+                    <div class="profile-actions">
+                        <a href="/assets/LePhuongHieu - Resume.pdf" target="_blank" class="btn btn-primary btn-lg">
+                            <span class="btn-icon">📄</span>
+                            Download Resume
+                        </a>
+                        <a href="{{ '/contact/' | relative_url }}" class="btn btn-secondary btn-lg">
+                            <span class="btn-icon">💬</span>
+                            Get in Touch
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="profile-avatar">
+                    <img src="/assets/images/logo.svg" alt="Le Phuong Hieu" class="avatar-image">
                 </div>
             </div>
-            <div class="text-center">
-                <div class="profile-avatar">
-                    <img src="/assets/images/logo.svg" alt="Lê Phương Hiếu" style="width: 200px; height: 200px; border-radius: 50%; border: 4px solid var(--primary); padding: 20px; background: var(--white);">
+            
+            <div class="profile-stats">
+                <div class="stat-item">
+                    <span class="stat-number">12+</span>
+                    <span class="stat-label">Years Experience</span>
                 </div>
-                <div class="mt-4">
-                    <p class="text-gray-600">📍 Thu Duc, Ho Chi Minh City, Vietnam</p>
-                    <p class="text-gray-600">📞 (084) 975-669-775</p>
-                    <p class="text-gray-600">✉️ hieulp@1devops.io</p>
+                <div class="stat-item">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-label">Years with Linux</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100+</span>
+                    <span class="stat-label">Projects Completed</span>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="page-content">
-    <div class="container">
-        
-        <!-- About Me Section -->
-        <section class="mb-6">
-            <h2>About Me</h2>
-            <div class="card">
-                <p class="text-lg mb-4">I am a Senior DevOps/SRE and Hunter. I simplify complex things. I am a saver.</p>
-                <p>With over 12 years of experience since 2012, I have worked as a DevOps engineer, systems administrator, and network manager, ensuring the high availability and performance of critical systems. I specialize in building and managing infrastructure from scratch, with particular expertise in Kubernetes, cloud platforms, and automation.</p>
-            </div>
-        </section>
-
-        <!-- Highlights Section -->
-        <section class="mb-6">
-            <h2>Key Highlights</h2>
-            <div class="grid grid-2">
-                <div class="card">
-                    <h3>🏗️ Infrastructure Expertise</h3>
-                    <ul>
-                        <li>Building and managing Kubernetes clusters on-premise from scratch</li>
-                        <li>Designing and implementing complex computer networks</li>
-                        <li>Ensuring secure and efficient data communication</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3>🚀 Technology Proficiency</h3>
-                    <ul>
-                        <li>Using Linux since 2009 (15+ years experience)</li>
-                        <li>Self-training AI with substantial knowledge base</li>
-                        <li>Good adaptability across programming languages and technologies</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills & Toolings Section -->
-        <section class="mb-6">
-            <h2>Skills & Toolings</h2>
-            <div class="grid grid-3">
-                <div class="card">
-                    <h3>💻 Programming Languages</h3>
-                    <div class="skills-list">
-                        <span class="badge badge-primary">Golang (1 Year)</span>
-                        <span class="badge badge-primary">Python (3 Years)</span>
-                        <span class="badge badge-primary">PHP (5 Years)</span>
-                        <span class="badge badge-primary">Shell Script</span>
+    <section class="contact-info">
+        <div class="container">
+            <div class="contact-cards">
+                <div class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <div class="contact-details">
+                        <h3>Email</h3>
+                        <p><a href="mailto:hieu@1devops.io">hieu@1devops.io</a></p>
                     </div>
                 </div>
                 
-                <div class="card">
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-details">
+                        <h3>Phone</h3>
+                        <p><a href="tel:+84975669775">+84 975 669 775</a></p>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-details">
+                        <h3>Location</h3>
+                        <p>Ho Chi Minh City, Vietnam</p>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">💼</div>
+                    <div class="contact-details">
+                        <h3>LinkedIn</h3>
+                        <p><a href="https://linkedin.com/in/lephuonghieu" target="_blank" rel="noopener">linkedin.com/in/lephuonghieu</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="skills-overview">
+        <div class="container">
+            <h2>Core Skills & Technologies</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>🐳 Container & Orchestration</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">OpenShift</span>
+                        <span class="skill-tag">Helm</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>☁️ Cloud Platforms</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Microsoft Azure</span>
+                        <span class="skill-tag">IBM Cloud</span>
+                        <span class="skill-tag">Oracle Cloud</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
                     <h3>🔄 CI/CD & Automation</h3>
-                    <div class="skills-list">
-                        <span class="badge badge-secondary">Jenkins</span>
-                        <span class="badge badge-secondary">GitLab CI</span>
-                        <span class="badge badge-secondary">GitHub Actions</span>
-                        <span class="badge badge-secondary">Ansible</span>
-                        <span class="badge badge-secondary">Terraform</span>
-                        <span class="badge badge-secondary">Helm/Helmfile</span>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Jenkins</span>
+                        <span class="skill-tag">GitLab CI</span>
+                        <span class="skill-tag">GitHub Actions</span>
+                        <span class="skill-tag">Ansible</span>
+                        <span class="skill-tag">Terraform</span>
                     </div>
                 </div>
-                
-                <div class="card">
-                    <h3>🖥️ Operating Systems</h3>
-                    <div class="skills-list">
-                        <span class="badge badge-info">ArchLinux</span>
-                        <span class="badge badge-info">CentOS/RHEL 7</span>
-                        <span class="badge badge-info">Ubuntu</span>
-                        <span class="badge badge-info">Windows</span>
-                        <span class="badge badge-info">Unix</span>
+
+                <div class="skill-category">
+                    <h3>💻 Programming & Scripting</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Go (1 Year)</span>
+                        <span class="skill-tag">Python (3 Years)</span>
+                        <span class="skill-tag">Shell Script</span>
+                        <span class="skill-tag">PHP (5 Years)</span>
                     </div>
                 </div>
-                
-                <div class="card">
-                    <h3>📦 Virtualization & Containers</h3>
-                    <div class="skills-list">
-                        <span class="badge badge-warning">Docker</span>
-                        <span class="badge badge-warning">Kubernetes</span>
-                        <span class="badge badge-warning">OpenShift</span>
-                    </div>
-                </div>
-                
-                <div class="card">
+
+                <div class="skill-category">
                     <h3>🗄️ Databases</h3>
-                    <div class="skills-list">
-                        <span class="badge badge-error">TiDB</span>
-                        <span class="badge badge-error">MySQL</span>
-                        <span class="badge badge-error">MariaDB</span>
-                        <span class="badge badge-error">PostgreSQL</span>
+                    <div class="skill-tags">
+                        <span class="skill-tag">TiDB</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">MariaDB</span>
                     </div>
                 </div>
-                
-                <div class="card">
-                    <h3>☁️ Cloud & Infrastructure</h3>
-                    <div class="skills-list">
-                        <span class="badge badge-success">AWS (EC2, S3, RDS, EKS, IAM)</span>
-                        <span class="badge badge-success">Microsoft Azure (AKS, PostgreSQL)</span>
-                        <span class="badge badge-success">IBM Cloud</span>
-                        <span class="badge badge-success">Oracle Cloud</span>
+
+                <div class="skill-category">
+                    <h3>🖥️ Operating Systems</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Linux (15+ Years)</span>
+                        <span class="skill-tag">Ubuntu</span>
+                        <span class="skill-tag">CentOS/RHEL</span>
+                        <span class="skill-tag">ArchLinux</span>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Professional Experience Section -->
-        <section class="mb-6">
+    <section class="experience-timeline">
+        <div class="container">
             <h2>Professional Experience</h2>
-            
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Senior DevOps/SRE Engineer</h3>
-                                <div class="card-meta">
-                                    <span class="badge badge-primary">Current Position</span>
-                                    <span class="text-gray-600">2012 - Present</span>
-                                </div>
+                        <div class="experience-card">
+                            <div class="experience-header">
+                                <h3>Senior DevOps/SRE Engineer</h3>
+                                <div class="experience-period">2012 - Present • 12+ Years</div>
                             </div>
-                            <div class="card-content">
-                                <p class="font-semibold mb-2">Key Responsibilities:</p>
-                                <ul>
-                                    <li>Ensuring high availability and performance of critical systems</li>
-                                    <li>Building and managing Kubernetes clusters on-premise from scratch</li>
-                                    <li>Designing, implementing, and troubleshooting complex computer networks</li>
-                                    <li>Implementing CI/CD pipelines and automation workflows</li>
-                                    <li>Managing cloud infrastructure across multiple providers (AWS, Azure, IBM, Oracle)</li>
-                                    <li>Database administration and optimization (TiDB, MySQL, PostgreSQL)</li>
+                            <div class="experience-content">
+                                <p class="experience-description">Leading DevOps transformations and infrastructure projects across various industries. Specializing in Kubernetes, cloud platforms, and automation solutions.</p>
+                                <ul class="experience-highlights">
+                                    <li>Built and managed Kubernetes clusters on-premise from scratch</li>
+                                    <li>Implemented CI/CD pipelines for 50+ projects across multiple platforms</li>
+                                    <li>Managed multi-cloud infrastructures (AWS, Azure, IBM, Oracle)</li>
+                                    <li>Led DevOps transformation initiatives for enterprise clients</li>
+                                    <li>Designed and implemented complex network architectures</li>
                                 </ul>
                             </div>
                         </div>
@@ -172,19 +183,17 @@ permalink: /profile/
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Helpdesk Specialist</h3>
-                                <div class="card-meta">
-                                    <span class="text-gray-600">CanTho University, CanTho City</span>
-                                    <span class="text-gray-600">Sep 2009 - Jul 2013</span>
-                                </div>
+                        <div class="experience-card">
+                            <div class="experience-header">
+                                <h3>Helpdesk Specialist</h3>
+                                <div class="experience-period">Can Tho University • 2009 - 2013</div>
                             </div>
-                            <div class="card-content">
-                                <ul>
-                                    <li>Managed e-Library systems</li>
-                                    <li>Supported infrastructure data center operations</li>
-                                    <li>Provided comprehensive end-user support</li>
+                            <div class="experience-content">
+                                <p class="experience-description">Managed e-Library systems and supported infrastructure data center operations while providing comprehensive end-user support.</p>
+                                <ul class="experience-highlights">
+                                    <li>Managed university e-Library infrastructure systems</li>
+                                    <li>Supported data center operations and maintenance</li>
+                                    <li>Provided technical support across multiple platforms</li>
                                 </ul>
                             </div>
                         </div>
@@ -194,135 +203,101 @@ permalink: /profile/
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">IT Support Specialist</h3>
-                                <div class="card-meta">
-                                    <span class="text-gray-600">Cara Cafe, CanTho City</span>
-                                    <span class="text-gray-600">Sep 2011 - May 2013</span>
-                                </div>
+                        <div class="experience-card">
+                            <div class="experience-header">
+                                <h3>IT Support Specialist</h3>
+                                <div class="experience-period">Cara Cafe • 2011 - 2013</div>
                             </div>
-                            <div class="card-content">
-                                <ul>
-                                    <li>Enabled File Sharing servers (Samba/NFS) for internet streaming (P2P)</li>
+                            <div class="experience-content">
+                                <p class="experience-description">Designed and implemented networking solutions for multi-branch operations, including file sharing and streaming systems.</p>
+                                <ul class="experience-highlights">
                                     <li>Designed networking for three branches across multiple locations</li>
-                                    <li>Implemented cross-platform streaming for Linux and Windows machines</li>
-                                    <li>Provided end-user support and security management</li>
+                                    <li>Implemented Samba/NFS file sharing for P2P streaming</li>
+                                    <li>Provided cross-platform support for Linux and Windows</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Education Section -->
-        <section class="mb-6">
-            <h2>Education</h2>
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Communications and Computer Networks</h3>
-                    <div class="card-meta">
-                        <span class="text-gray-600">CanTho University, CanTho City, Vietnam</span>
+    <section class="education-section">
+        <div class="container">
+            <h2>Education & Background</h2>
+            <div class="education-card">
+                <div class="education-content">
+                    <h3>Communications and Computer Networks</h3>
+                    <p class="education-institution">Can Tho University, Can Tho City, Vietnam</p>
+                    <p class="education-description">Specialized in network communications and computer systems, providing the technical foundation for my career in DevOps and system administration.</p>
+                </div>
+                <div class="education-journey">
+                    <div class="journey-item">
+                        <div class="journey-year">2009</div>
+                        <div class="journey-milestone">Started with Linux systems</div>
+                    </div>
+                    <div class="journey-item">
+                        <div class="journey-year">2012</div>
+                        <div class="journey-milestone">Began professional DevOps career</div>
+                    </div>
+                    <div class="journey-item">
+                        <div class="journey-year">Present</div>
+                        <div class="journey-milestone">Leading enterprise transformations</div>
                     </div>
                 </div>
-                <div class="card-content">
-                    <p>Specialized in network communications and computer systems, providing the foundation for my career in DevOps and system administration.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="personal-philosophy">
+        <div class="container">
+            <h2>Professional Philosophy</h2>
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">🎯</div>
+                    <h3>"I simplify complex things"</h3>
+                    <p>My core approach is taking complex technical challenges and creating elegant, maintainable solutions that teams can understand and manage effectively.</p>
+                </div>
+
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">🏗️</div>
+                    <h3>Infrastructure from Scratch</h3>
+                    <p>Specialized in building robust infrastructure from the ground up, with particular expertise in Kubernetes clusters and network architecture.</p>
+                </div>
+
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">🔧</div>
+                    <h3>Hands-On Problem Solver</h3>
+                    <p>Not just theoretical knowledge - I've built, managed, and troubleshot real-world systems at scale across various industries.</p>
+                </div>
+
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">📚</div>
+                    <h3>Continuous Learning</h3>
+                    <p>Technology evolves rapidly, and so do I. Committed to staying current with the latest tools and methodologies in the DevOps ecosystem.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Certifications & Achievements -->
-        <section class="mb-6">
-            <h2>Key Achievements</h2>
-            <div class="stats">
-                <div class="stat-card">
-                    <div class="stat-number">12+</div>
-                    <div class="stat-label">Years Experience</div>
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Let's Work Together</h2>
+                <p>Ready to simplify your infrastructure and optimize your DevOps processes? I'm available for consulting projects and long-term engagements.</p>
+                <div class="cta-actions">
+                    <a href="{{ '/contact/' | relative_url }}" class="btn btn-primary btn-lg">
+                        <span class="btn-icon">📞</span>
+                        Schedule Consultation
+                    </a>
+                    <a href="/assets/LePhuongHieu - Resume.pdf" target="_blank" class="btn btn-secondary btn-lg">
+                        <span class="btn-icon">📄</span>
+                        Download Full Resume
+                    </a>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number">15+</div>
-                    <div class="stat-label">Years with Linux</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">5+</div>
-                    <div class="stat-label">Cloud Platforms</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">10+</div>
-                    <div class="stat-label">Technologies Mastered</div>
-                </div>
+                <p class="cta-note">Free initial consultation • Remote work worldwide • Quick response time</p>
             </div>
-        </section>
-
-        <!-- Contact CTA -->
-        <section class="text-center bg-gray-50 py-4 px-6 rounded-lg">
-            <h2>Let's Work Together</h2>
-            <p class="text-lg mb-4">Interested in collaborating or have a project in mind? I'd love to hear from you.</p>
-            <div class="flex justify-center gap-4">
-                <a href="/contact/" class="btn btn-primary">Get In Touch</a>
-                <a href="/assets/LePhuongHieu - Resume.pdf" target="_blank" class="btn btn-secondary">Download Resume</a>
-            </div>
-        </section>
-
-    </div>
+        </div>
+    </section>
 </div>
-
-<style>
-.skills-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1rem;
-}
-
-.timeline {
-    position: relative;
-    padding-left: 2rem;
-}
-
-.timeline::before {
-    content: '';
-    position: absolute;
-    left: 0.75rem;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: var(--primary);
-}
-
-.timeline-item {
-    position: relative;
-    margin-bottom: 2rem;
-}
-
-.timeline-marker {
-    position: absolute;
-    left: -1.25rem;
-    top: 1rem;
-    width: 1rem;
-    height: 1rem;
-    background: var(--primary);
-    border-radius: 50%;
-    border: 3px solid var(--white);
-    box-shadow: 0 0 0 3px var(--primary);
-}
-
-.timeline-content {
-    margin-left: 1rem;
-}
-
-@media (max-width: 768px) {
-    .timeline {
-        padding-left: 1rem;
-    }
-    
-    .timeline-marker {
-        left: -0.75rem;
-    }
-    
-    .timeline-content {
-        margin-left: 0.5rem;
-    }
-}
-</style>

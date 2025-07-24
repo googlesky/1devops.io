@@ -43,21 +43,16 @@
 
             <!-- Action Buttons -->
             <div class="header-actions">
-                <!-- Primary Action Group -->
-                <div class="action-group primary-group">
-                    <a href="https://hieulp.1devops.io" class="btn btn-primary" target="_blank">
-                        <span class="btn-icon">⚡</span>
-                        CLI Interactive
-                    </a>
-                </div>
-                
-                <!-- Secondary Action Group -->
-                <div class="action-group secondary-group">
-                    <a href="https://1devops.io/tools" class="btn btn-secondary" target="_blank">
-                        <span class="btn-icon">🔧</span>
-                        Tools
-                    </a>
-                </div>
+                {% for action in site.header_actions %}
+                    <div class="action-group {{ action.type }}-group">
+                        <a href="{{ action.url | relative_url }}" class="btn btn-{{ action.type }}">
+                            {% if action.icon %}
+                                <span class="btn-icon">{{ action.icon }}</span>
+                            {% endif %}
+                            {{ action.name }}
+                        </a>
+                    </div>
+                {% endfor %}
             </div>
 
             <!-- Mobile Menu Toggle -->
@@ -94,18 +89,18 @@
                     </li>
                 {% endif %}
                 {% endfor %}
+                
+                <!-- Mobile Action Items -->
+                {% for action in site.header_actions %}
                 <li class="mobile-nav-item mobile-action-item">
-                    <a href="https://hieulp.1devops.io" class="mobile-nav-link primary-action" target="_blank">
-                        <span class="btn-icon">⚡</span>
-                        CLI Interactive
+                    <a href="{{ action.url | relative_url }}" class="mobile-nav-link {{ action.type }}-action">
+                        {% if action.icon %}
+                            <span class="btn-icon">{{ action.icon }}</span>
+                        {% endif %}
+                        {{ action.name }}
                     </a>
                 </li>
-                <li class="mobile-nav-item mobile-action-item">
-                    <a href="https://1devops.io/tools" class="mobile-nav-link secondary-action" target="_blank">
-                        <span class="btn-icon">🔧</span>
-                        Tools
-                    </a>
-                </li>
+                {% endfor %}
             </ul>
         </nav>
     </div>
