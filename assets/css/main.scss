@@ -131,24 +131,32 @@ body {
 /* Fix for older browsers */
 @supports not (display: grid) {
   .grid,
-  .features-grid,
   .stats {
     display: flex;
     flex-wrap: wrap;
   }
   
   .grid > *,
-  .features-grid > *,
   .stats > * {
     flex: 1 1 300px;
     margin: var(--space-sm);
+  }
+  
+  .features-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .features-grid > * {
+    flex: 0 1 350px;
+    margin: var(--space-lg);
   }
 }
 
 /* CSS Grid fallback for IE11 */
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-  .grid,
-  .features-grid {
+  .grid {
     display: -ms-grid;
   }
 }
@@ -1086,7 +1094,6 @@ img {
 }
 
 /* Import additional styles */
-@import "support";
 @import "support";
 @import "pages";
 @import "layouts";

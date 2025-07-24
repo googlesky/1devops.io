@@ -466,23 +466,6 @@
     }
 }
 
-/* Dark mode support (if enabled) */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --white: #111827;
-        --gray-50: #1f2937;
-        --gray-100: #374151;
-        --gray-200: #4b5563;
-        --gray-800: #f3f4f6;
-        --gray-900: #ffffff;
-    }
-    
-    body {
-        background: var(--gray-900);
-        color: var(--gray-100);
-    }
-}
-
 /* Better responsive images */
 img {
     max-width: 100%;
