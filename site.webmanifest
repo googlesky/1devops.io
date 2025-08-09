@@ -1,0 +1,13 @@
+{
+  "name": "Lê Hiếu — Senior DevOps",
+  "short_name": "LPH",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B1026",
+  "theme_color": "#1B6FFF",
+  "icons": [
+    { "src": "assets/img/favicon.ico", "sizes": "48x48 64x64 128x128", "type": "image/x-icon" }
+  ]
+}
+
+

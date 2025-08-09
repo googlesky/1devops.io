@@ -1,0 +1,302 @@
+---
+
+description: DevOps-themed landing page generator with star-network background and glassmorphism, sourcing content from resume files and an existing site.
+globs:
+
+* "\*\*/\*.html"
+* "\*\*/\*.css"
+* "\*\*/\*.js"
+  alwaysApply: true
+
+---
+
+# Purpose
+
+Create a single-page landing website for **Lê Hiếu** (Le Phuong Hieu) with a modern **DevOps** aesthetic. The site must be deployable on **GitHub Pages** and use **pure HTML, CSS, and JavaScript** (no build steps, no frameworks). Visual style blends **AWS** & **Cisco** palettes with **Windows Vista–style glassmorphism**.
+
+# Inputs
+
+* Existing website (for assets/inspiration): `/home/googlesky/data/googlesky.github.io`
+* Resume (primary source of content): `LePhuongHieu - Resume.txt` (preferred) and `LePhuongHieu - Resume.pdf` (fallback). Include the text file in context if available: `@LePhuongHieu - Resume.txt`.
+
+# Deliverables (files to create)
+
+* `index.html`
+* `assets/css/styles.css`
+* `assets/js/main.js`
+* `assets/img/` (favicons, social preview OG image)
+* `site.webmanifest` and `favicon.ico`
+* `README.md` with GitHub Pages instructions
+* (Optional) `CNAME` if using a custom domain
+
+# Visual & Interaction Spec
+
+## 1) Star-network background (animated)
+
+* One full-viewport `<canvas id="bg">` positioned **fixed** behind all content (`z-index: -1`).
+* **Nodes:** Render N stars (desktop ≈ 120, tablet ≈ 60, mobile ≈ 30). Scale by DPR and viewport area.
+* **Edges:** Draw faint lines between nodes within a distance threshold.
+* **Motion:** Slight idle drift. On pointer move, stars subtly **follow** cursor; on pointer down, increase influence briefly.
+* **Performance:** Use a single `requestAnimationFrame` loop, reuse arrays/paths (avoid per-frame allocations), throttle mouse handlers, pause when tab is hidden.
+* **Accessibility:** Respect `prefers-reduced-motion: reduce` → render a static frame (no animation) and remove listeners.
+* **Resize:** Debounced re-init on resize; keep frame budget ≤ 16ms.
+
+## 2) Glassmorphism + palette (AWS/Cisco + Vista glass)
+
+* Content cards: `background: rgba(255,255,255,0.08)`; `backdrop-filter: blur(10px)`; subtle border `1px solid rgba(255,255,255,0.18)`; rounded corners and soft shadows.
+* Palette suggestions (tweak as needed):
+
+  * Background base: `#0B1026`
+  * Primary (Cisco-like blue): `#1B6FFF`
+  * Secondary (AWS-like purple): `#9A5BFF`
+  * Accents/links: `#7BD3FF`
+  * Neutral text: `#E5F0FF`
+* Typography: `Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"`.
+
+# Page Structure
+
+* **Hero:** Name (“Lê Hiếu”), title (Senior DevOps / Cloud), short value statement, two CTAs (Contact, GitHub/LinkedIn).
+* **Highlights:** Certifications, key skills (AWS/Azure, CI/CD, IaC, observability), top projects.
+* **Experience:** Brief timeline or cards from resume bullets.
+* **Footer:** Social links, copyright.
+
+# Content Extraction Rules
+
+* Use display name **“Lê Hiếu”** across the site UI and copy; use **“Senior DevOps”** as the primary title.
+* Parse `LePhuongHieu - Resume.txt` for: Full name, headline/title, summary (2–3 sentences), skills, certifications, recent roles/projects, links.
+* If `.txt` is unavailable, try to extract text from `LePhuongHieu - Resume.pdf`. If both are missing, insert **clear TODO** placeholders wrapped in comments.
+* Convert long bullets into concise copy (≤ 40 words each). Avoid jargon; highlight outcomes, metrics, and AWS focus.
+
+# SEO, Sharing & Metadata
+
+* Set `<title>`, `<meta name="description">`, canonical link.
+* Open Graph + Twitter Card; include `assets/img/og.png` (1200×630) using the hero layout.
+* Add JSON-LD `Person` schema with name, headline, sameAs (GitHub, LinkedIn), and location if present in resume.
+
+# Accessibility & Performance
+
+* Semantic landmarks (`<header>`, `<main>`, `<footer>`). Visible skip link.
+* Buttons/links have focus styles and adequate hit areas.
+* Color contrast AA or better; test against background.
+* Defer non-critical JS; lazy-load large images.
+* Lighthouse targets: **Performance ≥ 90**, **Accessibility ≥ 95** on desktop and mobile.
+
+# File Tree (create if missing)
+
+```
+.
+├── index.html
+├── assets
+│   ├── css
+│   │   └── styles.css
+│   ├── js
+│   │   └── main.js
+│   └── img
+│       ├── favicon.ico
+│       └── og.png
+├── site.webmanifest
+├── README.md
+└── (optional) CNAME
+```
+
+# Implementation Steps (do these in order)
+
+1. **Scaffold** the file tree and base HTML.
+2. **Canvas background:** implement the star-network engine in `assets/js/main.js` per spec; expose `init()` and `destroy()`.
+3. **Styles:** add CSS variables (colors, spacing), glass cards, buttons, responsive layout.
+4. **Populate content** from resume extraction into Hero/Highlights/Experience.
+5. **SEO & JSON-LD:** add meta, OG tags, `Person` schema.
+6. **Assets:** generate `favicon.ico`, minimal `og.png` using hero text and gradient.
+7. **Docs:** write `README.md` with GitHub Pages deploy steps (Settings → Pages → `main` branch → `/`), and how to update OG image.
+
+# Acceptance Criteria (must all pass)
+
+* Works from `file://` and GitHub Pages (no build tooling).
+* Background animates smoothly and responds to cursor; respects reduced-motion.
+* No console errors; all links reachable via keyboard.
+* Resume data appears accurately (name, title, skills, certs, 1–2 roles/projects).
+* Lighthouse metrics meet targets on a fresh load.
+
+---
+
+## Starter Templates (use as a base, then refine)
+
+### `index.html`
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lê Hiếu — Senior DevOps</title>
+    <meta name="description" content="Senior DevOps focused on AWS, IaC, CI/CD, and reliability." />
+    <link rel="canonical" href="https://<username>.github.io/" />
+    <meta property="og:title" content="Lê Hiếu — Senior DevOps" />
+    <meta property="og:description" content="AWS-focused DevOps engineer. IaC, CI/CD, observability." />
+    <meta property="og:image" content="assets/img/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="assets/img/favicon.ico" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" as="style" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <script type="application/ld+json" id="person-schema"></script>
+  </head>
+  <body>
+    <canvas id="bg" aria-hidden="true"></canvas>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <nav class="nav">
+        <div class="brand">LPH</div>
+        <div class="links"><a href="#projects">Projects</a><a href="#contact">Contact</a></div>
+      </nav>
+    </header>
+    <main id="main" class="container">
+      <section class="hero card">
+        <h1>Lê Hiếu</h1>
+        <p class="tagline">Senior DevOps • AWS • CI/CD • IaC</p>
+        <div class="cta">
+          <a class="btn primary" href="#contact">Contact</a>
+          <a class="btn ghost" href="https://github.com/<username>" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </section>
+      <section class="highlights grid">
+        <!-- Skills/Certs/Projects injected from resume -->
+      </section>
+      <section class="experience card">
+        <h2>Experience</h2>
+        <ul class="timeline" id="experience-list"></ul>
+      </section>
+    </main>
+    <footer class="site-footer">© <span id="year"></span> Lê Hiếu</footer>
+    <script src="assets/js/main.js" defer></script>
+  </body>
+</html>
+```
+
+### `assets/css/styles.css`
+
+```css
+:root{
+  --bg:#0B1026; --fg:#E5F0FF; --blue:#1B6FFF; --purple:#9A5BFF; --link:#7BD3FF;
+  --glass:rgba(255,255,255,0.08); --border:rgba(255,255,255,0.18);
+}
+*{box-sizing:border-box} html,body{height:100%}
+body{margin:0; font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; color:var(--fg); background:radial-gradient(1200px 800px at 70% 10%, rgba(27,111,255,.25), transparent), linear-gradient(180deg, #0B1026 0%, #0B1026 60%, #0B1026 100%);}
+#bg{position:fixed; inset:0; z-index:-1}
+.container{max-width:1100px; margin:0 auto; padding:clamp(16px,2vw,32px)}
+.card{background:var(--glass); border:1px solid var(--border); border-radius:20px; padding:clamp(16px,2vw,28px); backdrop-filter:blur(10px);}
+.nav{display:flex; justify-content:space-between; align-items:center; padding:16px 24px}
+.brand{font-weight:800; letter-spacing:.08em}
+.links a{color:var(--fg); opacity:.85; margin-left:16px; text-decoration:none}
+.hero h1{font-size:clamp(28px,6vw,56px); margin:.2em 0}
+.tagline{opacity:.9; margin:0 0 1rem}
+.cta{display:flex; gap:12px}
+.btn{display:inline-block; padding:10px 16px; border-radius:12px; text-decoration:none; border:1px solid var(--border)}
+.btn.primary{background:linear-gradient(135deg, var(--blue), var(--purple)); color:white}
+.btn.ghost{color:var(--fg)}
+.grid{display:grid; gap:16px; grid-template-columns:repeat(auto-fit, minmax(240px,1fr))}
+.timeline{list-style:none; padding:0; margin:0}
+.skip-link{position:absolute; left:-9999px; top:auto}
+.skip-link:focus{left:16px; top:16px; background:#000; color:#fff; padding:8px 12px; border-radius:8px}
+@media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important} }
+```
+
+### `assets/js/main.js`
+
+```js
+(() => {
+  const state = { ctx:null, canvas:null, stars:[], edges:[], mouse:{x:0,y:0, active:false}, raf:0, reduce:false };
+  const cfg = { max:120, dist:120, speed:0.3, glow:6 };
+
+  function init(){
+    state.canvas = document.getElementById('bg');
+    if(!state.canvas) return;
+    state.reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    state.ctx = state.canvas.getContext('2d');
+    onResize();
+    spawn();
+    if(!state.reduce){ addEvents(); loop(); }
+    // page init
+    const y = document.getElementById('year'); if(y) y.textContent = new Date().getFullYear();
+    injectPersonSchema();
+  }
+
+  function onResize(){
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    state.canvas.width = innerWidth * dpr; state.canvas.height = innerHeight * dpr; state.ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+
+  function spawn(){
+    const count = innerWidth >= 1024 ? cfg.max : innerWidth >= 640 ? Math.floor(cfg.max/2) : Math.floor(cfg.max/4);
+    state.stars = Array.from({length:count}, () => ({ x: Math.random()*innerWidth, y: Math.random()*innerHeight, vx:(Math.random()-.5)*cfg.speed, vy:(Math.random()-.5)*cfg.speed }));
+  }
+
+  function draw(){
+    const {ctx} = state; ctx.clearRect(0,0,innerWidth,innerHeight);
+    // edges
+    ctx.globalAlpha = 0.25; ctx.lineWidth = 1; ctx.beginPath();
+    for(let i=0;i<state.stars.length;i++){
+      for(let j=i+1;j<state.stars.length;j++){
+        const a = state.stars[i], b = state.stars[j];
+        const dx=a.x-b.x, dy=a.y-b.y; const d = Math.hypot(dx,dy);
+        if(d < cfg.dist){ ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); }
+      }
+    }
+    ctx.strokeStyle = 'rgba(255,255,255,0.18)'; ctx.stroke();
+    // stars
+    ctx.globalAlpha = 1; for(const s of state.stars){
+      ctx.beginPath(); ctx.arc(s.x, s.y, 1.4, 0, Math.PI*2);
+      ctx.shadowBlur = cfg.glow; ctx.shadowColor = 'rgba(255,255,255,0.8)'; ctx.fillStyle = 'rgba(255,255,255,0.9)'; ctx.fill(); ctx.shadowBlur = 0;
+    }
+  }
+
+  function step(){
+    const {mouse} = state;
+    for(const s of state.stars){
+      if(mouse.active){ s.vx += (mouse.x - s.x)*0.00003; s.vy += (mouse.y - s.y)*0.00003; }
+      s.x += s.vx; s.y += s.vy;
+      if(s.x < -10) s.x = innerWidth+10; if(s.x > innerWidth+10) s.x = -10;
+      if(s.y < -10) s.y = innerHeight+10; if(s.y > innerHeight+10) s.y = -10;
+      s.vx *= 0.999; s.vy *= 0.999;
+    }
+  }
+
+  const loop = () => { step(); draw(); state.raf = requestAnimationFrame(loop); };
+
+  function addEvents(){
+    const onMove = (e) => { state.mouse.x = e.clientX; state.mouse.y = e.clientY; };
+    const onEnter = () => (state.mouse.active = true);
+    const onLeave = () => (state.mouse.active = false);
+    window.addEventListener('pointermove', onMove, {passive:true});
+    window.addEventListener('pointerdown', onEnter, {passive:true});
+    window.addEventListener('pointerup', onLeave, {passive:true});
+    window.addEventListener('blur', () => cancelAnimationFrame(state.raf));
+    window.addEventListener('focus', () => state.raf = requestAnimationFrame(loop));
+    window.addEventListener('resize', debounce(() => { onResize(); spawn(); }, 200));
+  }
+
+  function debounce(fn, wait){ let t; return (...args) => { clearTimeout(t); t = setTimeout(() => fn.apply(null,args), wait); } }
+
+  function injectPersonSchema(){
+    const el = document.getElementById('person-schema'); if(!el) return;
+    // TODO: Replace placeholders with parsed resume fields when available
+    el.textContent = JSON.stringify({
+      "@context":"https://schema.org","@type":"Person",
+      name:"Lê Hiếu", jobTitle:"Senior DevOps",
+      sameAs:["https://github.com/<username>", "https://www.linkedin.com/in/<handle>/"],
+    });
+  }
+
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+```
+
+# Commit & Message Style
+
+Keep commit messages short (≤ 72 chars), imperative mood, e.g., `feat: add canvas starfield and glass UI`.
+
+# Notes
+
+* If `/home/googlesky/data/googlesky.github.io` exists in this repo, scan for reusable assets (logos, favicons, copy) and reference them.
+* Do **not** include proprietary AWS/Cisco logos unless the user provides assets and permissions. Use **inspired** colors and shapes only.
