@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Infrastructure as Code with Terraform: Complete Guide - 1DevOps - Professional DevOps Solutions</title>
+    <meta name="description" content="Expert DevOps consulting, tools, and solutions for modern development teams. Simplifying complex infrastructure with 12+ years of experience.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/css/main.css?v=1759560683">
+    <link rel="stylesheet" href="/assets/css/dropdown.css?v=1759560683">
+    
+
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Infrastructure as Code with Terraform: Complete Guide | 1DevOps - Professional DevOps Solutions</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Infrastructure as Code with Terraform: Complete Guide" />
+<meta name="author" content="Lê Phương Hiếu" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Master Infrastructure as Code with Terraform. Learn best practices, common patterns, and advanced techniques for managing cloud infrastructure." />
+<meta property="og:description" content="Master Infrastructure as Code with Terraform. Learn best practices, common patterns, and advanced techniques for managing cloud infrastructure." />
+<link rel="canonical" href="https://1devops.io/blog/2024/01/30/terraform-infrastructure-as-code/" />
+<meta property="og:url" content="https://1devops.io/blog/2024/01/30/terraform-infrastructure-as-code/" />
+<meta property="og:site_name" content="1DevOps - Professional DevOps Solutions" />
+<meta property="og:image" content="https://1devops.io/assets/images/logo.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-01-30T10:00:00+07:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://1devops.io/assets/images/logo.png" />
+<meta property="twitter:title" content="Infrastructure as Code with Terraform: Complete Guide" />
+<meta name="google-site-verification" content="" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Lê Phương Hiếu"},"dateModified":"2024-01-30T10:00:00+07:00","datePublished":"2024-01-30T10:00:00+07:00","description":"Master Infrastructure as Code with Terraform. Learn best practices, common patterns, and advanced techniques for managing cloud infrastructure.","headline":"Infrastructure as Code with Terraform: Complete Guide","image":"https://1devops.io/assets/images/logo.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://1devops.io/blog/2024/01/30/terraform-infrastructure-as-code/"},"url":"https://1devops.io/blog/2024/01/30/terraform-infrastructure-as-code/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link type="application/atom+xml" rel="alternate" href="https://1devops.io/feed.xml" title="1DevOps - Professional DevOps Solutions" />
+</head>
+<body class="post">
+    <!-- Skip to content link for accessibility -->
+    <a class="skip-to-content" href="#main-content">Skip to main content</a>
+    
+    <!-- Header -->
+    <header class="site-header">
+    <div class="container">
+        <div class="header-content">
+            <!-- Logo -->
+            <div class="site-logo">
+                <a href="/">
+                    <img src="/assets/images/logo.svg" alt="1DevOps - Professional DevOps Solutions" class="logo-image">
+                    <span class="logo-text">1DevOps</span>
+                </a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="main-nav" role="navigation">
+                <ul class="nav-list">
+                    
+                    <li class="nav-item ">
+                        
+                            <a href="/" class="nav-link ">
+                                Home
+                            </a>
+                        
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        
+                            <a href="/" class="nav-link dropdown-toggle " aria-expanded="false">
+                                Services
+                                <span class="dropdown-arrow">▼</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                
+                                <li class="dropdown-item">
+                                    <a href="/services/consulting/" class="dropdown-link">
+                                        <span class="dropdown-title">DevOps Consulting</span>
+                                        
+                                        <span class="dropdown-desc">Expert DevOps transformation guidance</span>
+                                        
+                                    </a>
+                                </li>
+                                
+                                <li class="dropdown-item">
+                                    <a href="/services/infrastructure/" class="dropdown-link">
+                                        <span class="dropdown-title">Infrastructure Setup</span>
+                                        
+                                        <span class="dropdown-desc">Kubernetes and cloud infrastructure</span>
+                                        
+                                    </a>
+                                </li>
+                                
+                                <li class="dropdown-item">
+                                    <a href="/services/cicd/" class="dropdown-link">
+                                        <span class="dropdown-title">CI/CD Implementation</span>
+                                        
+                                        <span class="dropdown-desc">Automated deployment pipelines</span>
+                                        
+                                    </a>
+                                </li>
+                                
+                                <li class="dropdown-item">
+                                    <a href="/services/security/" class="dropdown-link">
+                                        <span class="dropdown-title">Security Audits</span>
+                                        
+                                        <span class="dropdown-desc">Infrastructure security assessment</span>
+                                        
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                        
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        
+                            <a href="/" class="nav-link dropdown-toggle " aria-expanded="false">
+                                Resources
+                                <span class="dropdown-arrow">▼</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                
+                                <li class="dropdown-item">
+                                    <a href="/blog/" class="dropdown-link">
+                                        <span class="dropdown-title">Blog</span>
+                                        
+                                        <span class="dropdown-desc">DevOps insights and tutorials</span>
+                                        
+                                    </a>
+                                </li>
+                                
+                                <li class="dropdown-item">
+                                    <a href="/tools/" class="dropdown-link">
+                                        <span class="dropdown-title">Tools</span>
+                                        
+                                        <span class="dropdown-desc">Open source DevOps tools</span>
+                                        
+                                    </a>
+                                </li>
+                                
+                                <li class="dropdown-item">
+                                    <a href="/security/" class="dropdown-link">
+                                        <span class="dropdown-title">Security Alerts</span>
+                                        
+                                        <span class="dropdown-desc">Latest vulnerability reports</span>
+                                        
+                                    </a>
+                                </li>
+                                
+                                <li class="dropdown-item">
+                                    <a href="/docs/" class="dropdown-link">
+                                        <span class="dropdown-title">Documentation</span>
+                                        
+                                        <span class="dropdown-desc">Technical guides and docs</span>
+                                        
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                        
+                    </li>
+                    
+                    <li class="nav-item ">
+                        
+                            <a href="/about/" class="nav-link ">
+                                About
+                            </a>
+                        
+                    </li>
+                    
+                    <li class="nav-item ">
+                        
+                            <a href="/contact/" class="nav-link ">
+                                Contact
+                            </a>
+                        
+                    </li>
+                    
+                </ul>
+            </nav>
+
+            <!-- Action Buttons -->
+            <div class="header-actions">
+                
+                    <div class="action-group primary-group">
+                        <a href="/contact/" class="btn btn-primary">
+                            
+                                <span class="btn-icon">💬</span>
+                            
+                            Get Quote
+                        </a>
+                    </div>
+                
+                    <div class="action-group secondary-group">
+                        <a href="/tools/" class="btn btn-secondary">
+                            
+                                <span class="btn-icon">🛠️</span>
+                            
+                            View Tools
+                        </a>
+                    </div>
+                
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <nav class="mobile-nav" role="navigation">
+            <ul class="mobile-nav-list">
+                
+                
+                    <li class="mobile-nav-item">
+                        <a href="/" class="mobile-nav-link">Home</a>
+                    </li>
+                
+                
+                
+                    <li class="mobile-nav-item mobile-dropdown">
+                        <button class="mobile-nav-link mobile-dropdown-toggle" aria-expanded="false">
+                            Services
+                            <span class="mobile-dropdown-arrow">▼</span>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            
+                            <li class="mobile-dropdown-item">
+                                <a href="/services/consulting/" class="mobile-dropdown-link">
+                                    DevOps Consulting
+                                </a>
+                            </li>
+                            
+                            <li class="mobile-dropdown-item">
+                                <a href="/services/infrastructure/" class="mobile-dropdown-link">
+                                    Infrastructure Setup
+                                </a>
+                            </li>
+                            
+                            <li class="mobile-dropdown-item">
+                                <a href="/services/cicd/" class="mobile-dropdown-link">
+                                    CI/CD Implementation
+                                </a>
+                            </li>
+                            
+                            <li class="mobile-dropdown-item">
+                                <a href="/services/security/" class="mobile-dropdown-link">
+                                    Security Audits
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="mobile-nav-item mobile-dropdown">
+                        <button class="mobile-nav-link mobile-dropdown-toggle" aria-expanded="false">
+                            Resources
+                            <span class="mobile-dropdown-arrow">▼</span>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            
+                            <li class="mobile-dropdown-item">
+                                <a href="/blog/" class="mobile-dropdown-link">
+                                    Blog
+                                </a>
+                            </li>
+                            
+                            <li class="mobile-dropdown-item">
+                                <a href="/tools/" class="mobile-dropdown-link">
+                                    Tools
+                                </a>
+                            </li>
+                            
+                            <li class="mobile-dropdown-item">
+                                <a href="/security/" class="mobile-dropdown-link">
+                                    Security Alerts
+                                </a>
+                            </li>
+                            
+                            <li class="mobile-dropdown-item">
+                                <a href="/docs/" class="mobile-dropdown-link">
+                                    Documentation
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="mobile-nav-item">
+                        <a href="/about/" class="mobile-nav-link">About</a>
+                    </li>
+                
+                
+                
+                    <li class="mobile-nav-item">
+                        <a href="/contact/" class="mobile-nav-link">Contact</a>
+                    </li>
+                
+                
+                
+                <!-- Mobile Action Items -->
+                
+                <li class="mobile-nav-item mobile-action-item">
+                    <a href="/contact/" class="mobile-nav-link primary-action">
+                        
+                            <span class="btn-icon">💬</span>
+                        
+                        Get Quote
+                    </a>
+                </li>
+                
+                <li class="mobile-nav-item mobile-action-item">
+                    <a href="/tools/" class="mobile-nav-link secondary-action">
+                        
+                            <span class="btn-icon">🛠️</span>
+                        
+                        View Tools
+                    </a>
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</header> 
+
+    <!-- Main Content -->
+    <main class="main-content" role="main" id="main-content">
+        <div class="page-header">
+    <div class="container">
+        <h1>Infrastructure as Code with Terraform: Complete Guide</h1>
+        <div class="post-meta">
+            <time datetime="2024-01-30T10:00:00+07:00">January 30, 2024</time>
+             • by Lê Phương Hiếu
+            
+        </div>
+    </div>
+</div>
+
+<div class="page-content">
+    <div class="container">
+        <article class="post-content">
+            <p>Infrastructure as Code (IaC) has revolutionized how we manage and provision infrastructure. Terraform, developed by HashiCorp, stands out as one of the most powerful and versatile IaC tools available today.</p>
+
+<h2 id="why-terraform">Why Terraform?</h2>
+
+<h3 id="multi-cloud-support">Multi-Cloud Support</h3>
+<p>Terraform supports multiple cloud providers, making it ideal for hybrid and multi-cloud strategies.</p>
+
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># AWS Provider</span>
+<span class="nx">provider</span> <span class="s2">"aws"</span> <span class="p">{</span>
+  <span class="nx">region</span> <span class="o">=</span> <span class="s2">"us-west-2"</span>
+<span class="p">}</span>
+
+<span class="c1"># Azure Provider</span>
+<span class="nx">provider</span> <span class="s2">"azurerm"</span> <span class="p">{</span>
+  <span class="nx">features</span> <span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="c1"># Google Cloud Provider</span>
+<span class="nx">provider</span> <span class="s2">"google"</span> <span class="p">{</span>
+  <span class="nx">project</span> <span class="o">=</span> <span class="s2">"my-project"</span>
+  <span class="nx">region</span>  <span class="o">=</span> <span class="s2">"us-central1"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="declarative-configuration">Declarative Configuration</h3>
+<p>Define your desired infrastructure state, and Terraform handles the implementation details.</p>
+
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">resource</span> <span class="s2">"aws_instance"</span> <span class="s2">"web_server"</span> <span class="p">{</span>
+  <span class="nx">ami</span>           <span class="o">=</span> <span class="s2">"ami-0c02fb55956c7d316"</span>
+  <span class="nx">instance_type</span> <span class="o">=</span> <span class="s2">"t3.micro"</span>
+  
+  <span class="nx">tags</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">Name</span>        <span class="o">=</span> <span class="s2">"WebServer"</span>
+    <span class="nx">Environment</span> <span class="o">=</span> <span class="s2">"Production"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="best-practices">Best Practices</h2>
+
+<h3 id="1-state-management">1. State Management</h3>
+<p>Always use remote state storage for team collaboration.</p>
+
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">terraform</span> <span class="p">{</span>
+  <span class="nx">backend</span> <span class="s2">"s3"</span> <span class="p">{</span>
+    <span class="nx">bucket</span> <span class="o">=</span> <span class="s2">"my-terraform-state"</span>
+    <span class="nx">key</span>    <span class="o">=</span> <span class="s2">"infrastructure/terraform.tfstate"</span>
+    <span class="nx">region</span> <span class="o">=</span> <span class="s2">"us-west-2"</span>
+    
+    <span class="c1"># Enable state locking</span>
+    <span class="nx">dynamodb_table</span> <span class="o">=</span> <span class="s2">"terraform-locks"</span>
+    <span class="nx">encrypt</span>        <span class="o">=</span> <span class="kc">true</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="2-module-organization">2. Module Organization</h3>
+<p>Create reusable modules for common infrastructure patterns.</p>
+
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># modules/vpc/main.tf</span>
+<span class="nx">resource</span> <span class="s2">"aws_vpc"</span> <span class="s2">"main"</span> <span class="p">{</span>
+  <span class="nx">cidr_block</span>           <span class="o">=</span> <span class="nx">var</span><span class="p">.</span><span class="nx">cidr_block</span>
+  <span class="nx">enable_dns_hostnames</span> <span class="o">=</span> <span class="kc">true</span>
+  <span class="nx">enable_dns_support</span>   <span class="o">=</span> <span class="kc">true</span>
+  
+  <span class="nx">tags</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">Name</span> <span class="o">=</span> <span class="nx">var</span><span class="p">.</span><span class="nx">name</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Root module usage</span>
+<span class="nx">module</span> <span class="s2">"vpc"</span> <span class="p">{</span>
+  <span class="nx">source</span>     <span class="o">=</span> <span class="s2">"./modules/vpc"</span>
+  <span class="nx">name</span>       <span class="o">=</span> <span class="s2">"production-vpc"</span>
+  <span class="nx">cidr_block</span> <span class="o">=</span> <span class="s2">"10.0.0.0/16"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="3-variable-management">3. Variable Management</h3>
+<p>Use variables for flexibility and environment-specific configurations.</p>
+
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># variables.tf</span>
+<span class="nx">variable</span> <span class="s2">"environment"</span> <span class="p">{</span>
+  <span class="nx">description</span> <span class="o">=</span> <span class="s2">"Environment name"</span>
+  <span class="nx">type</span>        <span class="o">=</span> <span class="nx">string</span>
+  <span class="nx">default</span>     <span class="o">=</span> <span class="s2">"development"</span>
+<span class="p">}</span>
+
+<span class="nx">variable</span> <span class="s2">"instance_type"</span> <span class="p">{</span>
+  <span class="nx">description</span> <span class="o">=</span> <span class="s2">"EC2 instance type"</span>
+  <span class="nx">type</span>        <span class="o">=</span> <span class="nx">string</span>
+  <span class="nx">default</span>     <span class="o">=</span> <span class="s2">"t3.micro"</span>
+  
+  <span class="nx">validation</span> <span class="p">{</span>
+    <span class="nx">condition</span>     <span class="o">=</span> <span class="nx">contains</span><span class="p">([</span><span class="s2">"t3.micro"</span><span class="p">,</span> <span class="s2">"t3.small"</span><span class="p">,</span> <span class="s2">"t3.medium"</span><span class="p">],</span> <span class="nx">var</span><span class="p">.</span><span class="nx">instance_type</span><span class="p">)</span>
+    <span class="nx">error_message</span> <span class="o">=</span> <span class="s2">"Instance type must be t3.micro, t3.small, or t3.medium."</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="advanced-patterns">Advanced Patterns</h2>
+
+<h3 id="dynamic-blocks">Dynamic Blocks</h3>
+<p>Create flexible, reusable configurations with dynamic blocks.</p>
+
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">resource</span> <span class="s2">"aws_security_group"</span> <span class="s2">"web"</span> <span class="p">{</span>
+  <span class="nx">name_prefix</span> <span class="o">=</span> <span class="s2">"web-"</span>
+  
+  <span class="nx">dynamic</span> <span class="s2">"ingress"</span> <span class="p">{</span>
+    <span class="nx">for_each</span> <span class="o">=</span> <span class="nx">var</span><span class="p">.</span><span class="nx">ingress_rules</span>
+    <span class="nx">content</span> <span class="p">{</span>
+      <span class="nx">from_port</span>   <span class="o">=</span> <span class="nx">ingress</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">from_port</span>
+      <span class="nx">to_port</span>     <span class="o">=</span> <span class="nx">ingress</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">to_port</span>
+      <span class="nx">protocol</span>    <span class="o">=</span> <span class="nx">ingress</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">protocol</span>
+      <span class="nx">cidr_blocks</span> <span class="o">=</span> <span class="nx">ingress</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">cidr_blocks</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="data-sources">Data Sources</h3>
+<p>Retrieve information about existing infrastructure.</p>
+
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">data</span> <span class="s2">"aws_ami"</span> <span class="s2">"ubuntu"</span> <span class="p">{</span>
+  <span class="nx">most_recent</span> <span class="o">=</span> <span class="kc">true</span>
+  <span class="nx">owners</span>      <span class="o">=</span> <span class="p">[</span><span class="s2">"099720109477"</span><span class="p">]</span> <span class="c1"># Canonical</span>
+  
+  <span class="nx">filter</span> <span class="p">{</span>
+    <span class="nx">name</span>   <span class="o">=</span> <span class="s2">"name"</span>
+    <span class="nx">values</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">resource</span> <span class="s2">"aws_instance"</span> <span class="s2">"web"</span> <span class="p">{</span>
+  <span class="nx">ami</span>           <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">aws_ami</span><span class="p">.</span><span class="nx">ubuntu</span><span class="p">.</span><span class="nx">id</span>
+  <span class="nx">instance_type</span> <span class="o">=</span> <span class="s2">"t3.micro"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="cicd-integration">CI/CD Integration</h2>
+
+<h3 id="gitlab-ci-example">GitLab CI Example</h3>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># .gitlab-ci.yml</span>
+<span class="na">stages</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">validate</span>
+  <span class="pi">-</span> <span class="s">plan</span>
+  <span class="pi">-</span> <span class="s">apply</span>
+
+<span class="na">terraform_validate</span><span class="pi">:</span>
+  <span class="na">stage</span><span class="pi">:</span> <span class="s">validate</span>
+  <span class="na">script</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">terraform init</span>
+    <span class="pi">-</span> <span class="s">terraform validate</span>
+    <span class="pi">-</span> <span class="s">terraform fmt -check</span>
+
+<span class="na">terraform_plan</span><span class="pi">:</span>
+  <span class="na">stage</span><span class="pi">:</span> <span class="s">plan</span>
+  <span class="na">script</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">terraform init</span>
+    <span class="pi">-</span> <span class="s">terraform plan -out=tfplan</span>
+  <span class="na">artifacts</span><span class="pi">:</span>
+    <span class="na">paths</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">tfplan</span>
+
+<span class="na">terraform_apply</span><span class="pi">:</span>
+  <span class="na">stage</span><span class="pi">:</span> <span class="s">apply</span>
+  <span class="na">script</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">terraform apply -auto-approve tfplan</span>
+  <span class="na">when</span><span class="pi">:</span> <span class="s">manual</span>
+  <span class="na">only</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">main</span>
+</code></pre></div></div>
+
+<h2 id="security-considerations">Security Considerations</h2>
+
+<h3 id="1-sensitive-data-management">1. Sensitive Data Management</h3>
+<p>Never commit sensitive data to version control.</p>
+
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Use environment variables</span>
+<span class="nx">variable</span> <span class="s2">"db_password"</span> <span class="p">{</span>
+  <span class="nx">description</span> <span class="o">=</span> <span class="s2">"Database password"</span>
+  <span class="nx">type</span>        <span class="o">=</span> <span class="nx">string</span>
+  <span class="nx">sensitive</span>   <span class="o">=</span> <span class="kc">true</span>
+<span class="p">}</span>
+
+<span class="c1"># Or use external secret management</span>
+<span class="nx">data</span> <span class="s2">"aws_secretsmanager_secret_version"</span> <span class="s2">"db_password"</span> <span class="p">{</span>
+  <span class="nx">secret_id</span> <span class="o">=</span> <span class="s2">"prod/db/password"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="2-resource-tagging">2. Resource Tagging</h3>
+<p>Implement consistent tagging for security and cost management.</p>
+
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">locals</span> <span class="p">{</span>
+  <span class="nx">common_tags</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">Environment</span> <span class="o">=</span> <span class="nx">var</span><span class="p">.</span><span class="nx">environment</span>
+    <span class="nx">Project</span>     <span class="o">=</span> <span class="nx">var</span><span class="p">.</span><span class="nx">project_name</span>
+    <span class="nx">Owner</span>       <span class="o">=</span> <span class="nx">var</span><span class="p">.</span><span class="nx">owner</span>
+    <span class="nx">ManagedBy</span>   <span class="o">=</span> <span class="s2">"Terraform"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">resource</span> <span class="s2">"aws_instance"</span> <span class="s2">"web"</span> <span class="p">{</span>
+  <span class="nx">ami</span>           <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">aws_ami</span><span class="p">.</span><span class="nx">ubuntu</span><span class="p">.</span><span class="nx">id</span>
+  <span class="nx">instance_type</span> <span class="o">=</span> <span class="nx">var</span><span class="p">.</span><span class="nx">instance_type</span>
+  
+  <span class="nx">tags</span> <span class="o">=</span> <span class="nx">merge</span><span class="p">(</span><span class="nx">local</span><span class="p">.</span><span class="nx">common_tags</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">Name</span> <span class="o">=</span> <span class="s2">"WebServer"</span>
+    <span class="nx">Type</span> <span class="o">=</span> <span class="s2">"Application"</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="monitoring-and-maintenance">Monitoring and Maintenance</h2>
+
+<h3 id="state-drift-detection">State Drift Detection</h3>
+<p>Regularly check for configuration drift.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Check for drift</span>
+terraform plan <span class="nt">-detailed-exitcode</span>
+
+<span class="c"># Refresh state</span>
+terraform refresh
+
+<span class="c"># Import existing resources</span>
+terraform import aws_instance.web i-1234567890abcdef0
+</code></pre></div></div>
+
+<h2 id="key-benefits">Key Benefits</h2>
+
+<ol>
+  <li><strong>Version Control</strong>: Infrastructure changes are tracked and reviewable</li>
+  <li><strong>Reproducibility</strong>: Consistent environments across stages</li>
+  <li><strong>Automation</strong>: Reduced manual errors and faster deployments</li>
+  <li><strong>Documentation</strong>: Code serves as living documentation</li>
+  <li><strong>Cost Management</strong>: Better resource tracking and optimization</li>
+</ol>
+
+<h2 id="getting-started">Getting Started</h2>
+
+<ol>
+  <li><strong>Install Terraform</strong> from the official website</li>
+  <li><strong>Choose a cloud provider</strong> and configure credentials</li>
+  <li><strong>Start small</strong> with basic resources</li>
+  <li><strong>Implement modules</strong> for reusability</li>
+  <li><strong>Set up CI/CD</strong> for automated deployments</li>
+</ol>
+
+<p>Terraform transforms infrastructure management from a manual, error-prone process into a predictable, automated workflow. Start with simple configurations and gradually build more complex infrastructure patterns.</p>
+
+<hr />
+
+<p><em>Need help implementing Infrastructure as Code in your organization? <a href="/contact/">Contact me</a> for Terraform consulting and training services.</em></p>
+
+        </article>
+        
+        <div class="post-navigation">
+            
+            <a href="/blog/2024/01/25/docker-security-best-practices/" class="btn btn-secondary">← Docker Security Best Practices: Securing Your Containers</a>
+            
+            
+        </div>
+    </div>
+</div> 
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="/assets/images/logo.svg" alt="1DevOps - Professional DevOps Solutions">
+                        <span>1DevOps</span>
+                    </div>
+                    <p class="footer-description">
+                        Professional DevOps consulting and solutions with 12+ years of experience. 
+                        Simplifying complex infrastructure for modern development teams.
+                    </p>
+                    <div class="footer-contact">
+                        <p><strong>Email:</strong> <a href="mailto:hieu@1devops.io">hieu@1devops.io</a></p>
+                        <p><strong>Phone:</strong> <a href="tel:+84975669775">+84 975 669 775</a></p>
+                        <p><strong>Location:</strong> Ho Chi Minh City, Vietnam</p>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="/services/consulting/">DevOps Consulting</a></li>
+                            <li><a href="/services/infrastructure/">Infrastructure Setup</a></li>
+                            <li><a href="/services/cicd/">CI/CD Implementation</a></li>
+                            <li><a href="/services/security/">Security Audits</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="/blog/">Blog</a></li>
+                            <li><a href="/tools/">Tools</a></li>
+                            <li><a href="/security/">Security Alerts</a></li>
+                            <li><a href="/docs/">Documentation</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="/about/">About</a></li>
+                            <li><a href="/profile/">Profile</a></li>
+                            <li><a href="/contact/">Contact</a></li>
+                            <li><a href="/assets/LePhuongHieu - Resume.pdf" target="_blank" rel="noopener">Resume</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <div class="social-links">
+                            
+                            <a href="mailto:hieu@1devops.io" class="social-link" aria-label="Email">
+                                <span class="social-icon">📧</span>
+                                Email
+                            </a>
+                            
+                            
+                            <a href="https://linkedin.com/in/lephuonghieu" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
+                                <span class="social-icon">💼</span>
+                                LinkedIn
+                            </a>
+                            
+                            
+                            <a href="https://github.com/1devops" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
+                                <span class="social-icon">🐙</span>
+                                GitHub
+                            </a>
+                            
+                        </div>
+                        
+                        <div class="newsletter-signup">
+                            <h5>Stay Updated</h5>
+                            <p>Get DevOps insights delivered to your inbox</p>
+                            <form class="footer-newsletter-form" action="https://formspree.io/f/your-newsletter-id" method="POST">
+                                <input type="email" name="email" placeholder="Enter email" required class="newsletter-input">
+                                <button type="submit" class="newsletter-button">Subscribe</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <div class="footer-copyright">
+                        <p>&copy; 2025 1DevOps. All rights reserved.</p>
+                        <p>Built with ❤️ and Jekyll by Le Phuong Hieu</p>
+                    </div>
+                    
+                    <div class="footer-meta">
+                        <div class="footer-legal">
+                            <a href="/privacy/">Privacy Policy</a>
+                            <a href="/terms/">Terms of Service</a>
+                        </div>
+                        
+                        <div class="footer-availability">
+                            <span class="availability-indicator">🟢</span>
+                            <span>Available for consulting projects</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer> 
+
+    <!-- JavaScript -->
+    <script src="/assets/js/main.js?v=1759560683"></script>
+</body>
+</html> 

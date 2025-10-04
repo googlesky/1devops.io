@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://1devops.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://1devops.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-10-04T13:51:23+07:00</updated><id>https://1devops.io/feed.xml</id><title type="html">1DevOps - Professional DevOps Solutions</title><subtitle>Expert DevOps consulting, tools, and solutions for modern development teams. Simplifying complex infrastructure with 12+ years of experience.</subtitle><author><name>Le Phuong Hieu</name><email>hieu@1devops.io</email></author><entry><title type="html">Infrastructure as Code with Terraform: Complete Guide</title><link href="https://1devops.io/blog/2024/01/30/terraform-infrastructure-as-code/" rel="alternate" type="text/html" title="Infrastructure as Code with Terraform: Complete Guide" /><published>2024-01-30T10:00:00+07:00</published><updated>2024-01-30T10:00:00+07:00</updated><id>https://1devops.io/blog/2024/01/30/terraform-infrastructure-as-code</id><content type="html" xml:base="https://1devops.io/blog/2024/01/30/terraform-infrastructure-as-code/"><![CDATA[<p>Infrastructure as Code (IaC) has revolutionized how we manage and provision infrastructure. Terraform, developed by HashiCorp, stands out as one of the most powerful and versatile IaC tools available today.</p>
+
+<h2 id="why-terraform">Why Terraform?</h2>
+
+<h3 id="multi-cloud-support">Multi-Cloud Support</h3>
+<p>Terraform supports multiple cloud providers, making it ideal for hybrid and multi-cloud strategies.</p>
+
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># AWS Provider</span>
+<span class="nx">provider</span> <span class="s2">"aws"</span> <span class="p">{</span>
+  <span class="nx">region</span> <span class="o">=</span> <span class="s2">"us-west-2"</span>
+<span class="p">}</span>
+
+<span class="c1"># Azure Provider</span>
+<span class="nx">provider</span> <span class="s2">"azurerm"</span> <span class="p">{</span>
+  <span class="nx">features</span> <span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="c1"># Google Cloud Provider</span>
+<span class="nx">provider</span> <span class="s2">"google"</span> <span class="p">{</span>
+  <span class="nx">project</span> <span class="o">=</span> <span class="s2">"my-project"</span>
+  <span class="nx">region</span>  <span class="o">=</span> <span class="s2">"us-central1"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="declarative-configuration">Declarative Configuration</h3>
+<p>Define your desired infrastructure state, and Terraform handles the implementation details.</p>
+
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">resource</span> <span class="s2">"aws_instance"</span> <span class="s2">"web_server"</span> <span class="p">{</span>
+  <span class="nx">ami</span>           <span class="o">=</span> <span class="s2">"ami-0c02fb55956c7d316"</span>
+  <span class="nx">instance_type</span> <span class="o">=</span> <span class="s2">"t3.micro"</span>
+  
+  <span class="nx">tags</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">Name</span>        <span class="o">=</span> <span class="s2">"WebServer"</span>
+    <span class="nx">Environment</span> <span class="o">=</span> <span class="s2">"Production"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="best-practices">Best Practices</h2>
+
+<h3 id="1-state-management">1. State Management</h3>
+<p>Always use remote state storage for team collaboration.</p>
+
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">terraform</span> <span class="p">{</span>
+  <span class="nx">backend</span> <span class="s2">"s3"</span> <span class="p">{</span>
+    <span class="nx">bucket</span> <span class="o">=</span> <span class="s2">"my-terraform-state"</span>
+    <span class="nx">key</span>    <span class="o">=</span> <span class="s2">"infrastructure/terraform.tfstate"</span>
+    <span class="nx">region</span> <span class="o">=</span> <span class="s2">"us-west-2"</span>
+    
+    <span class="c1"># Enable state locking</span>
+    <span class="nx">dynamodb_table</span> <span class="o">=</span> <span class="s2">"terraform-locks"</span>
+    <span class="nx">encrypt</span>        <span class="o">=</span> <span class="kc">true</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="2-module-organization">2. Module Organization</h3>
+<p>Create reusable modules for common infrastructure patterns.</p>
+
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># modules/vpc/main.tf</span>
+<span class="nx">resource</span> <span class="s2">"aws_vpc"</span> <span class="s2">"main"</span> <span class="p">{</span>
+  <span class="nx">cidr_block</span>           <span class="o">=</span> <span class="nx">var</span><span class="p">.</span><span class="nx">cidr_block</span>
+  <span class="nx">enable_dns_hostnames</span> <span class="o">=</span> <span class="kc">true</span>
+  <span class="nx">enable_dns_support</span>   <span class="o">=</span> <span class="kc">true</span>
+  
+  <span class="nx">tags</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">Name</span> <span class="o">=</span> <span class="nx">var</span><span class="p">.</span><span class="nx">name</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Root module usage</span>
+<span class="nx">module</span> <span class="s2">"vpc"</span> <span class="p">{</span>
+  <span class="nx">source</span>     <span class="o">=</span> <span class="s2">"./modules/vpc"</span>
+  <span class="nx">name</span>       <span class="o">=</span> <span class="s2">"production-vpc"</span>
+  <span class="nx">cidr_block</span> <span class="o">=</span> <span class="s2">"10.0.0.0/16"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="3-variable-management">3. Variable Management</h3>
+<p>Use variables for flexibility and environment-specific configurations.</p>
+
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># variables.tf</span>
+<span class="nx">variable</span> <span class="s2">"environment"</span> <span class="p">{</span>
+  <span class="nx">description</span> <span class="o">=</span> <span class="s2">"Environment name"</span>
+  <span class="nx">type</span>        <span class="o">=</span> <span class="nx">string</span>
+  <span class="nx">default</span>     <span class="o">=</span> <span class="s2">"development"</span>
+<span class="p">}</span>
+
+<span class="nx">variable</span> <span class="s2">"instance_type"</span> <span class="p">{</span>
+  <span class="nx">description</span> <span class="o">=</span> <span class="s2">"EC2 instance type"</span>
+  <span class="nx">type</span>        <span class="o">=</span> <span class="nx">string</span>
+  <span class="nx">default</span>     <span class="o">=</span> <span class="s2">"t3.micro"</span>
+  
+  <span class="nx">validation</span> <span class="p">{</span>
+    <span class="nx">condition</span>     <span class="o">=</span> <span class="nx">contains</span><span class="p">([</span><span class="s2">"t3.micro"</span><span class="p">,</span> <span class="s2">"t3.small"</span><span class="p">,</span> <span class="s2">"t3.medium"</span><span class="p">],</span> <span class="nx">var</span><span class="p">.</span><span class="nx">instance_type</span><span class="p">)</span>
+    <span class="nx">error_message</span> <span class="o">=</span> <span class="s2">"Instance type must be t3.micro, t3.small, or t3.medium."</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="advanced-patterns">Advanced Patterns</h2>
+
+<h3 id="dynamic-blocks">Dynamic Blocks</h3>
+<p>Create flexible, reusable configurations with dynamic blocks.</p>
+
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">resource</span> <span class="s2">"aws_security_group"</span> <span class="s2">"web"</span> <span class="p">{</span>
+  <span class="nx">name_prefix</span> <span class="o">=</span> <span class="s2">"web-"</span>
+  
+  <span class="nx">dynamic</span> <span class="s2">"ingress"</span> <span class="p">{</span>
+    <span class="nx">for_each</span> <span class="o">=</span> <span class="nx">var</span><span class="p">.</span><span class="nx">ingress_rules</span>
+    <span class="nx">content</span> <span class="p">{</span>
+      <span class="nx">from_port</span>   <span class="o">=</span> <span class="nx">ingress</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">from_port</span>
+      <span class="nx">to_port</span>     <span class="o">=</span> <span class="nx">ingress</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">to_port</span>
+      <span class="nx">protocol</span>    <span class="o">=</span> <span class="nx">ingress</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">protocol</span>
+      <span class="nx">cidr_blocks</span> <span class="o">=</span> <span class="nx">ingress</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">cidr_blocks</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="data-sources">Data Sources</h3>
+<p>Retrieve information about existing infrastructure.</p>
+
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">data</span> <span class="s2">"aws_ami"</span> <span class="s2">"ubuntu"</span> <span class="p">{</span>
+  <span class="nx">most_recent</span> <span class="o">=</span> <span class="kc">true</span>
+  <span class="nx">owners</span>      <span class="o">=</span> <span class="p">[</span><span class="s2">"099720109477"</span><span class="p">]</span> <span class="c1"># Canonical</span>
+  
+  <span class="nx">filter</span> <span class="p">{</span>
+    <span class="nx">name</span>   <span class="o">=</span> <span class="s2">"name"</span>
+    <span class="nx">values</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">resource</span> <span class="s2">"aws_instance"</span> <span class="s2">"web"</span> <span class="p">{</span>
+  <span class="nx">ami</span>           <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">aws_ami</span><span class="p">.</span><span class="nx">ubuntu</span><span class="p">.</span><span class="nx">id</span>
+  <span class="nx">instance_type</span> <span class="o">=</span> <span class="s2">"t3.micro"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="cicd-integration">CI/CD Integration</h2>
+
+<h3 id="gitlab-ci-example">GitLab CI Example</h3>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># .gitlab-ci.yml</span>
+<span class="na">stages</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">validate</span>
+  <span class="pi">-</span> <span class="s">plan</span>
+  <span class="pi">-</span> <span class="s">apply</span>
+
+<span class="na">terraform_validate</span><span class="pi">:</span>
+  <span class="na">stage</span><span class="pi">:</span> <span class="s">validate</span>
+  <span class="na">script</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">terraform init</span>
+    <span class="pi">-</span> <span class="s">terraform validate</span>
+    <span class="pi">-</span> <span class="s">terraform fmt -check</span>
+
+<span class="na">terraform_plan</span><span class="pi">:</span>
+  <span class="na">stage</span><span class="pi">:</span> <span class="s">plan</span>
+  <span class="na">script</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">terraform init</span>
+    <span class="pi">-</span> <span class="s">terraform plan -out=tfplan</span>
+  <span class="na">artifacts</span><span class="pi">:</span>
+    <span class="na">paths</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">tfplan</span>
+
+<span class="na">terraform_apply</span><span class="pi">:</span>
+  <span class="na">stage</span><span class="pi">:</span> <span class="s">apply</span>
+  <span class="na">script</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">terraform apply -auto-approve tfplan</span>
+  <span class="na">when</span><span class="pi">:</span> <span class="s">manual</span>
+  <span class="na">only</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">main</span>
+</code></pre></div></div>
+
+<h2 id="security-considerations">Security Considerations</h2>
+
+<h3 id="1-sensitive-data-management">1. Sensitive Data Management</h3>
+<p>Never commit sensitive data to version control.</p>
+
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Use environment variables</span>
+<span class="nx">variable</span> <span class="s2">"db_password"</span> <span class="p">{</span>
+  <span class="nx">description</span> <span class="o">=</span> <span class="s2">"Database password"</span>
+  <span class="nx">type</span>        <span class="o">=</span> <span class="nx">string</span>
+  <span class="nx">sensitive</span>   <span class="o">=</span> <span class="kc">true</span>
+<span class="p">}</span>
+
+<span class="c1"># Or use external secret management</span>
+<span class="nx">data</span> <span class="s2">"aws_secretsmanager_secret_version"</span> <span class="s2">"db_password"</span> <span class="p">{</span>
+  <span class="nx">secret_id</span> <span class="o">=</span> <span class="s2">"prod/db/password"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="2-resource-tagging">2. Resource Tagging</h3>
+<p>Implement consistent tagging for security and cost management.</p>
+
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">locals</span> <span class="p">{</span>
+  <span class="nx">common_tags</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">Environment</span> <span class="o">=</span> <span class="nx">var</span><span class="p">.</span><span class="nx">environment</span>
+    <span class="nx">Project</span>     <span class="o">=</span> <span class="nx">var</span><span class="p">.</span><span class="nx">project_name</span>
+    <span class="nx">Owner</span>       <span class="o">=</span> <span class="nx">var</span><span class="p">.</span><span class="nx">owner</span>
+    <span class="nx">ManagedBy</span>   <span class="o">=</span> <span class="s2">"Terraform"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">resource</span> <span class="s2">"aws_instance"</span> <span class="s2">"web"</span> <span class="p">{</span>
+  <span class="nx">ami</span>           <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">aws_ami</span><span class="p">.</span><span class="nx">ubuntu</span><span class="p">.</span><span class="nx">id</span>
+  <span class="nx">instance_type</span> <span class="o">=</span> <span class="nx">var</span><span class="p">.</span><span class="nx">instance_type</span>
+  
+  <span class="nx">tags</span> <span class="o">=</span> <span class="nx">merge</span><span class="p">(</span><span class="nx">local</span><span class="p">.</span><span class="nx">common_tags</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">Name</span> <span class="o">=</span> <span class="s2">"WebServer"</span>
+    <span class="nx">Type</span> <span class="o">=</span> <span class="s2">"Application"</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="monitoring-and-maintenance">Monitoring and Maintenance</h2>
+
+<h3 id="state-drift-detection">State Drift Detection</h3>
+<p>Regularly check for configuration drift.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Check for drift</span>
+terraform plan <span class="nt">-detailed-exitcode</span>
+
+<span class="c"># Refresh state</span>
+terraform refresh
+
+<span class="c"># Import existing resources</span>
+terraform import aws_instance.web i-1234567890abcdef0
+</code></pre></div></div>
+
+<h2 id="key-benefits">Key Benefits</h2>
+
+<ol>
+  <li><strong>Version Control</strong>: Infrastructure changes are tracked and reviewable</li>
+  <li><strong>Reproducibility</strong>: Consistent environments across stages</li>
+  <li><strong>Automation</strong>: Reduced manual errors and faster deployments</li>
+  <li><strong>Documentation</strong>: Code serves as living documentation</li>
+  <li><strong>Cost Management</strong>: Better resource tracking and optimization</li>
+</ol>
+
+<h2 id="getting-started">Getting Started</h2>
+
+<ol>
+  <li><strong>Install Terraform</strong> from the official website</li>
+  <li><strong>Choose a cloud provider</strong> and configure credentials</li>
+  <li><strong>Start small</strong> with basic resources</li>
+  <li><strong>Implement modules</strong> for reusability</li>
+  <li><strong>Set up CI/CD</strong> for automated deployments</li>
+</ol>
+
+<p>Terraform transforms infrastructure management from a manual, error-prone process into a predictable, automated workflow. Start with simple configurations and gradually build more complex infrastructure patterns.</p>
+
+<hr />
+
+<p><em>Need help implementing Infrastructure as Code in your organization? <a href="/contact/">Contact me</a> for Terraform consulting and training services.</em></p>]]></content><author><name>Lê Phương Hiếu</name></author><category term="DevOps" /><category term="Infrastructure" /><category term="Terraform" /><category term="IaC" /><category term="terraform" /><category term="infrastructure-as-code" /><category term="aws" /><category term="azure" /><category term="automation" /><summary type="html"><![CDATA[Master Infrastructure as Code with Terraform. Learn best practices, common patterns, and advanced techniques for managing cloud infrastructure.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://1devops.io/assets/images/logo.png" /><media:content medium="image" url="https://1devops.io/assets/images/logo.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Docker Security Best Practices: Securing Your Containers</title><link href="https://1devops.io/blog/2024/01/25/docker-security-best-practices/" rel="alternate" type="text/html" title="Docker Security Best Practices: Securing Your Containers" /><published>2024-01-25T14:30:00+07:00</published><updated>2024-01-25T14:30:00+07:00</updated><id>https://1devops.io/blog/2024/01/25/docker-security-best-practices</id><content type="html" xml:base="https://1devops.io/blog/2024/01/25/docker-security-best-practices/"><![CDATA[<p>Container security is paramount in modern DevOps environments. As containers become the standard for application deployment, securing them properly is crucial for maintaining a robust infrastructure.</p>
+
+<h2 id="image-security">Image Security</h2>
+
+<h3 id="use-official-base-images">Use Official Base Images</h3>
+<p>Always start with official base images from trusted registries. These images are regularly updated and maintained by the community or vendors.</p>
+
+<div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Good - Official image</span>
+<span class="k">FROM</span><span class="s"> node:18-alpine</span>
+
+<span class="c"># Avoid - Unknown or untrusted images</span>
+<span class="k">FROM</span><span class="s"> some-random-user/node-custom</span>
+</code></pre></div></div>
+
+<h3 id="keep-images-updated">Keep Images Updated</h3>
+<p>Regularly update your base images to include the latest security patches.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Check for updates</span>
+docker pull node:18-alpine
+
+<span class="c"># Rebuild your images</span>
+docker build <span class="nt">-t</span> myapp:latest <span class="nb">.</span>
+</code></pre></div></div>
+
+<h2 id="runtime-security">Runtime Security</h2>
+
+<h3 id="run-as-non-root-user">Run as Non-Root User</h3>
+<p>Never run containers as root unless absolutely necessary.</p>
+
+<div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Create a non-root user</span>
+<span class="k">RUN </span>addgroup <span class="nt">-g</span> 1001 <span class="nt">-S</span> nodejs
+<span class="k">RUN </span>adduser <span class="nt">-S</span> nextjs <span class="nt">-u</span> 1001
+
+<span class="c"># Switch to non-root user</span>
+<span class="k">USER</span><span class="s"> nextjs</span>
+</code></pre></div></div>
+
+<h3 id="use-read-only-filesystems">Use Read-Only Filesystems</h3>
+<p>Mount the root filesystem as read-only when possible.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--read-only</span> <span class="nt">--tmpfs</span> /tmp myapp:latest
+</code></pre></div></div>
+
+<h2 id="network-security">Network Security</h2>
+
+<h3 id="limit-network-access">Limit Network Access</h3>
+<p>Use custom networks and limit container communication.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Create custom network</span>
+docker network create <span class="nt">--driver</span> bridge secure-network
+
+<span class="c"># Run container with limited network access</span>
+docker run <span class="nt">--network</span> secure-network myapp:latest
+</code></pre></div></div>
+
+<h3 id="use-secrets-management">Use Secrets Management</h3>
+<p>Never embed secrets in images. Use Docker secrets or external secret management systems.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Create a secret</span>
+<span class="nb">echo</span> <span class="s2">"my-secret-password"</span> | docker secret create db_password -
+
+<span class="c"># Use the secret in a service</span>
+docker service create <span class="nt">--secret</span> db_password myapp:latest
+</code></pre></div></div>
+
+<h2 id="monitoring-and-compliance">Monitoring and Compliance</h2>
+
+<h3 id="regular-security-scanning">Regular Security Scanning</h3>
+<p>Implement automated security scanning in your CI/CD pipeline.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Using Docker Scout</span>
+docker scout cves myapp:latest
+
+<span class="c"># Using Trivy</span>
+trivy image myapp:latest
+</code></pre></div></div>
+
+<h3 id="resource-limits">Resource Limits</h3>
+<p>Always set resource limits to prevent DoS attacks.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--memory</span><span class="o">=</span><span class="s2">"256m"</span> <span class="nt">--cpus</span><span class="o">=</span><span class="s2">"0.5"</span> myapp:latest
+</code></pre></div></div>
+
+<h2 id="key-takeaways">Key Takeaways</h2>
+
+<ol>
+  <li><strong>Always use official base images</strong> from trusted sources</li>
+  <li><strong>Keep images updated</strong> with latest security patches</li>
+  <li><strong>Run containers as non-root</strong> users whenever possible</li>
+  <li><strong>Implement network segmentation</strong> to limit attack surface</li>
+  <li><strong>Use secrets management</strong> for sensitive data</li>
+  <li><strong>Regular security scanning</strong> should be part of your pipeline</li>
+  <li><strong>Set resource limits</strong> to prevent resource exhaustion attacks</li>
+</ol>
+
+<p>Remember, container security is an ongoing process, not a one-time setup. Regular audits and updates are essential for maintaining a secure containerized environment.</p>
+
+<hr />
+
+<p><em>Have questions about Docker security? Feel free to <a href="/contact/">contact me</a> for consulting on container security best practices.</em></p>]]></content><author><name>Lê Phương Hiếu</name></author><category term="DevOps" /><category term="Security" /><category term="Docker" /><category term="Containers" /><category term="docker" /><category term="security" /><category term="containers" /><category term="best-practices" /><category term="devops" /><summary type="html"><![CDATA[Essential security practices for Docker containers to protect your applications and infrastructure from common vulnerabilities.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://1devops.io/assets/images/logo.png" /><media:content medium="image" url="https://1devops.io/assets/images/logo.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Kubernetes Security Best Practices for 2024</title><link href="https://1devops.io/blog/2024/01/20/kubernetes-security-best-practices/" rel="alternate" type="text/html" title="Kubernetes Security Best Practices for 2024" /><published>2024-01-20T00:00:00+07:00</published><updated>2024-01-20T00:00:00+07:00</updated><id>https://1devops.io/blog/2024/01/20/kubernetes-security-best-practices</id><content type="html" xml:base="https://1devops.io/blog/2024/01/20/kubernetes-security-best-practices/"><![CDATA[<p>Kubernetes has become the de facto standard for container orchestration, but its complexity brings unique security challenges. Here are the essential security practices every DevOps team should implement when working with Kubernetes clusters.</p>
+
+<h2 id="container-image-security">Container Image Security</h2>
+
+<h3 id="scan-images-regularly">Scan Images Regularly</h3>
+<ul>
+  <li>Use tools like Trivy, Clair, or Snyk to scan for vulnerabilities</li>
+  <li>Implement automated scanning in CI/CD pipelines</li>
+  <li>Maintain updated base images and dependencies</li>
+</ul>
+
+<h3 id="use-minimal-base-images">Use Minimal Base Images</h3>
+<ul>
+  <li>Prefer distroless or alpine-based images</li>
+  <li>Remove unnecessary packages and tools</li>
+  <li>Implement multi-stage builds to reduce attack surface</li>
+</ul>
+
+<h2 id="cluster-security">Cluster Security</h2>
+
+<h3 id="network-policies">Network Policies</h3>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">networking.k8s.io/v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">NetworkPolicy</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">deny-all</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">podSelector</span><span class="pi">:</span> <span class="pi">{}</span>
+  <span class="na">policyTypes</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">Ingress</span>
+  <span class="pi">-</span> <span class="s">Egress</span>
+</code></pre></div></div>
+
+<h3 id="pod-security-standards">Pod Security Standards</h3>
+<ul>
+  <li>Implement Pod Security Policies or Pod Security Standards</li>
+  <li>Restrict privileged containers</li>
+  <li>Enforce non-root users</li>
+</ul>
+
+<h2 id="access-control">Access Control</h2>
+
+<h3 id="rbac-implementation">RBAC Implementation</h3>
+<ul>
+  <li>Follow principle of least privilege</li>
+  <li>Use service accounts for applications</li>
+  <li>Regular audit of permissions</li>
+</ul>
+
+<h3 id="authentication-and-authorization">Authentication and Authorization</h3>
+<ul>
+  <li>Integrate with enterprise identity providers</li>
+  <li>Implement strong authentication mechanisms</li>
+  <li>Use admission controllers for policy enforcement</li>
+</ul>
+
+<h2 id="runtime-security">Runtime Security</h2>
+
+<h3 id="monitor-container-behavior">Monitor Container Behavior</h3>
+<ul>
+  <li>Implement runtime security tools like Falco</li>
+  <li>Monitor file system changes and network activity</li>
+  <li>Set up alerts for suspicious behavior</li>
+</ul>
+
+<h3 id="secrets-management">Secrets Management</h3>
+<ul>
+  <li>Use Kubernetes secrets or external secret managers</li>
+  <li>Rotate secrets regularly</li>
+  <li>Avoid hardcoding secrets in images</li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Kubernetes security requires a layered approach covering the entire container lifecycle. Regular security assessments, automated scanning, and proper access controls are essential for maintaining a secure Kubernetes environment.</p>
+
+<p>Remember: security is not a one-time setup but an ongoing process that requires continuous attention and improvement.</p>]]></content><author><name>Security Team</name></author><category term="Security" /><summary type="html"><![CDATA[Essential security practices every DevOps team should implement when working with Kubernetes clusters in production environments.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://1devops.io/assets/images/logo.png" /><media:content medium="image" url="https://1devops.io/assets/images/logo.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Top DevOps Trends to Watch in 2024</title><link href="https://1devops.io/blog/2024/01/15/devops-trends-2024/" rel="alternate" type="text/html" title="Top DevOps Trends to Watch in 2024" /><published>2024-01-15T00:00:00+07:00</published><updated>2024-01-15T00:00:00+07:00</updated><id>https://1devops.io/blog/2024/01/15/devops-trends-2024</id><content type="html" xml:base="https://1devops.io/blog/2024/01/15/devops-trends-2024/"><![CDATA[<p>As we step into 2024, the DevOps landscape continues to evolve at a rapid pace. Organizations worldwide are adopting new technologies and methodologies to streamline their development and operations processes. Here are the top DevOps trends to watch this year.</p>
+
+<h2 id="1-ai-powered-devops-aiops">1. AI-Powered DevOps (AIOps)</h2>
+
+<p>Artificial Intelligence is revolutionizing DevOps by automating complex tasks, predicting system failures, and optimizing performance. AIOps platforms can analyze vast amounts of operational data to provide actionable insights and automate incident response.</p>
+
+<h3 id="key-benefits">Key Benefits:</h3>
+<ul>
+  <li>Predictive analytics for proactive issue resolution</li>
+  <li>Automated root cause analysis</li>
+  <li>Intelligent resource optimization</li>
+  <li>Enhanced security threat detection</li>
+</ul>
+
+<h2 id="2-platform-engineering">2. Platform Engineering</h2>
+
+<p>Platform engineering focuses on creating internal developer platforms that abstract away infrastructure complexity while providing developers with self-service capabilities.</p>
+
+<h3 id="core-components">Core Components:</h3>
+<ul>
+  <li>Self-service portals</li>
+  <li>Standardized toolchains</li>
+  <li>Automated provisioning</li>
+  <li>Consistent environments across development lifecycle</li>
+</ul>
+
+<h2 id="3-gitops-and-infrastructure-as-code">3. GitOps and Infrastructure as Code</h2>
+
+<p>GitOps continues to gain traction as teams seek to manage infrastructure and applications using Git workflows. This approach brings version control, collaboration, and automation to operations.</p>
+
+<h3 id="advantages">Advantages:</h3>
+<ul>
+  <li>Version-controlled infrastructure</li>
+  <li>Automated deployments</li>
+  <li>Enhanced security through declarative configs</li>
+  <li>Improved collaboration between teams</li>
+</ul>
+
+<h2 id="4-security-first-devops-devsecops">4. Security-First DevOps (DevSecOps)</h2>
+
+<p>Security is no longer an afterthought but an integral part of the development process. DevSecOps integrates security practices throughout the entire software development lifecycle.</p>
+
+<h3 id="best-practices">Best Practices:</h3>
+<ul>
+  <li>Shift-left security testing</li>
+  <li>Container and image scanning</li>
+  <li>Policy-as-code implementation</li>
+  <li>Continuous compliance monitoring</li>
+</ul>
+
+<h2 id="5-observability-and-monitoring">5. Observability and Monitoring</h2>
+
+<p>Modern applications require comprehensive observability solutions that go beyond traditional monitoring to provide deep insights into system behavior and performance.</p>
+
+<h3 id="key-areas">Key Areas:</h3>
+<ul>
+  <li>Distributed tracing</li>
+  <li>Metrics and logging correlation</li>
+  <li>Application performance monitoring</li>
+  <li>Real user monitoring</li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>These trends represent the ongoing evolution of DevOps practices toward more automated, secure, and efficient software delivery. Organizations that embrace these trends will be better positioned to deliver high-quality software at scale while maintaining security and reliability.</p>
+
+<p>Stay tuned for more insights and updates on the latest DevOps developments!</p>]]></content><author><name>DevOps Team</name></author><category term="Industry News" /><summary type="html"><![CDATA[Discover the emerging DevOps trends that are shaping the future of software development and operations in 2024.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://1devops.io/assets/images/logo.png" /><media:content medium="image" url="https://1devops.io/assets/images/logo.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
