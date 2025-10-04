@@ -110,7 +110,7 @@ permalink: /downloads/
                         <p>Comprehensive guide covering DevOps best practices, tools, and methodologies.</p>
                         <div class="download-meta">
                             <span class="file-size">2.1 MB</span>
-                            <span class="download-count">3,245 downloads</span>
+                            <span class="download-count">Available on request</span>
                         </div>
                         <a href="#" class="btn btn-outline" onclick="downloadFile('devops-best-practices.pdf')">
                             <span class="download-icon">⬇️</span> Download Guide
@@ -127,7 +127,7 @@ permalink: /downloads/
                         <p>Collection of command-line tools for DevOps automation and system management.</p>
                         <div class="download-meta">
                             <span class="file-size">5.2 MB</span>
-                            <span class="download-count">987 downloads</span>
+                            <span class="download-count">Join waitlist for early access</span>
                         </div>
                         <a href="#" class="btn btn-outline" onclick="downloadFile('devops-toolkit.tar.gz')">
                             <span class="download-icon">⬇️</span> Download Toolkit
@@ -144,7 +144,7 @@ permalink: /downloads/
                         <p>Optimized Nginx configurations for various use cases and environments.</p>
                         <div class="download-meta">
                             <span class="file-size">25 KB</span>
-                            <span class="download-count">1,456 downloads</span>
+                            <span class="download-count">Coming soon</span>
                         </div>
                         <a href="#" class="btn btn-outline" onclick="downloadFile('nginx-configs.zip')">
                             <span class="download-icon">⬇️</span> Download Configs
@@ -161,7 +161,7 @@ permalink: /downloads/
                         <p>Collection of Docker Compose files for common application stacks.</p>
                         <div class="download-meta">
                             <span class="file-size">18 KB</span>
-                            <span class="download-count">2,123 downloads</span>
+                            <span class="download-count">Updated examples Q1 2026</span>
                         </div>
                         <a href="#" class="btn btn-outline" onclick="downloadFile('docker-compose-examples.zip')">
                             <span class="download-icon">⬇️</span> Download Examples

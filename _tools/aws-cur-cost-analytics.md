@@ -11,7 +11,7 @@ features:
   - Automated CUR ingestion and partitioning pipeline
   - Prebuilt Athena queries for anomaly detection and chargeback
   - Grafana dashboards with burn-rate and savings plan widgets
-notes: "GitHub repository publishing in progress"
+notes: "Demo available for clients; public repository coming soon"
 order: 1
 permalink: /tools/aws-cur-cost-analytics/
 ---
