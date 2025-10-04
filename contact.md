@@ -11,7 +11,7 @@ permalink: /contact/
             <div class="contact-header">
             <h2>Let's Work Together</h2>
                 <p class="lead">Ready to transform your DevOps process? I'm here to help you build scalable, secure, and efficient infrastructure solutions.</p>
-                <p>Whether you need strategic guidance, hands-on implementation, or ongoing support, let's discuss how we can achieve your goals together.</p>
+                <p>I'm currently booking new engagements for <strong>Q1 2026</strong>, with limited advisory checkpoints available sooner. Tell me what you need and we’ll map the fastest path.</p>
                 <div class="contact-hero-actions">
                     <a href="{{ site.calendly.url }}" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
                         <span class="btn-icon">📅</span>
@@ -37,7 +37,7 @@ permalink: /contact/
         </div>
     </section>
 
-    <section class="contact-content">
+    <section id="tools-waitlist" class="contact-content">
         <div class="container">
             <div class="grid grid-2">
                 <!-- Contact Information -->
@@ -85,7 +85,7 @@ permalink: /contact/
 
                     <div class="availability-info">
                         <h3>🕐 Availability</h3>
-                        <p>Currently accepting new consulting projects and long-term engagements. I typically respond to inquiries within 24 hours.</p>
+                        <p>Now booking projects that begin in Q1 2026. I typically respond to inquiries within 24 hours and can schedule advisory checkpoints ahead of kick-off.</p>
                         
                         <div class="response-times">
                             <div class="response-item">

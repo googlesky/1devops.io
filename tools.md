@@ -64,6 +64,7 @@ permalink: /tools/
                             </a>
                             {% elsif tool.notes %}
                             <span class="tool-note">{{ tool.notes }}</span>
+                            <a href="{{ '/contact/#tools-waitlist' | relative_url }}" class="btn btn-secondary">Join waitlist</a>
                             {% endif %}
                             {% if tool.demo_url %}
                             <a href="{{ tool.demo_url }}" target="_blank" rel="noopener" class="btn btn-outline">

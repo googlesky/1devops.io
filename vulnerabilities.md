@@ -1,203 +1,34 @@
 ---
 layout: page
-title: "Vulnerabilities"
-description: "Security vulnerabilities database and threat intelligence for DevOps environments"
+title: "Security Advisory Approach"
+description: "How 1DevOps monitors, triages, and remediates vulnerabilities for client platforms"
 permalink: /vulnerabilities/
 ---
 
-<p class="vulnerability-note">This archive summarises selected advisories handled between December 2023 and January 2024. For current alerts and bespoke monitoring, <a href="{{ site.calendly.url }}" target="_blank" rel="noopener">book a security review</a>.</p>
-
-<div class="vulnerabilities-grid">
-    <!-- Critical Vulnerabilities -->
-    <div class="card vulnerability-card" data-severity="critical">
-        <div class="card-header">
-            <h3 class="card-title">Container Escape via runc (CVE-2024-0001)</h3>
-            <span class="badge badge-danger">Critical</span>
-        </div>
-        <div class="card-content">
-            <div class="card-meta">
-                <strong>Discovered:</strong> January 10, 2024<br>
-                <strong>Component:</strong> runc container runtime<br>
-                <strong>CVSS Score:</strong> 9.8
-            </div>
-            <p>A critical vulnerability in runc allows attackers to escape from containers and gain access to the host system through malicious container images.</p>
-            <p class="vulnerability-actions-text">Mitigation guidance available on request.</p>
-        </div>
-    </div>
-
-    <!-- High Severity -->
-    <div class="card vulnerability-card" data-severity="high">
-        <div class="card-header">
-            <h3 class="card-title">Kubernetes API Server DoS (CVE-2024-0002)</h3>
-            <span class="badge badge-warning">High</span>
-        </div>
-        <div class="card-content">
-            <div class="card-meta">
-                <strong>Discovered:</strong> January 8, 2024<br>
-                <strong>Component:</strong> Kubernetes API Server<br>
-                <strong>CVSS Score:</strong> 7.5
-            </div>
-            <p>Denial of Service vulnerability in Kubernetes API server that can be exploited by authenticated users to cause cluster unavailability.</p>
-            <p class="vulnerability-actions-text">Contact us for remediation playbooks.</p>
-        </div>
-    </div>
-
-    <!-- Medium Severity -->
-    <div class="card vulnerability-card" data-severity="medium">
-        <div class="card-header">
-            <h3 class="card-title">Docker Engine Information Disclosure (CVE-2024-0003)</h3>
-            <span class="badge badge-warning">Medium</span>
-        </div>
-        <div class="card-content">
-            <div class="card-meta">
-                <strong>Discovered:</strong> January 5, 2024<br>
-                <strong>Component:</strong> Docker Engine<br>
-                <strong>CVSS Score:</strong> 5.3
-            </div>
-            <p>Information disclosure vulnerability in Docker Engine that may expose sensitive container metadata to unauthorized users.</p>
-            <p class="vulnerability-actions-text">Contact us for remediation playbooks.</p>
-        </div>
-    </div>
-
-    <!-- High Severity -->
-    <div class="card vulnerability-card" data-severity="high">
-        <div class="card-header">
-            <h3 class="card-title">Helm Template Injection (CVE-2024-0004)</h3>
-            <span class="badge badge-warning">High</span>
-        </div>
-        <div class="card-content">
-            <div class="card-meta">
-                <strong>Discovered:</strong> December 28, 2023<br>
-                <strong>Component:</strong> Helm Package Manager<br>
-                <strong>CVSS Score:</strong> 8.1
-            </div>
-            <p>Template injection vulnerability in Helm that allows malicious chart authors to execute arbitrary code during chart installation.</p>
-            <p class="vulnerability-actions-text">Advisory updated in internal knowledge base.</p>
-        </div>
-    </div>
-
-    <!-- Medium Severity -->
-    <div class="card vulnerability-card" data-severity="medium">
-        <div class="card-header">
-            <h3 class="card-title">Jenkins Plugin Path Traversal (CVE-2024-0005)</h3>
-            <span class="badge badge-warning">Medium</span>
-        </div>
-        <div class="card-content">
-            <div class="card-meta">
-                <strong>Discovered:</strong> December 20, 2023<br>
-                <strong>Component:</strong> Jenkins CI/CD<br>
-                <strong>CVSS Score:</strong> 6.4
-            </div>
-            <p>Path traversal vulnerability in Jenkins plugin allows authenticated users to access files outside of intended directories.</p>
-            <p class="vulnerability-actions-text">Reach out for mitigation checklists.</p>
-        </div>
-    </div>
-
-    <!-- Low Severity -->
-    <div class="card vulnerability-card" data-severity="low">
-        <div class="card-header">
-            <h3 class="card-title">Terraform Provider Information Leak (CVE-2024-0006)</h3>
-            <span class="badge badge-gray">Low</span>
-        </div>
-        <div class="card-content">
-            <div class="card-meta">
-                <strong>Discovered:</strong> December 15, 2023<br>
-                <strong>Component:</strong> Terraform AWS Provider<br>
-                <strong>CVSS Score:</strong> 3.1
-            </div>
-            <p>Minor information disclosure in Terraform AWS provider that may expose non-sensitive configuration details in logs.</p>
-            <p class="vulnerability-actions-text">Archived for reference.</p>
-        </div>
-    </div>
+<div class="vulnerability-note">
+    <strong>Looking for current CVE guidance?</strong> Live advisories, mitigation playbooks, and response timelines are delivered directly to clients under NDA. <a href="{{ site.calendly.url }}" target="_blank" rel="noopener">Book a security review</a> and we’ll share the latest findings relevant to your stack.
 </div>
 
-## Security Resources
+## How we stay ahead of threats
 
-<div class="grid grid-3">
-    <div class="card">
-        <h3>Vulnerability Reporting</h3>
-        <p>Found a security issue? Report it through our responsible disclosure program.</p>
-        <a href="#" class="btn btn-primary">Report Vulnerability</a>
-    </div>
-    
-    <div class="card">
-        <h3>Security Guidelines</h3>
-        <p>Best practices and guidelines for securing your DevOps infrastructure.</p>
-        <a href="#" class="btn btn-secondary">View Guidelines</a>
-    </div>
-    
-    <div class="card">
-        <h3>Security Tools</h3>
-        <p>Recommended tools for vulnerability scanning and security monitoring.</p>
-        <a href="{{ '/tools/' | relative_url }}" class="btn btn-secondary">Browse Tools</a>
-    </div>
-</div>
+1. **Continuous intelligence.** Automated collectors ingest vendor feeds (AWS, Kubernetes, Docker, HashiCorp) and exploit databases every day, enriching them with severity and exploit status.
+2. **Contextual scoring.** We map findings against your environment—workload criticality, segmentation, compensating controls—to produce a prioritized backlog instead of generic CVSS numbers.
+3. **Hands-on remediation.** For high-risk issues we prepare fix branches, Terraform patches, and rollout runbooks so teams can ship remediation safely—often inside 48 hours.
+4. **Verification & learning.** Every response ends with validation in staging, observability updates, and a blameless review that feeds the next hardening sprint.
 
-<style>
-.vulnerability-filters {
-    margin-bottom: var(--space-xl);
-    padding: var(--space-lg);
-    background: var(--gray-50);
-    border-radius: 8px;
-}
+## Focus areas for Q4 2025
 
-.filter-group {
-    display: flex;
-    align-items: center;
-    gap: var(--space-md);
-}
+- Supply-chain hardening for Kubernetes (image signing with cosign, PSA policies, admission controls).
+- Runtime escape monitoring across runc/containerd and sandboxed workloads.
+- CI/CD signing gaps impacting SOC 2 / PCI evidence trails.
+- Secrets hygiene in Terraform state, GitHub Actions, and multi-cloud IAM.
 
-.vulnerabilities-grid {
-    display: grid;
-    gap: var(--space-lg);
-    margin-bottom: var(--space-2xl);
-}
+## What clients receive
 
-.vulnerability-card {
-    transition: all 0.2s;
-}
+- Tailored advisories with exploit context, business impact, and ready-to-run mitigation steps.
+- Pull-request ready patches or infrastructure modules to accelerate fixes.
+- Follow-up verification and dashboards to confirm closure and prevent regressions.
 
-.vulnerability-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
+## Get started
 
-.vulnerability-actions {
-    display: flex;
-    gap: var(--space-sm);
-    margin-top: var(--space-md);
-}
-
-.card-meta {
-    margin-bottom: var(--space-md);
-    font-size: var(--font-size-sm);
-    line-height: 1.6;
-}
-
-@media (min-width: 768px) {
-    .vulnerabilities-grid {
-        grid-template-columns: 1fr;
-    }
-}
-</style>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const severityFilter = document.getElementById('severity-filter');
-    const vulnerabilityCards = document.querySelectorAll('.vulnerability-card');
-    
-    severityFilter.addEventListener('change', function() {
-        const selectedSeverity = this.value;
-        
-        vulnerabilityCards.forEach(card => {
-            const cardSeverity = card.getAttribute('data-severity');
-            
-            if (selectedSeverity === 'all' || selectedSeverity === cardSeverity) {
-                card.style.display = 'block';
-            } else {
-                card.style.display = 'none';
-            }
-        });
-    });
-});
-</script> 
+If you need an assessment or managed vulnerability coverage, <a href="{{ site.calendly.url }}" target="_blank" rel="noopener">schedule a 30-minute discovery call</a>. We’ll walk through a sample briefing packet and outline how we partner with your security and platform teams.
