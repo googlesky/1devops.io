@@ -12,8 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="/assets/css/main.css?v=1759562707">
-    <link rel="stylesheet" href="/assets/css/dropdown.css?v=1759562707">
+    <link rel="stylesheet" href="/assets/css/main.css?v=1759563651">
+    <link rel="stylesheet" href="/assets/css/dropdown.css?v=1759563651">
 
     <!-- Favicons & Manifest -->
     <link rel="icon" type="image/svg+xml" href="/assets/images/logo.svg">
@@ -109,7 +109,7 @@
                     
                     <li class="nav-item dropdown">
                         
-                            <a href="/" class="nav-link dropdown-toggle " aria-expanded="false">
+                            <a href="/services/" class="nav-link dropdown-toggle " aria-expanded="false">
                                 Services
                                 <span class="dropdown-arrow">▼</span>
                             </a>
@@ -183,9 +183,18 @@
                                 
                                 <li class="dropdown-item">
                                     <a href="/vulnerabilities/" class="dropdown-link">
-                                        <span class="dropdown-title">Security Alerts</span>
+                                        <span class="dropdown-title">Vulnerabilities</span>
                                         
                                         <span class="dropdown-desc">Latest vulnerability reports</span>
+                                        
+                                    </a>
+                                </li>
+                                
+                                <li class="dropdown-item">
+                                    <a href="/documents/" class="dropdown-link">
+                                        <span class="dropdown-title">Documents</span>
+                                        
+                                        <span class="dropdown-desc">Technical guides and docs</span>
                                         
                                     </a>
                                 </li>
@@ -312,7 +321,13 @@
                             
                             <li class="mobile-dropdown-item">
                                 <a href="/vulnerabilities/" class="mobile-dropdown-link">
-                                    Security Alerts
+                                    Vulnerabilities
+                                </a>
+                            </li>
+                            
+                            <li class="mobile-dropdown-item">
+                                <a href="/documents/" class="mobile-dropdown-link">
+                                    Documents
                                 </a>
                             </li>
                             
@@ -386,7 +401,16 @@
 
 <div class="page-content">
     <div class="container">
-        
+        <div class="docs-lead">
+            <h3>Need the full playbook?</h3>
+            <p>Join the mailing list to receive new checklists, audit templates, and runbooks before they hit the site.</p>
+            <form class="docs-lead-form" action="https://formspree.io/f/your-form-id" method="POST">
+                <label for="docs-email" class="visually-hidden">Email address</label>
+                <input type="email" id="docs-email" name="email" placeholder="you@company.com" required="" />
+                <button type="submit" class="btn btn-primary">Send me updates</button>
+            </form>
+        </div>
+
         <!-- Document Categories -->
         <section class="mb-6">
             <h2>Documentation Categories</h2>
@@ -888,8 +912,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         <ul>
                             <li><a href="/blog/">Blog</a></li>
                             <li><a href="/tools/">Tools</a></li>
-                            <li><a href="/vulnerabilities/">Security Alerts</a></li>
-                            <li><span class="footer-link-disabled" aria-disabled="true">Documentation (coming soon)</span></li>
+                            <li><a href="/vulnerabilities/">Vulnerabilities</a></li>
+                            <li><a href="/documents/">Documents</a></li>
                         </ul>
                     </div>
 
@@ -953,7 +977,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         
                         <div class="footer-availability">
                             <span class="availability-indicator">🟢</span>
-                            <span>Available for consulting projects</span>
+                            <span>Now booking Q1 2026</span>
                         </div>
                     </div>
                 </div>
@@ -964,6 +988,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     <!-- JavaScript -->
-    <script src="/assets/js/main.js?v=1759562707"></script>
+    <script src="/assets/js/main.js?v=1759563651"></script>
 </body>
 </html> 
