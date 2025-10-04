@@ -11,7 +11,7 @@ features:
   - Validates required business and cost tags during plan/apply
   - Generates compliance reports as JSON and HTML artefacts
   - Integrates with GitHub Actions, GitLab CI, and Jenkins pipelines
-github_url: "https://github.com/1devops/terraform-tag-auditor"
+notes: "Repository slated for public release"
 order: 2
 permalink: /tools/terraform-tag-auditor/
 ---

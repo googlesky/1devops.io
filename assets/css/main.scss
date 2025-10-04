@@ -279,6 +279,10 @@ a:focus {
   color: var(--primary-dark);
 }
 
+.muted {
+  color: var(--gray-500);
+}
+
 .visually-hidden {
   position: absolute !important;
   height: 1px;

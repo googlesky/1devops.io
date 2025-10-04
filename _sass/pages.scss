@@ -2520,6 +2520,14 @@ img[loading="lazy"].loaded {
         text-align: center;
     }
 
+    .contact-hero-actions {
+        margin-top: var(--space-xl);
+        display: flex;
+        gap: var(--space-md);
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
     .booking-section {
         background: var(--white);
         padding: var(--space-3xl) 0;
@@ -2874,6 +2882,13 @@ img[loading="lazy"].loaded {
         flex-wrap: wrap;
     }
 
+    .tool-note {
+        font-size: var(--font-size-sm);
+        color: var(--gray-500);
+        align-self: center;
+        display: inline-block;
+    }
+
     .tools-lead {
         margin: var(--space-3xl) auto;
         max-width: 720px;
@@ -3044,6 +3059,15 @@ img[loading="lazy"].loaded {
 
 /* Vulnerabilities Page Specific Styles */
 .vulnerabilities-page {
+    .vulnerability-note {
+        background: var(--gray-50);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-lg);
+        padding: var(--space-md) var(--space-xl);
+        margin-bottom: var(--space-2xl);
+        color: var(--gray-600);
+    }
+
     .vulnerabilities-filters {
         background: var(--white);
         padding: var(--space-xl);
@@ -3072,6 +3096,12 @@ img[loading="lazy"].loaded {
         transform: translateY(-2px);
         box-shadow: var(--shadow-md);
         border-color: var(--primary);
+    }
+
+    .vulnerability-actions-text {
+        margin-top: var(--space-md);
+        color: var(--gray-500);
+        font-size: var(--font-size-sm);
     }
 
     .vulnerability-header {
@@ -3307,6 +3337,13 @@ img[loading="lazy"].loaded {
         margin: var(--space-2xl) 0;
     }
 
+    .category-note {
+        display: block;
+        margin-top: var(--space-md);
+        color: var(--gray-500);
+        font-size: var(--font-size-sm);
+    }
+
     .document-card {
         background: var(--white);
         padding: var(--space-xl);
@@ -3458,6 +3495,13 @@ img[loading="lazy"].loaded {
         gap: var(--space-lg);
         font-size: var(--font-size-sm);
         color: var(--gray-500);
+    }
+
+    .download-note {
+        display: block;
+        margin-top: var(--space-md);
+        color: var(--gray-500);
+        font-size: var(--font-size-sm);
     }
 
     .download-actions {

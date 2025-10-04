@@ -32,7 +32,7 @@ permalink: /services/infrastructure/
                 </li>
                 <li>
                     <span class="metric-value">28% savings</span>
-                    <span class="metric-label">Average cost optimisation post review</span>
+                    <span class="metric-label">Average cost optimization post review</span>
                 </li>
             </ul>
         </div>
@@ -118,7 +118,7 @@ permalink: /services/infrastructure/
             </article>
             <article class="process-step">
                 <span class="process-step-number">04</span>
-                <h4>Handover & optimisation</h4>
+                <h4>Handover & optimization</h4>
                 <p>Document patterns, train teams, and fine-tune cost controls before transitioning to steady-state operations.</p>
             </article>
         </div>

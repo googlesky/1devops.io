@@ -62,6 +62,8 @@ permalink: /tools/
                                 <span class="btn-icon">🐙</span>
                                 GitHub
                             </a>
+                            {% elsif tool.notes %}
+                            <span class="tool-note">{{ tool.notes }}</span>
                             {% endif %}
                             {% if tool.demo_url %}
                             <a href="{{ tool.demo_url }}" target="_blank" rel="noopener" class="btn btn-outline">

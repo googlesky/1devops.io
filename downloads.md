@@ -9,12 +9,7 @@ permalink: /downloads/
     <div class="container">
         <h2>Downloads</h2>
         <p class="text-xl">Free DevOps tools, templates, scripts, and resources from 12+ years of experience</p>
-        <div class="downloads-stats mt-4">
-            <span class="badge badge-primary">50+ Resources</span>
-            <span class="badge badge-secondary">Scripts & Templates</span>
-            <span class="badge badge-info">Documentation</span>
-            <span class="badge badge-success">Free Downloads</span>
-        </div>
+        <p class="muted">Selected resources are published below; additional templates are rolling out through Q1 2026.</p>
     </div>
 </div>
 
@@ -34,7 +29,7 @@ permalink: /downloads/
                         <p>Complete professional resume with 12+ years of DevOps experience, skills, and achievements.</p>
                         <div class="download-meta">
                             <span class="file-size">250 KB</span>
-                            <span class="download-count">1,234 downloads</span>
+                            <span class="download-count">Updated monthly</span>
                         </div>
                         <a href="/assets/LePhuongHieu - Resume.pdf" target="_blank" class="btn btn-primary" download>
                             <span class="download-icon">⬇️</span> Download Resume
@@ -51,11 +46,9 @@ permalink: /downloads/
                         <p>Comprehensive security checklist for Docker containers and best practices guide.</p>
                         <div class="download-meta">
                             <span class="file-size">180 KB</span>
-                            <span class="download-count">2,456 downloads</span>
+                            <span class="download-count">Publishing soon</span>
                         </div>
-                        <a href="#" class="btn btn-primary" onclick="downloadFile('docker-security-checklist.pdf')">
-                            <span class="download-icon">⬇️</span> Download Checklist
-                        </a>
+                        <span class="download-note">Checklist available on request via contact form.</span>
                     </div>
                 </div>
             </div>
@@ -87,11 +80,9 @@ permalink: /downloads/
                         <p>Automated script for Kubernetes cluster deployment with security configurations.</p>
                         <div class="download-meta">
                             <span class="file-size">15 KB</span>
-                            <span class="download-count">856 downloads</span>
+                            <span class="download-count">Available on request</span>
                         </div>
-                        <a href="#" class="btn btn-outline" onclick="downloadFile('k8s-deploy.sh')">
-                            <span class="download-icon">⬇️</span> Download Script
-                        </a>
+                        <span class="download-note">Request access during engagement.</span>
                     </div>
                 </div>
 
@@ -104,11 +95,9 @@ permalink: /downloads/
                         <p>Complete Terraform template for AWS infrastructure with VPC, EC2, and RDS.</p>
                         <div class="download-meta">
                             <span class="file-size">45 KB</span>
-                            <span class="download-count">2,034 downloads</span>
+                            <span class="download-count">Beta preview</span>
                         </div>
-                        <a href="#" class="btn btn-outline" onclick="downloadFile('aws-terraform-template.zip')">
-                            <span class="download-icon">⬇️</span> Download Template
-                        </a>
+                        <span class="download-note">Template ships with platform engagements.</span>
                     </div>
                 </div>
 

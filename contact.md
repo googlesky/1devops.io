@@ -12,6 +12,16 @@ permalink: /contact/
             <h2>Let's Work Together</h2>
                 <p class="lead">Ready to transform your DevOps process? I'm here to help you build scalable, secure, and efficient infrastructure solutions.</p>
                 <p>Whether you need strategic guidance, hands-on implementation, or ongoing support, let's discuss how we can achieve your goals together.</p>
+                <div class="contact-hero-actions">
+                    <a href="{{ site.calendly.url }}" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
+                        <span class="btn-icon">📅</span>
+                        Book a Discovery Call
+                    </a>
+                    <a href="{{ '/documents/' | relative_url }}" class="btn btn-ghost btn-lg">
+                        <span class="btn-icon">📚</span>
+                        View playbooks
+                    </a>
+                </div>
             </div>
         </div>
     </div>

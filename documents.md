@@ -8,13 +8,7 @@ permalink: /documents/
 <div class="page-header">
     <div class="container">
         <h2>Documentation</h2>
-        <p class="text-xl">Comprehensive technical documentation and guides from 12+ years of DevOps experience</p>
-        <div class="docs-stats mt-4">
-            <span class="badge badge-primary">100+ Documents</span>
-            <span class="badge badge-secondary">Technical Guides</span>
-            <span class="badge badge-info">Best Practices</span>
-            <span class="badge badge-success">Always Updated</span>
-        </div>
+        <p class="text-xl">Curated technical documentation drawn from 12+ years of DevOps delivery.</p>
     </div>
 </div>
 
@@ -32,7 +26,7 @@ permalink: /documents/
 
         <!-- Document Categories -->
         <section class="mb-6">
-            <h2>Documentation Categories</h2>
+            <h2>Documentation Categories (rolling release)</h2>
             <div class="category-grid grid grid-3">
                 <div class="category-card card">
                     <div class="card-header">
@@ -47,7 +41,7 @@ permalink: /documents/
                             <li><a href="#network-design">Network Design Principles</a></li>
                             <li><a href="#load-balancing">Load Balancing Strategies</a></li>
                         </ul>
-                        <a href="#infrastructure" class="btn btn-outline">View All Infrastructure Docs</a>
+                        <span class="category-note">Detailed guides publishing throughout Q1 2026</span>
                     </div>
                 </div>
                 
@@ -64,7 +58,7 @@ permalink: /documents/
                             <li><a href="#github-actions">GitHub Actions Workflows</a></li>
                             <li><a href="#deployment-strategies">Deployment Strategies</a></li>
                         </ul>
-                        <a href="#cicd" class="btn btn-outline">View All CI/CD Docs</a>
+                        <span class="category-note">Templates and tutorials coming soon</span>
                     </div>
                 </div>
                 
@@ -81,7 +75,7 @@ permalink: /documents/
                             <li><a href="#helm-charts">Helm Charts Guide</a></li>
                             <li><a href="#container-security">Container Security</a></li>
                         </ul>
-                        <a href="#containers" class="btn btn-outline">View All Container Docs</a>
+                        <span class="category-note">Examples and playbooks arriving shortly</span>
                     </div>
                 </div>
                 
@@ -98,7 +92,7 @@ permalink: /documents/
                             <li><a href="#vulnerability-management">Vulnerability Management</a></li>
                             <li><a href="#incident-response">Incident Response Plan</a></li>
                         </ul>
-                        <a href="#security" class="btn btn-outline">View All Security Docs</a>
+                        <span class="category-note">Security hardening guide launching next</span>
                     </div>
                 </div>
                 
@@ -115,7 +109,7 @@ permalink: /documents/
                             <li><a href="#alerting-rules">Alerting Rules</a></li>
                             <li><a href="#log-aggregation">Log Aggregation</a></li>
                         </ul>
-                        <a href="#monitoring" class="btn btn-outline">View All Monitoring Docs</a>
+                        <span class="category-note">Observability content queued</span>
                     </div>
                 </div>
                 

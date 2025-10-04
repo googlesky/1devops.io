@@ -5,18 +5,7 @@ description: "Security vulnerabilities database and threat intelligence for DevO
 permalink: /vulnerabilities/
 ---
 
-<div class="vulnerability-filters">
-    <div class="filter-group">
-        <label for="severity-filter">Filter by Severity:</label>
-        <select id="severity-filter" class="form-input">
-            <option value="all">All Severities</option>
-            <option value="critical">Critical</option>
-            <option value="high">High</option>
-            <option value="medium">Medium</option>
-            <option value="low">Low</option>
-        </select>
-    </div>
-</div>
+<p class="vulnerability-note">This archive summarises selected advisories handled between December 2023 and January 2024. For current alerts and bespoke monitoring, <a href="{{ site.calendly.url }}" target="_blank" rel="noopener">book a security review</a>.</p>
 
 <div class="vulnerabilities-grid">
     <!-- Critical Vulnerabilities -->
@@ -32,10 +21,7 @@ permalink: /vulnerabilities/
                 <strong>CVSS Score:</strong> 9.8
             </div>
             <p>A critical vulnerability in runc allows attackers to escape from containers and gain access to the host system through malicious container images.</p>
-            <div class="vulnerability-actions">
-                <a href="#" class="btn btn-primary">View Details</a>
-                <a href="#" class="btn btn-secondary">Mitigation Guide</a>
-            </div>
+            <p class="vulnerability-actions-text">Mitigation guidance available on request.</p>
         </div>
     </div>
 
@@ -52,10 +38,7 @@ permalink: /vulnerabilities/
                 <strong>CVSS Score:</strong> 7.5
             </div>
             <p>Denial of Service vulnerability in Kubernetes API server that can be exploited by authenticated users to cause cluster unavailability.</p>
-            <div class="vulnerability-actions">
-                <a href="#" class="btn btn-primary">View Details</a>
-                <a href="#" class="btn btn-secondary">Mitigation Guide</a>
-            </div>
+            <p class="vulnerability-actions-text">Contact us for remediation playbooks.</p>
         </div>
     </div>
 
@@ -72,10 +55,7 @@ permalink: /vulnerabilities/
                 <strong>CVSS Score:</strong> 5.3
             </div>
             <p>Information disclosure vulnerability in Docker Engine that may expose sensitive container metadata to unauthorized users.</p>
-            <div class="vulnerability-actions">
-                <a href="#" class="btn btn-primary">View Details</a>
-                <a href="#" class="btn btn-secondary">Mitigation Guide</a>
-            </div>
+            <p class="vulnerability-actions-text">Contact us for remediation playbooks.</p>
         </div>
     </div>
 
@@ -92,10 +72,7 @@ permalink: /vulnerabilities/
                 <strong>CVSS Score:</strong> 8.1
             </div>
             <p>Template injection vulnerability in Helm that allows malicious chart authors to execute arbitrary code during chart installation.</p>
-            <div class="vulnerability-actions">
-                <a href="#" class="btn btn-primary">View Details</a>
-                <a href="#" class="btn btn-secondary">Mitigation Guide</a>
-            </div>
+            <p class="vulnerability-actions-text">Advisory updated in internal knowledge base.</p>
         </div>
     </div>
 
@@ -112,10 +89,7 @@ permalink: /vulnerabilities/
                 <strong>CVSS Score:</strong> 6.4
             </div>
             <p>Path traversal vulnerability in Jenkins plugin allows authenticated users to access files outside of intended directories.</p>
-            <div class="vulnerability-actions">
-                <a href="#" class="btn btn-primary">View Details</a>
-                <a href="#" class="btn btn-secondary">Mitigation Guide</a>
-            </div>
+            <p class="vulnerability-actions-text">Reach out for mitigation checklists.</p>
         </div>
     </div>
 
@@ -132,10 +106,7 @@ permalink: /vulnerabilities/
                 <strong>CVSS Score:</strong> 3.1
             </div>
             <p>Minor information disclosure in Terraform AWS provider that may expose non-sensitive configuration details in logs.</p>
-            <div class="vulnerability-actions">
-                <a href="#" class="btn btn-primary">View Details</a>
-                <a href="#" class="btn btn-secondary">Mitigation Guide</a>
-            </div>
+            <p class="vulnerability-actions-text">Archived for reference.</p>
         </div>
     </div>
 </div>

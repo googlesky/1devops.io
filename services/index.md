@@ -26,7 +26,7 @@ permalink: /services/
 
         <article class="services-overview-card">
             <h3>Cloud & Platform Engineering</h3>
-            <p>Design resilient Kubernetes and multi-cloud platforms with observability, guardrails, and cost optimisation baked in.</p>
+            <p>Design resilient Kubernetes and multi-cloud platforms with observability, guardrails, and cost optimization baked in.</p>
             <ul>
                 <li>Landing zones, IaC foundations, GitOps</li>
                 <li>Multi-region failover and SLO dashboards</li>
