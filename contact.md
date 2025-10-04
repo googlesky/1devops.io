@@ -16,6 +16,17 @@ permalink: /contact/
         </div>
     </div>
 
+    <section class="booking-section">
+        <div class="container">
+            <h2>Book a 30-Minute Discovery Call</h2>
+            <p class="lead">Choose a slot that works for you. We’ll review your current challenges, desired outcomes, and identify the fastest next steps.</p>
+            <div class="calendly-wrap">
+                <div class="calendly-inline-widget" data-url="{{ site.calendly.url }}" style="min-width:320px;height:720px;"></div>
+            </div>
+            <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        </div>
+    </section>
+
     <section class="contact-content">
         <div class="container">
             <div class="grid grid-2">

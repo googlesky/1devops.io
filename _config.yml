@@ -5,6 +5,13 @@ baseurl: ""
 url: "https://1devops.io"
 lang: "en"
 
+languages:
+  - code: en
+    label: English
+  - code: vi
+    label: Tiếng Việt
+default_lang: en
+
 # Author information
 author:
   name: "Le Phuong Hieu"
@@ -32,6 +39,8 @@ sass:
 # Force include hidden directories/files
 include:
   - .well-known
+  - robots.txt
+  - site.webmanifest
 
 # Exclude from processing
 exclude:
@@ -141,6 +150,9 @@ contact:
   phone: "+84 975 669 775"
   location: "Ho Chi Minh City, Vietnam"
   availability: "Available for consulting projects"
+
+calendly:
+  url: "https://calendly.com/1devops/discovery-call"
 
 # SEO settings
 google_analytics: "G-XXXXXXXXXX"

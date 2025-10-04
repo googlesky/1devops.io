@@ -16,7 +16,7 @@ permalink: /tools/
 
     <section class="tools-grid-section">
         <div class="container">
-            {% assign tools = site.tools %}
+            {% assign tools = site.tools | sort: 'order' %}
             {% if tools.size > 0 %}
                 <div class="tools-grid">
                     {% for tool in tools %}
@@ -73,48 +73,27 @@ permalink: /tools/
                     </div>
                     {% endfor %}
                 </div>
+
+                <div class="tools-lead">
+                    <h2>Get notified when new tools ship</h2>
+                    <p>We release practical automations every month—ranging from cost analytics to platform guardrails. Drop your email to receive early access and implementation tips.</p>
+                    <form class="tools-lead-form" action="https://formspree.io/f/your-form-id" method="POST">
+                        <label for="tools-email" class="visually-hidden">Email address</label>
+                        <input type="email" id="tools-email" name="email" placeholder="you@company.com" required>
+                        <button type="submit" class="btn btn-primary">Notify me</button>
+                    </form>
+                    <p class="tools-lead-note">Prefer GitHub? <a href="https://github.com/1devops" target="_blank" rel="noopener">Follow the 1DevOps organization</a> for source updates.</p>
+                </div>
             {% else %}
                 <div class="no-tools">
                     <div class="no-tools-icon">🛠️</div>
                     <h2>Tools Coming Soon</h2>
-                    <p>I'm currently preparing a collection of professional DevOps tools and utilities based on years of experience. These will include:</p>
-                    
-                    <div class="upcoming-tools">
-                        <div class="upcoming-tool">
-                            <h3>🐳 Kubernetes Management Scripts</h3>
-                            <p>Automated deployment, scaling, and monitoring scripts for Kubernetes clusters</p>
-                        </div>
-                        
-                        <div class="upcoming-tool">
-                            <h3>🔄 CI/CD Pipeline Templates</h3>
-                            <p>Ready-to-use pipeline configurations for Jenkins, GitLab CI, and GitHub Actions</p>
-                        </div>
-                        
-                        <div class="upcoming-tool">
-                            <h3>☁️ Infrastructure as Code Modules</h3>
-                            <p>Terraform and Ansible modules for common cloud infrastructure patterns</p>
-                        </div>
-                        
-                        <div class="upcoming-tool">
-                            <h3>📊 Monitoring & Alerting Setup</h3>
-                            <p>Complete monitoring stack configurations with Prometheus, Grafana, and AlertManager</p>
-                        </div>
-                        
-                        <div class="upcoming-tool">
-                            <h3>🔒 Security Automation Tools</h3>
-                            <p>Vulnerability scanning, compliance checking, and security hardening scripts</p>
-                        </div>
-                        
-                        <div class="upcoming-tool">
-                            <h3>⚡ Performance Optimization Utilities</h3>
-                            <p>System performance analysis and optimization tools for various platforms</p>
-                        </div>
-                    </div>
-                    
-                    <div class="tools-cta">
-                        <p>Interested in early access or have specific tool requirements?</p>
-                        <a href="{{ '/contact/' | relative_url }}" class="btn btn-primary">Get in Touch</a>
-                    </div>
+                    <p>Sign up to be first in line when the next automation drops.</p>
+                    <form class="tools-lead-form" action="https://formspree.io/f/your-form-id" method="POST">
+                        <label for="tools-email-fallback" class="visually-hidden">Email address</label>
+                        <input type="email" id="tools-email-fallback" name="email" placeholder="you@company.com" required>
+                        <button type="submit" class="btn btn-primary">Notify me</button>
+                    </form>
                 </div>
             {% endif %}
         </div>
