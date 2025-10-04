@@ -8,7 +8,7 @@ permalink: /blog/
 <div class="blog-page">
     <div class="blog-header">
         <div class="container">
-            <h1>DevOps Blog</h1>
+            <h2>DevOps Blog</h2>
             <p class="lead">Insights, tutorials, and best practices from 12+ years of DevOps experience</p>
             <p>Sharing practical knowledge about Kubernetes, cloud infrastructure, automation, and the evolving world of DevOps.</p>
         </div>

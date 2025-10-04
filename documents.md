@@ -7,7 +7,7 @@ permalink: /documents/
 
 <div class="page-header">
     <div class="container">
-        <h1>Documentation</h1>
+        <h2>Documentation</h2>
         <p class="text-xl">Comprehensive technical documentation and guides from 12+ years of DevOps experience</p>
         <div class="docs-stats mt-4">
             <span class="badge badge-primary">100+ Documents</span>

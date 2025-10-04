@@ -10,7 +10,7 @@ permalink: /profile/
         <div class="container">
             <div class="profile-intro">
                 <div class="profile-content">
-                    <h1>Le Phuong Hieu</h1>
+                    <h2>Le Phuong Hieu</h2>
                     <h2 class="profile-title">Senior DevOps/SRE Engineer</h2>
                     <p class="profile-tagline">Simplifying complex systems with 12+ years of experience in DevOps, system administration, and cloud infrastructure.</p>
                     

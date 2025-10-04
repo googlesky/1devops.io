@@ -88,7 +88,7 @@ navigation:
     dropdown: true
     items:
       - name: "DevOps Consulting"
-        url: "/services/consulting/"
+        url: "/services/devops-consulting/"
         description: "Expert DevOps transformation guidance"
       - name: "Infrastructure Setup"
         url: "/services/infrastructure/"
@@ -110,11 +110,8 @@ navigation:
         url: "/tools/"
         description: "Open source DevOps tools"
       - name: "Security Alerts"
-        url: "/security/"
+        url: "/vulnerabilities/"
         description: "Latest vulnerability reports"
-      - name: "Documentation"
-        url: "/docs/"
-        description: "Technical guides and docs"
   - name: "About"
     url: "/about/"
   - name: "Contact"

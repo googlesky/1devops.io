@@ -7,7 +7,7 @@ permalink: /news/
 
 <div class="news-page">
     <div class="section-header">
-        <h1>Latest DevOps News</h1>
+        <h2>Latest DevOps News</h2>
         <p>Stay updated with the latest trends, best practices, and developments in the DevOps ecosystem</p>
     </div>
 

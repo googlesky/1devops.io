@@ -17,7 +17,7 @@ permalink: /support/
                     <circle cx="16" cy="10" r="1.5" fill="currentColor"/>
                 </svg>
             </div>
-            <h1 class="hero-title">Expert Technical Support</h1>
+            <h2 class="hero-title">Expert Technical Support</h2>
             <p class="hero-subtitle">Get professional DevOps support from 12+ years of industry experience</p>
             <div class="hero-stats">
                 <div class="stat-item">

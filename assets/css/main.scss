@@ -1064,6 +1064,12 @@ img {
   transition: color var(--transition-fast);
 }
 
+.footer-link-disabled {
+  color: rgba(255, 255, 255, 0.45);
+  display: inline-block;
+  cursor: not-allowed;
+}
+
 .footer-column a:hover {
   color: var(--white);
 }

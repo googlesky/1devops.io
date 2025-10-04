@@ -2,7 +2,7 @@
 layout: page
 title: "DevOps Advisory & Coaching"
 description: "Strategic DevOps leadership, assessments, and enablement programs that align technology, teams, and outcomes."
-permalink: /services/consulting/
+permalink: /services/devops-consulting/
 ---
 
 <div class="service-page">

@@ -10,7 +10,7 @@ permalink: /about/
         <div class="container">
             <div class="grid grid-2">
                 <div class="about-content">
-                    <h1>About 1DevOps</h1>
+                    <h2>About 1DevOps</h2>
                     <p class="lead">Professional DevOps consulting and solutions for modern development teams, backed by 12+ years of hands-on experience in system administration, cloud infrastructure, and automation.</p>
                     <p>I'm Le Phuong Hieu, a Senior DevOps/SRE Engineer dedicated to simplifying complex systems and helping organizations build robust, scalable infrastructure that supports their growth and success.</p>
                 </div>

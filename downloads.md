@@ -7,7 +7,7 @@ permalink: /downloads/
 
 <div class="page-header">
     <div class="container">
-        <h1>Downloads</h1>
+        <h2>Downloads</h2>
         <p class="text-xl">Free DevOps tools, templates, scripts, and resources from 12+ years of experience</p>
         <div class="downloads-stats mt-4">
             <span class="badge badge-primary">50+ Resources</span>

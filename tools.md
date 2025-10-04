@@ -8,7 +8,7 @@ permalink: /tools/
 <div class="tools-page">
     <div class="tools-header">
         <div class="container">
-            <h1>DevOps Tools & Resources</h1>
+            <h2>DevOps Tools & Resources</h2>
             <p class="lead">Professional tools and utilities built from 12+ years of DevOps experience</p>
             <p>Open source scripts, templates, and automation tools to streamline your DevOps workflow. All tools are battle-tested in production environments.</p>
         </div>

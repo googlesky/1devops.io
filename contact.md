@@ -9,7 +9,7 @@ permalink: /contact/
     <div class="contact-hero">
         <div class="container">
             <div class="contact-header">
-                <h1>Let's Work Together</h1>
+            <h2>Let's Work Together</h2>
                 <p class="lead">Ready to transform your DevOps process? I'm here to help you build scalable, secure, and efficient infrastructure solutions.</p>
                 <p>Whether you need strategic guidance, hands-on implementation, or ongoing support, let's discuss how we can achieve your goals together.</p>
             </div>
