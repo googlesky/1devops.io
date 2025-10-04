@@ -16,7 +16,7 @@
 - Use two-space indentation for YAML, Liquid, and SCSS; avoid tab characters.
 - Pages and collections use lowercase kebab-case filenames (`services/cloud-platform.md`); blog posts require the `YYYY-MM-DD-` prefix.
 - SCSS variables live in `_sass/` and are imported via `assets/css/main.scss` (ensure the YAML front matter `---` header remains).
-- Prefer `{% include %}` for reusable HTML; wrap dynamic links with `| relative_url` / `| absolute_url` filters.
+- Prefer `{% raw %}{% include %}{% endraw %}` for reusable HTML; wrap dynamic links with `| relative_url` / `| absolute_url` filters.
 
 ## Testing Guidelines
 - Automated tests are not configured. Validate changes with `bundle exec jekyll build` followed by manual smoke tests (nav links, forms, feed, sitemap).
@@ -27,4 +27,3 @@
 - Group related edits per commit and avoid committing `_site/` or `vendor/`.
 - Pull requests should include: summary, testing notes (`jekyll build`, manual QA), screenshots for visual changes, and linked issues when applicable.
 - Target `main`; deploys occur by syncing `_site/` to `gh-pages-main` after review.
-
