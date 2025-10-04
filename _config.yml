@@ -29,6 +29,10 @@ sass:
   style: compressed
   sourcemap: never
 
+# Force include hidden directories/files
+include:
+  - .well-known
+
 # Exclude from processing
 exclude:
   - Gemfile
