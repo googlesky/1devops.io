@@ -12,14 +12,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="/assets/css/main.css?v=1759562182">
-    <link rel="stylesheet" href="/assets/css/dropdown.css?v=1759562182">
-    
+    <link rel="stylesheet" href="/assets/css/main.css?v=1759562707">
+    <link rel="stylesheet" href="/assets/css/dropdown.css?v=1759562707">
 
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
-    
+    <!-- Favicons & Manifest -->
+    <link rel="icon" type="image/svg+xml" href="/assets/images/logo.svg">
+    <link rel="alternate icon" type="image/png" href="/assets/images/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#0f172a">
+
+    <!-- Open Graph & Twitter -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="DevOps Tools & Resources">
+    <meta property="og:description" content="Professional DevOps tools, scripts, and resources for modern development teams. Open source utilities for Kubernetes, CI/CD, and infrastructure automation.">
+    <meta property="og:url" content="https://1devops.io/tools/">
+    <meta property="og:image" content="https://1devops.io/assets/images/social-card.png">
+    <meta property="og:site_name" content="1DevOps - Professional DevOps Solutions">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DevOps Tools & Resources">
+    <meta name="twitter:description" content="Professional DevOps tools, scripts, and resources for modern development teams. Open source utilities for Kubernetes, CI/CD, and infrastructure automation.">
+    <meta name="twitter:image" content="https://1devops.io/assets/images/social-card.png">
+
     <!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>DevOps Tools &amp; Resources | 1DevOps - Professional DevOps Solutions</title>
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -42,6 +56,28 @@
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://1devops.io/feed.xml" title="1DevOps - Professional DevOps Solutions" />
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "1DevOps - Professional DevOps Solutions",
+      "url": "https://1devops.io",
+      "logo": "https://1devops.io/assets/images/logo.png",
+      "sameAs": [
+        "https://linkedin.com/in/lephuonghieu"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "hieu@1devops.io",
+        "areaServed": "Global",
+        "availableLanguage": ["en", "vi"]
+      }
+    }
+    </script>
+    
 </head>
 <body class="page">
     <!-- Skip to content link for accessibility -->
@@ -348,47 +384,125 @@
         <div class="container">
             
             
-                <div class="no-tools">
-                    <div class="no-tools-icon">🛠️</div>
-                    <h2>Tools Coming Soon</h2>
-                    <p>I'm currently preparing a collection of professional DevOps tools and utilities based on years of experience. These will include:</p>
+                <div class="tools-grid">
                     
-                    <div class="upcoming-tools">
-                        <div class="upcoming-tool">
-                            <h3>🐳 Kubernetes Management Scripts</h3>
-                            <p>Automated deployment, scaling, and monitoring scripts for Kubernetes clusters</p>
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            
+                            <div class="tool-info">
+                                <h3 class="tool-title">AWS CUR Cost Analytics Accelerator</h3>
+                                
+                                <span class="tool-category">FinOps</span>
+                                
+                            </div>
                         </div>
                         
-                        <div class="upcoming-tool">
-                            <h3>🔄 CI/CD Pipeline Templates</h3>
-                            <p>Ready-to-use pipeline configurations for Jenkins, GitLab CI, and GitHub Actions</p>
+                        <div class="tool-description">
+                            <p>Templates and dashboards that transform AWS Cost and Usage Reports (CUR) into actionable FinOps insights within hours.</p>
                         </div>
-                        
-                        <div class="upcoming-tool">
-                            <h3>☁️ Infrastructure as Code Modules</h3>
-                            <p>Terraform and Ansible modules for common cloud infrastructure patterns</p>
+
+                        <div class="tool-meta">
+                            
+                            <div class="tech-stack">
+                                
+                                <span class="tech-badge">AWS Athena</span>
+                                
+                                <span class="tech-badge">AWS Lambda</span>
+                                
+                                <span class="tech-badge">Grafana</span>
+                                
+                            </div>
+                            
+
+                            
+                            <ul class="tool-features">
+                                
+                                <li>Automated CUR ingestion and partitioning pipeline</li>
+                                
+                                <li>Prebuilt Athena queries for anomaly detection and chargeback</li>
+                                
+                                <li>Grafana dashboards with burn-rate and savings plan widgets</li>
+                                
+                            </ul>
+                            
                         </div>
-                        
-                        <div class="upcoming-tool">
-                            <h3>📊 Monitoring &amp; Alerting Setup</h3>
-                            <p>Complete monitoring stack configurations with Prometheus, Grafana, and AlertManager</p>
-                        </div>
-                        
-                        <div class="upcoming-tool">
-                            <h3>🔒 Security Automation Tools</h3>
-                            <p>Vulnerability scanning, compliance checking, and security hardening scripts</p>
-                        </div>
-                        
-                        <div class="upcoming-tool">
-                            <h3>⚡ Performance Optimization Utilities</h3>
-                            <p>System performance analysis and optimization tools for various platforms</p>
+
+                        <div class="tool-actions">
+                            <a href="/tools/aws-cur-cost-analytics/" class="btn btn-primary">Learn More</a>
+                            
+                            <a href="https://github.com/1devops/aws-cur-cost-analytics" target="_blank" rel="noopener" class="btn btn-secondary">
+                                <span class="btn-icon">🐙</span>
+                                GitHub
+                            </a>
+                            
+                            
                         </div>
                     </div>
                     
-                    <div class="tools-cta">
-                        <p>Interested in early access or have specific tool requirements?</p>
-                        <a href="/contact/" class="btn btn-primary">Get in Touch</a>
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            
+                            <div class="tool-info">
+                                <h3 class="tool-title">Terraform Tag Auditor</h3>
+                                
+                                <span class="tool-category">Platform Automation</span>
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="tool-description">
+                            <p>CLI utility and Terraform module that enforces tagging standards across AWS, Azure, and GCP from your CI/CD pipelines.</p>
+                        </div>
+
+                        <div class="tool-meta">
+                            
+                            <div class="tech-stack">
+                                
+                                <span class="tech-badge">Terraform</span>
+                                
+                                <span class="tech-badge">Go</span>
+                                
+                                <span class="tech-badge">GitHub Actions</span>
+                                
+                            </div>
+                            
+
+                            
+                            <ul class="tool-features">
+                                
+                                <li>Validates required business and cost tags during plan/apply</li>
+                                
+                                <li>Generates compliance reports as JSON and HTML artefacts</li>
+                                
+                                <li>Integrates with GitHub Actions, GitLab CI, and Jenkins pipelines</li>
+                                
+                            </ul>
+                            
+                        </div>
+
+                        <div class="tool-actions">
+                            <a href="/tools/terraform-tag-auditor/" class="btn btn-primary">Learn More</a>
+                            
+                            <a href="https://github.com/1devops/terraform-tag-auditor" target="_blank" rel="noopener" class="btn btn-secondary">
+                                <span class="btn-icon">🐙</span>
+                                GitHub
+                            </a>
+                            
+                            
+                        </div>
                     </div>
+                    
+                </div>
+
+                <div class="tools-lead">
+                    <h2>Get notified when new tools ship</h2>
+                    <p>We release practical automations every month—ranging from cost analytics to platform guardrails. Drop your email to receive early access and implementation tips.</p>
+                    <form class="tools-lead-form" action="https://formspree.io/f/your-form-id" method="POST">
+                        <label for="tools-email" class="visually-hidden">Email address</label>
+                        <input type="email" id="tools-email" name="email" placeholder="you@company.com" required="" />
+                        <button type="submit" class="btn btn-primary">Notify me</button>
+                    </form>
+                    <p class="tools-lead-note">Prefer GitHub? <a href="https://github.com/1devops" target="_blank" rel="noopener">Follow the 1DevOps organization</a> for source updates.</p>
                 </div>
             
         </div>
@@ -1084,6 +1198,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     <!-- JavaScript -->
-    <script src="/assets/js/main.js?v=1759562182"></script>
+    <script src="/assets/js/main.js?v=1759562707"></script>
 </body>
 </html> 
