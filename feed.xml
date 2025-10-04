@@ -1,4 +1,92 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://1devops.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://1devops.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-10-04T14:09:43+07:00</updated><id>https://1devops.io/feed.xml</id><title type="html">1DevOps - Professional DevOps Solutions</title><subtitle>Expert DevOps consulting, tools, and solutions for modern development teams. Simplifying complex infrastructure with 12+ years of experience.</subtitle><author><name>Le Phuong Hieu</name><email>hieu@1devops.io</email></author><entry><title type="html">Infrastructure as Code with Terraform: Complete Guide</title><link href="https://1devops.io/blog/2024/01/30/terraform-infrastructure-as-code/" rel="alternate" type="text/html" title="Infrastructure as Code with Terraform: Complete Guide" /><published>2024-01-30T10:00:00+07:00</published><updated>2024-01-30T10:00:00+07:00</updated><id>https://1devops.io/blog/2024/01/30/terraform-infrastructure-as-code</id><content type="html" xml:base="https://1devops.io/blog/2024/01/30/terraform-infrastructure-as-code/"><![CDATA[<p>Infrastructure as Code (IaC) has revolutionized how we manage and provision infrastructure. Terraform, developed by HashiCorp, stands out as one of the most powerful and versatile IaC tools available today.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://1devops.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://1devops.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-10-04T14:16:22+07:00</updated><id>https://1devops.io/feed.xml</id><title type="html">1DevOps - Professional DevOps Solutions</title><subtitle>Expert DevOps consulting, tools, and solutions for modern development teams. Simplifying complex infrastructure with 12+ years of experience.</subtitle><author><name>Le Phuong Hieu</name><email>hieu@1devops.io</email></author><entry><title type="html">EKS Security Baseline 2025</title><link href="https://1devops.io/blog/2025/09/12/eks-security-baseline-2025/" rel="alternate" type="text/html" title="EKS Security Baseline 2025" /><published>2025-09-12T00:00:00+07:00</published><updated>2025-09-12T00:00:00+07:00</updated><id>https://1devops.io/blog/2025/09/12/eks-security-baseline-2025</id><content type="html" xml:base="https://1devops.io/blog/2025/09/12/eks-security-baseline-2025/"><![CDATA[<p>Running Amazon EKS at scale in 2025 demands a layered security model that balances velocity with compliance. Over the last quarter we refreshed our reference architecture for financial-services customers and distilled the must-have controls into this baseline.</p>
+
+<h2 id="enforce-pod-security-admission">Enforce Pod Security Admission</h2>
+
+<p>Pod Security Admission (PSA) is now the default gatekeeper in EKS. Define namespace-level policies that match your workload sensitivity:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">baseline</code> for shared dev/test clusters</li>
+  <li><code class="language-plaintext highlighter-rouge">restricted</code> for production namespaces</li>
+  <li>dedicated break-glass namespaces for debugging with tight audit logging</li>
+</ul>
+
+<p>Combine PSA with Kyverno or Gatekeeper policies to block privileged pods, hostPath mounts, and unsigned images before they reach the API server.</p>
+
+<h2 id="sign-and-verify-container-images">Sign and Verify Container Images</h2>
+
+<p>Adopt <strong>Sigstore cosign</strong> and build SBOMs with <strong>Syft</strong> during CI. Publish attestations to an OCI registry and enforce verification at admission time. This closes the loop between build provenance and runtime deployment, satisfying SLSA level 2 requirements.</p>
+
+<h2 id="runtime-threat-detection-with-falco">Runtime Threat Detection with Falco</h2>
+
+<p>Falco continues to be our go-to runtime sensor. Pair it with AWS Security Lake or CloudWatch metrics to centralise detections and route high-severity events into PagerDuty. The newest Falco rulesets include detections for exfil attempts via SSM Session Manager and credential harvesting from projected tokens.</p>
+
+<h2 id="observability-with-guardrails">Observability with Guardrails</h2>
+
+<p>Measure security and reliability together. Define SLOs for:</p>
+
+<ul>
+  <li>Image verification success rate</li>
+  <li>Admission webhook latency</li>
+  <li>Falco alert MTTA / MTTR</li>
+</ul>
+
+<p>Dashboards in Grafana fed by Prometheus and Loki make it easy to correlate control plane events with workload behaviour.</p>
+
+<h2 id="remediation-runbooks">Remediation Runbooks</h2>
+
+<p>Document automated and manual steps for findings:</p>
+
+<ol>
+  <li>Quarantine the namespace via network policies</li>
+  <li>Rotate relevant IAM roles or service account tokens</li>
+  <li>Trigger Terraform modules to re-issue baseline configuration</li>
+</ol>
+
+<p>Store runbooks with version control and link them to Zendesk or Jira for audit evidence.</p>
+
+<p>Need help implementing or auditing your EKS security controls? <a href="/contact/">Book a discovery call</a> and we’ll tailor the baseline to your compliance objectives.</p>]]></content><author><name>Le Phuong Hieu</name></author><category term="security" /><category term="kubernetes" /><category term="EKS" /><category term="Kubernetes" /><category term="Security" /><category term="Falco" /><category term="Kyverno" /><category term="Gatekeeper" /><summary type="html"><![CDATA[Updated guardrails for running Amazon EKS securely in 2025, covering PSA policies, image signing, runtime protection, and threat detection.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://1devops.io/assets/images/logo.png" /><media:content medium="image" url="https://1devops.io/assets/images/logo.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">FinOps in Practice: Turning AWS CUR Data into Action</title><link href="https://1devops.io/blog/2025/08/19/finops-in-practice/" rel="alternate" type="text/html" title="FinOps in Practice: Turning AWS CUR Data into Action" /><published>2025-08-19T00:00:00+07:00</published><updated>2025-08-19T00:00:00+07:00</updated><id>https://1devops.io/blog/2025/08/19/finops-in-practice</id><content type="html" xml:base="https://1devops.io/blog/2025/08/19/finops-in-practice/"><![CDATA[<p>Cloud spend is now a board-level topic for most of our clients. Here’s how we translated raw AWS Cost and Usage Reports (CUR) into a repeatable FinOps practice that saved a data analytics platform 32% of their monthly bill.</p>
+
+<h2 id="normalise-tags-and-ownership">Normalise Tags and Ownership</h2>
+
+<p>We began with a tagging workshop. Product, environment, and cost-centre tags were standardised through Terraform modules and CI enforcement. Within two weeks, coverage climbed from 41% to 92%, enabling meaningful chargeback reports.</p>
+
+<h2 id="query-cur-with-athena">Query CUR with Athena</h2>
+
+<p>The team had CUR files landing daily in S3. We provisioned an Athena workgroup with saved queries that answer:</p>
+
+<ul>
+  <li>Top spenders by team and product</li>
+  <li>Idle EC2/RDS resources over 14 days</li>
+  <li>Unattached EBS and outdated snapshots</li>
+</ul>
+
+<p>Outputs were exported to CSV and fed into a lightweight backlog of remediation actions.</p>
+
+<h2 id="visualise-trends-with-grafana">Visualise Trends with Grafana</h2>
+
+<p>Grafana Cloud dashboards made the data accessible. Key widgets included:</p>
+
+<ul>
+  <li>Daily burn rate vs budget</li>
+  <li>Savings plan utilisation</li>
+  <li>Idle resource tracker with links back to AWS Console</li>
+</ul>
+
+<p>Email digests and Slack alerts kept engineering managers accountable.</p>
+
+<h2 id="automate-follow-up">Automate Follow-up</h2>
+
+<p>A simple Lambda routine closed the loop—terminating orphaned snapshots, right-sizing over-provisioned nodes, and notifying owners for manual approvals where required. These automations alone delivered $76k in annualised savings.</p>
+
+<h2 id="lessons-learned">Lessons Learned</h2>
+
+<ol>
+  <li><strong>Governance needs empathy.</strong> Provide recommendations with context, not just red alerts.</li>
+  <li><strong>Dashboards beat spreadsheets.</strong> Real-time views drive action faster than monthly exports.</li>
+  <li><strong>Celebrate wins.</strong> Publishing a monthly FinOps scorecard kept engagement high.</li>
+</ol>
+
+<p>Want a similar accelerator for your platform? <a href="/contact/">Reach out</a> and we’ll share the templates and Terraform modules we use to kick-start FinOps programmes.</p>]]></content><author><name>Le Phuong Hieu</name></author><category term="finops" /><category term="cloud" /><category term="FinOps" /><category term="AWS" /><category term="CUR" /><category term="Cost Optimization" /><category term="Grafana" /><summary type="html"><![CDATA[How we helped a SaaS team cut 32% of their AWS spend by combining Cost and Usage Reports, Athena, and Grafana dashboards.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://1devops.io/assets/images/logo.png" /><media:content medium="image" url="https://1devops.io/assets/images/logo.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Infrastructure as Code with Terraform: Complete Guide</title><link href="https://1devops.io/blog/2024/01/30/terraform-infrastructure-as-code/" rel="alternate" type="text/html" title="Infrastructure as Code with Terraform: Complete Guide" /><published>2024-01-30T10:00:00+07:00</published><updated>2024-01-30T10:00:00+07:00</updated><id>https://1devops.io/blog/2024/01/30/terraform-infrastructure-as-code</id><content type="html" xml:base="https://1devops.io/blog/2024/01/30/terraform-infrastructure-as-code/"><![CDATA[<p>Infrastructure as Code (IaC) has revolutionized how we manage and provision infrastructure. Terraform, developed by HashiCorp, stands out as one of the most powerful and versatile IaC tools available today.</p>
 
 <h2 id="why-terraform">Why Terraform?</h2>
 

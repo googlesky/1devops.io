@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Infrastructure as Code with Terraform: Complete Guide - 1DevOps - Professional DevOps Solutions</title>
-    <meta name="description" content="Expert DevOps consulting, tools, and solutions for modern development teams. Simplifying complex infrastructure with 12+ years of experience.">
+    <title>FinOps in Practice: Turning AWS CUR Data into Action - 1DevOps - Professional DevOps Solutions</title>
+    <meta name="description" content="How we helped a SaaS team cut 32% of their AWS spend by combining Cost and Usage Reports, Athena, and Grafana dashboards.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,25 +21,25 @@
     <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
     
     <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Infrastructure as Code with Terraform: Complete Guide | 1DevOps - Professional DevOps Solutions</title>
+<title>FinOps in Practice: Turning AWS CUR Data into Action | 1DevOps - Professional DevOps Solutions</title>
 <meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="Infrastructure as Code with Terraform: Complete Guide" />
-<meta name="author" content="Lê Phương Hiếu" />
+<meta property="og:title" content="FinOps in Practice: Turning AWS CUR Data into Action" />
+<meta name="author" content="Le Phuong Hieu" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="Master Infrastructure as Code with Terraform. Learn best practices, common patterns, and advanced techniques for managing cloud infrastructure." />
-<meta property="og:description" content="Master Infrastructure as Code with Terraform. Learn best practices, common patterns, and advanced techniques for managing cloud infrastructure." />
-<link rel="canonical" href="https://1devops.io/blog/2024/01/30/terraform-infrastructure-as-code/" />
-<meta property="og:url" content="https://1devops.io/blog/2024/01/30/terraform-infrastructure-as-code/" />
+<meta name="description" content="How we helped a SaaS team cut 32% of their AWS spend by combining Cost and Usage Reports, Athena, and Grafana dashboards." />
+<meta property="og:description" content="How we helped a SaaS team cut 32% of their AWS spend by combining Cost and Usage Reports, Athena, and Grafana dashboards." />
+<link rel="canonical" href="https://1devops.io/blog/2025/08/19/finops-in-practice/" />
+<meta property="og:url" content="https://1devops.io/blog/2025/08/19/finops-in-practice/" />
 <meta property="og:site_name" content="1DevOps - Professional DevOps Solutions" />
 <meta property="og:image" content="https://1devops.io/assets/images/logo.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2024-01-30T10:00:00+07:00" />
+<meta property="article:published_time" content="2025-08-19T00:00:00+07:00" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="twitter:image" content="https://1devops.io/assets/images/logo.png" />
-<meta property="twitter:title" content="Infrastructure as Code with Terraform: Complete Guide" />
+<meta property="twitter:title" content="FinOps in Practice: Turning AWS CUR Data into Action" />
 <meta name="google-site-verification" content="" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Lê Phương Hiếu"},"dateModified":"2024-01-30T10:00:00+07:00","datePublished":"2024-01-30T10:00:00+07:00","description":"Master Infrastructure as Code with Terraform. Learn best practices, common patterns, and advanced techniques for managing cloud infrastructure.","headline":"Infrastructure as Code with Terraform: Complete Guide","image":"https://1devops.io/assets/images/logo.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://1devops.io/blog/2024/01/30/terraform-infrastructure-as-code/"},"url":"https://1devops.io/blog/2024/01/30/terraform-infrastructure-as-code/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Le Phuong Hieu"},"dateModified":"2025-08-19T00:00:00+07:00","datePublished":"2025-08-19T00:00:00+07:00","description":"How we helped a SaaS team cut 32% of their AWS spend by combining Cost and Usage Reports, Athena, and Grafana dashboards.","headline":"FinOps in Practice: Turning AWS CUR Data into Action","image":"https://1devops.io/assets/images/logo.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://1devops.io/blog/2025/08/19/finops-in-practice/"},"url":"https://1devops.io/blog/2025/08/19/finops-in-practice/"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://1devops.io/feed.xml" title="1DevOps - Professional DevOps Solutions" />
@@ -327,10 +327,10 @@
     <main class="main-content" role="main" id="main-content">
         <div class="page-header">
     <div class="container">
-        <h1>Infrastructure as Code with Terraform: Complete Guide</h1>
+        <h1>FinOps in Practice: Turning AWS CUR Data into Action</h1>
         <div class="post-meta">
-            <time datetime="2024-01-30T10:00:00+07:00">January 30, 2024</time>
-             • by Lê Phương Hiếu
+            <time datetime="2025-08-19T00:00:00+07:00">August 19, 2025</time>
+             • by Le Phuong Hieu
             
         </div>
     </div>
@@ -339,269 +339,58 @@
 <div class="page-content">
     <div class="container">
         <article class="post-content">
-            <p>Infrastructure as Code (IaC) has revolutionized how we manage and provision infrastructure. Terraform, developed by HashiCorp, stands out as one of the most powerful and versatile IaC tools available today.</p>
+            <p>Cloud spend is now a board-level topic for most of our clients. Here’s how we translated raw AWS Cost and Usage Reports (CUR) into a repeatable FinOps practice that saved a data analytics platform 32% of their monthly bill.</p>
 
-<h2 id="why-terraform">Why Terraform?</h2>
+<h2 id="normalise-tags-and-ownership">Normalise Tags and Ownership</h2>
 
-<h3 id="multi-cloud-support">Multi-Cloud Support</h3>
-<p>Terraform supports multiple cloud providers, making it ideal for hybrid and multi-cloud strategies.</p>
+<p>We began with a tagging workshop. Product, environment, and cost-centre tags were standardised through Terraform modules and CI enforcement. Within two weeks, coverage climbed from 41% to 92%, enabling meaningful chargeback reports.</p>
 
-<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># AWS Provider</span>
-<span class="nx">provider</span> <span class="s2">"aws"</span> <span class="p">{</span>
-  <span class="nx">region</span> <span class="o">=</span> <span class="s2">"us-west-2"</span>
-<span class="p">}</span>
+<h2 id="query-cur-with-athena">Query CUR with Athena</h2>
 
-<span class="c1"># Azure Provider</span>
-<span class="nx">provider</span> <span class="s2">"azurerm"</span> <span class="p">{</span>
-  <span class="nx">features</span> <span class="p">{}</span>
-<span class="p">}</span>
+<p>The team had CUR files landing daily in S3. We provisioned an Athena workgroup with saved queries that answer:</p>
 
-<span class="c1"># Google Cloud Provider</span>
-<span class="nx">provider</span> <span class="s2">"google"</span> <span class="p">{</span>
-  <span class="nx">project</span> <span class="o">=</span> <span class="s2">"my-project"</span>
-  <span class="nx">region</span>  <span class="o">=</span> <span class="s2">"us-central1"</span>
-<span class="p">}</span>
-</code></pre></div></div>
+<ul>
+  <li>Top spenders by team and product</li>
+  <li>Idle EC2/RDS resources over 14 days</li>
+  <li>Unattached EBS and outdated snapshots</li>
+</ul>
 
-<h3 id="declarative-configuration">Declarative Configuration</h3>
-<p>Define your desired infrastructure state, and Terraform handles the implementation details.</p>
+<p>Outputs were exported to CSV and fed into a lightweight backlog of remediation actions.</p>
 
-<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">resource</span> <span class="s2">"aws_instance"</span> <span class="s2">"web_server"</span> <span class="p">{</span>
-  <span class="nx">ami</span>           <span class="o">=</span> <span class="s2">"ami-0c02fb55956c7d316"</span>
-  <span class="nx">instance_type</span> <span class="o">=</span> <span class="s2">"t3.micro"</span>
-  
-  <span class="nx">tags</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">Name</span>        <span class="o">=</span> <span class="s2">"WebServer"</span>
-    <span class="nx">Environment</span> <span class="o">=</span> <span class="s2">"Production"</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
+<h2 id="visualise-trends-with-grafana">Visualise Trends with Grafana</h2>
 
-<h2 id="best-practices">Best Practices</h2>
+<p>Grafana Cloud dashboards made the data accessible. Key widgets included:</p>
 
-<h3 id="1-state-management">1. State Management</h3>
-<p>Always use remote state storage for team collaboration.</p>
+<ul>
+  <li>Daily burn rate vs budget</li>
+  <li>Savings plan utilisation</li>
+  <li>Idle resource tracker with links back to AWS Console</li>
+</ul>
 
-<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">terraform</span> <span class="p">{</span>
-  <span class="nx">backend</span> <span class="s2">"s3"</span> <span class="p">{</span>
-    <span class="nx">bucket</span> <span class="o">=</span> <span class="s2">"my-terraform-state"</span>
-    <span class="nx">key</span>    <span class="o">=</span> <span class="s2">"infrastructure/terraform.tfstate"</span>
-    <span class="nx">region</span> <span class="o">=</span> <span class="s2">"us-west-2"</span>
-    
-    <span class="c1"># Enable state locking</span>
-    <span class="nx">dynamodb_table</span> <span class="o">=</span> <span class="s2">"terraform-locks"</span>
-    <span class="nx">encrypt</span>        <span class="o">=</span> <span class="kc">true</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
+<p>Email digests and Slack alerts kept engineering managers accountable.</p>
 
-<h3 id="2-module-organization">2. Module Organization</h3>
-<p>Create reusable modules for common infrastructure patterns.</p>
+<h2 id="automate-follow-up">Automate Follow-up</h2>
 
-<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># modules/vpc/main.tf</span>
-<span class="nx">resource</span> <span class="s2">"aws_vpc"</span> <span class="s2">"main"</span> <span class="p">{</span>
-  <span class="nx">cidr_block</span>           <span class="o">=</span> <span class="nx">var</span><span class="p">.</span><span class="nx">cidr_block</span>
-  <span class="nx">enable_dns_hostnames</span> <span class="o">=</span> <span class="kc">true</span>
-  <span class="nx">enable_dns_support</span>   <span class="o">=</span> <span class="kc">true</span>
-  
-  <span class="nx">tags</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">Name</span> <span class="o">=</span> <span class="nx">var</span><span class="p">.</span><span class="nx">name</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<p>A simple Lambda routine closed the loop—terminating orphaned snapshots, right-sizing over-provisioned nodes, and notifying owners for manual approvals where required. These automations alone delivered $76k in annualised savings.</p>
 
-<span class="c1"># Root module usage</span>
-<span class="nx">module</span> <span class="s2">"vpc"</span> <span class="p">{</span>
-  <span class="nx">source</span>     <span class="o">=</span> <span class="s2">"./modules/vpc"</span>
-  <span class="nx">name</span>       <span class="o">=</span> <span class="s2">"production-vpc"</span>
-  <span class="nx">cidr_block</span> <span class="o">=</span> <span class="s2">"10.0.0.0/16"</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<h3 id="3-variable-management">3. Variable Management</h3>
-<p>Use variables for flexibility and environment-specific configurations.</p>
-
-<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># variables.tf</span>
-<span class="nx">variable</span> <span class="s2">"environment"</span> <span class="p">{</span>
-  <span class="nx">description</span> <span class="o">=</span> <span class="s2">"Environment name"</span>
-  <span class="nx">type</span>        <span class="o">=</span> <span class="nx">string</span>
-  <span class="nx">default</span>     <span class="o">=</span> <span class="s2">"development"</span>
-<span class="p">}</span>
-
-<span class="nx">variable</span> <span class="s2">"instance_type"</span> <span class="p">{</span>
-  <span class="nx">description</span> <span class="o">=</span> <span class="s2">"EC2 instance type"</span>
-  <span class="nx">type</span>        <span class="o">=</span> <span class="nx">string</span>
-  <span class="nx">default</span>     <span class="o">=</span> <span class="s2">"t3.micro"</span>
-  
-  <span class="nx">validation</span> <span class="p">{</span>
-    <span class="nx">condition</span>     <span class="o">=</span> <span class="nx">contains</span><span class="p">([</span><span class="s2">"t3.micro"</span><span class="p">,</span> <span class="s2">"t3.small"</span><span class="p">,</span> <span class="s2">"t3.medium"</span><span class="p">],</span> <span class="nx">var</span><span class="p">.</span><span class="nx">instance_type</span><span class="p">)</span>
-    <span class="nx">error_message</span> <span class="o">=</span> <span class="s2">"Instance type must be t3.micro, t3.small, or t3.medium."</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<h2 id="advanced-patterns">Advanced Patterns</h2>
-
-<h3 id="dynamic-blocks">Dynamic Blocks</h3>
-<p>Create flexible, reusable configurations with dynamic blocks.</p>
-
-<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">resource</span> <span class="s2">"aws_security_group"</span> <span class="s2">"web"</span> <span class="p">{</span>
-  <span class="nx">name_prefix</span> <span class="o">=</span> <span class="s2">"web-"</span>
-  
-  <span class="nx">dynamic</span> <span class="s2">"ingress"</span> <span class="p">{</span>
-    <span class="nx">for_each</span> <span class="o">=</span> <span class="nx">var</span><span class="p">.</span><span class="nx">ingress_rules</span>
-    <span class="nx">content</span> <span class="p">{</span>
-      <span class="nx">from_port</span>   <span class="o">=</span> <span class="nx">ingress</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">from_port</span>
-      <span class="nx">to_port</span>     <span class="o">=</span> <span class="nx">ingress</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">to_port</span>
-      <span class="nx">protocol</span>    <span class="o">=</span> <span class="nx">ingress</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">protocol</span>
-      <span class="nx">cidr_blocks</span> <span class="o">=</span> <span class="nx">ingress</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">cidr_blocks</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<h3 id="data-sources">Data Sources</h3>
-<p>Retrieve information about existing infrastructure.</p>
-
-<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">data</span> <span class="s2">"aws_ami"</span> <span class="s2">"ubuntu"</span> <span class="p">{</span>
-  <span class="nx">most_recent</span> <span class="o">=</span> <span class="kc">true</span>
-  <span class="nx">owners</span>      <span class="o">=</span> <span class="p">[</span><span class="s2">"099720109477"</span><span class="p">]</span> <span class="c1"># Canonical</span>
-  
-  <span class="nx">filter</span> <span class="p">{</span>
-    <span class="nx">name</span>   <span class="o">=</span> <span class="s2">"name"</span>
-    <span class="nx">values</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"</span><span class="p">]</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="nx">resource</span> <span class="s2">"aws_instance"</span> <span class="s2">"web"</span> <span class="p">{</span>
-  <span class="nx">ami</span>           <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">aws_ami</span><span class="p">.</span><span class="nx">ubuntu</span><span class="p">.</span><span class="nx">id</span>
-  <span class="nx">instance_type</span> <span class="o">=</span> <span class="s2">"t3.micro"</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<h2 id="cicd-integration">CI/CD Integration</h2>
-
-<h3 id="gitlab-ci-example">GitLab CI Example</h3>
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># .gitlab-ci.yml</span>
-<span class="na">stages</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">validate</span>
-  <span class="pi">-</span> <span class="s">plan</span>
-  <span class="pi">-</span> <span class="s">apply</span>
-
-<span class="na">terraform_validate</span><span class="pi">:</span>
-  <span class="na">stage</span><span class="pi">:</span> <span class="s">validate</span>
-  <span class="na">script</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="s">terraform init</span>
-    <span class="pi">-</span> <span class="s">terraform validate</span>
-    <span class="pi">-</span> <span class="s">terraform fmt -check</span>
-
-<span class="na">terraform_plan</span><span class="pi">:</span>
-  <span class="na">stage</span><span class="pi">:</span> <span class="s">plan</span>
-  <span class="na">script</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="s">terraform init</span>
-    <span class="pi">-</span> <span class="s">terraform plan -out=tfplan</span>
-  <span class="na">artifacts</span><span class="pi">:</span>
-    <span class="na">paths</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s">tfplan</span>
-
-<span class="na">terraform_apply</span><span class="pi">:</span>
-  <span class="na">stage</span><span class="pi">:</span> <span class="s">apply</span>
-  <span class="na">script</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="s">terraform apply -auto-approve tfplan</span>
-  <span class="na">when</span><span class="pi">:</span> <span class="s">manual</span>
-  <span class="na">only</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="s">main</span>
-</code></pre></div></div>
-
-<h2 id="security-considerations">Security Considerations</h2>
-
-<h3 id="1-sensitive-data-management">1. Sensitive Data Management</h3>
-<p>Never commit sensitive data to version control.</p>
-
-<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Use environment variables</span>
-<span class="nx">variable</span> <span class="s2">"db_password"</span> <span class="p">{</span>
-  <span class="nx">description</span> <span class="o">=</span> <span class="s2">"Database password"</span>
-  <span class="nx">type</span>        <span class="o">=</span> <span class="nx">string</span>
-  <span class="nx">sensitive</span>   <span class="o">=</span> <span class="kc">true</span>
-<span class="p">}</span>
-
-<span class="c1"># Or use external secret management</span>
-<span class="nx">data</span> <span class="s2">"aws_secretsmanager_secret_version"</span> <span class="s2">"db_password"</span> <span class="p">{</span>
-  <span class="nx">secret_id</span> <span class="o">=</span> <span class="s2">"prod/db/password"</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<h3 id="2-resource-tagging">2. Resource Tagging</h3>
-<p>Implement consistent tagging for security and cost management.</p>
-
-<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">locals</span> <span class="p">{</span>
-  <span class="nx">common_tags</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">Environment</span> <span class="o">=</span> <span class="nx">var</span><span class="p">.</span><span class="nx">environment</span>
-    <span class="nx">Project</span>     <span class="o">=</span> <span class="nx">var</span><span class="p">.</span><span class="nx">project_name</span>
-    <span class="nx">Owner</span>       <span class="o">=</span> <span class="nx">var</span><span class="p">.</span><span class="nx">owner</span>
-    <span class="nx">ManagedBy</span>   <span class="o">=</span> <span class="s2">"Terraform"</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="nx">resource</span> <span class="s2">"aws_instance"</span> <span class="s2">"web"</span> <span class="p">{</span>
-  <span class="nx">ami</span>           <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">aws_ami</span><span class="p">.</span><span class="nx">ubuntu</span><span class="p">.</span><span class="nx">id</span>
-  <span class="nx">instance_type</span> <span class="o">=</span> <span class="nx">var</span><span class="p">.</span><span class="nx">instance_type</span>
-  
-  <span class="nx">tags</span> <span class="o">=</span> <span class="nx">merge</span><span class="p">(</span><span class="nx">local</span><span class="p">.</span><span class="nx">common_tags</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">Name</span> <span class="o">=</span> <span class="s2">"WebServer"</span>
-    <span class="nx">Type</span> <span class="o">=</span> <span class="s2">"Application"</span>
-  <span class="p">})</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<h2 id="monitoring-and-maintenance">Monitoring and Maintenance</h2>
-
-<h3 id="state-drift-detection">State Drift Detection</h3>
-<p>Regularly check for configuration drift.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Check for drift</span>
-terraform plan <span class="nt">-detailed-exitcode</span>
-
-<span class="c"># Refresh state</span>
-terraform refresh
-
-<span class="c"># Import existing resources</span>
-terraform import aws_instance.web i-1234567890abcdef0
-</code></pre></div></div>
-
-<h2 id="key-benefits">Key Benefits</h2>
+<h2 id="lessons-learned">Lessons Learned</h2>
 
 <ol>
-  <li><strong>Version Control</strong>: Infrastructure changes are tracked and reviewable</li>
-  <li><strong>Reproducibility</strong>: Consistent environments across stages</li>
-  <li><strong>Automation</strong>: Reduced manual errors and faster deployments</li>
-  <li><strong>Documentation</strong>: Code serves as living documentation</li>
-  <li><strong>Cost Management</strong>: Better resource tracking and optimization</li>
+  <li><strong>Governance needs empathy.</strong> Provide recommendations with context, not just red alerts.</li>
+  <li><strong>Dashboards beat spreadsheets.</strong> Real-time views drive action faster than monthly exports.</li>
+  <li><strong>Celebrate wins.</strong> Publishing a monthly FinOps scorecard kept engagement high.</li>
 </ol>
 
-<h2 id="getting-started">Getting Started</h2>
-
-<ol>
-  <li><strong>Install Terraform</strong> from the official website</li>
-  <li><strong>Choose a cloud provider</strong> and configure credentials</li>
-  <li><strong>Start small</strong> with basic resources</li>
-  <li><strong>Implement modules</strong> for reusability</li>
-  <li><strong>Set up CI/CD</strong> for automated deployments</li>
-</ol>
-
-<p>Terraform transforms infrastructure management from a manual, error-prone process into a predictable, automated workflow. Start with simple configurations and gradually build more complex infrastructure patterns.</p>
-
-<hr />
-
-<p><em>Need help implementing Infrastructure as Code in your organization? <a href="/contact/">Contact me</a> for Terraform consulting and training services.</em></p>
+<p>Want a similar accelerator for your platform? <a href="/contact/">Reach out</a> and we’ll share the templates and Terraform modules we use to kick-start FinOps programmes.</p>
 
         </article>
         
         <div class="post-navigation">
             
-            <a href="/blog/2024/01/25/docker-security-best-practices/" class="btn btn-secondary">← Docker Security Best Practices: Securing Your Containers</a>
+            <a href="/blog/2024/01/30/terraform-infrastructure-as-code/" class="btn btn-secondary">← Infrastructure as Code with Terraform: Complete Guide</a>
             
             
-            <a href="/blog/2025/08/19/finops-in-practice/" class="btn btn-secondary">FinOps in Practice: Turning AWS CUR Data into Action →</a>
+            <a href="/blog/2025/09/12/eks-security-baseline-2025/" class="btn btn-secondary">EKS Security Baseline 2025 →</a>
             
         </div>
     </div>
