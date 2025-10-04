@@ -21,7 +21,7 @@ description: "Expert DevOps consulting and solutions for modern development team
                 </ul>
 
                 <div class="hero-actions">
-                    <a href="{{ '/contact/' | relative_url }}" class="btn btn-primary btn-lg">
+                    <a href="{{ site.calendly.url }}" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
                         <span class="btn-icon">💬</span>
                         Book a Discovery Call
                     </a>
@@ -46,7 +46,7 @@ description: "Expert DevOps consulting and solutions for modern development team
                 <div class="hero-card hero-card--availability">
                     <div class="hero-card-header">
                         <span class="hero-card-eyebrow">Availability</span>
-                        <span class="hero-card-status">🟢 Now booking Q4 2025</span>
+                        <span class="hero-card-status">🟢 {{ site.contact.availability }}</span>
                     </div>
                     <p class="hero-card-body">Remote-first, EMEA & Americas time zones. Fractional advisory or end-to-end delivery engagements.</p>
                     <ul class="hero-card-list">
@@ -54,7 +54,7 @@ description: "Expert DevOps consulting and solutions for modern development team
                         <li>🧭 Tailored roadmap in the first 2 weeks</li>
                         <li>🤝 Collaborative coaching for internal teams</li>
                     </ul>
-                    <a href="{{ '/contact/' | relative_url }}" class="hero-card-link">Check a time →</a>
+                    <a href="{{ site.calendly.url }}" target="_blank" rel="noopener" class="hero-card-link">Check a time →</a>
                 </div>
 
                 <div class="hero-card hero-card--credentials">
@@ -370,13 +370,13 @@ description: "Expert DevOps consulting and solutions for modern development team
                 <h2>Ready to accelerate delivery and reliability?</h2>
                 <p>Share your challenges and receive a tailored roadmap highlighting the ROI you can achieve within the first 90 days.</p>
                 <div class="cta-actions">
-                    <a href="{{ '/contact/' | relative_url }}" class="btn btn-primary btn-lg">
+                    <a href="{{ site.calendly.url }}" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
                         <span class="btn-icon">📞</span>
                         Schedule Consultation
                     </a>
-                    <a href="{{ '/profile/' | relative_url }}" class="btn btn-outline btn-lg">
+                    <a href="{{ '/capabilities/' | relative_url }}" class="btn btn-outline btn-lg">
                         <span class="btn-icon">📄</span>
-                        Download capabilities deck
+                        View capabilities deck
                     </a>
                 </div>
                 <p class="cta-note">No obligation • Rapid response • Remote & on-site options</p>

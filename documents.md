@@ -20,7 +20,16 @@ permalink: /documents/
 
 <div class="page-content">
     <div class="container">
-        
+        <div class="docs-lead">
+            <h3>Need the full playbook?</h3>
+            <p>Join the mailing list to receive new checklists, audit templates, and runbooks before they hit the site.</p>
+            <form class="docs-lead-form" action="https://formspree.io/f/your-form-id" method="POST">
+                <label for="docs-email" class="visually-hidden">Email address</label>
+                <input type="email" id="docs-email" name="email" placeholder="you@company.com" required>
+                <button type="submit" class="btn btn-primary">Send me updates</button>
+            </form>
+        </div>
+
         <!-- Document Categories -->
         <section class="mb-6">
             <h2>Documentation Categories</h2>

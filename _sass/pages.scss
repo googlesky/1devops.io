@@ -2919,6 +2919,129 @@ img[loading="lazy"].loaded {
     }
 }
 
+.services-overview {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xl);
+
+    .services-overview-hero {
+        text-align: center;
+        max-width: 760px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+
+    .services-overview-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: var(--space-xl);
+    }
+
+    .services-overview-card {
+        background: var(--white);
+        border-radius: var(--radius-xl);
+        border: 1px solid var(--gray-200);
+        padding: var(--space-2xl);
+        box-shadow: var(--shadow-md);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+
+    .services-overview-card ul {
+        margin: 0;
+        padding-left: var(--space-xl);
+        color: var(--gray-600);
+    }
+
+    .services-overview-cta {
+        background: linear-gradient(135deg, rgba(30, 64, 175, 0.95) 0%, rgba(6, 148, 162, 0.9) 100%);
+        color: var(--white);
+        border-radius: var(--radius-xl);
+        padding: var(--space-3xl);
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-md);
+        align-items: center;
+    }
+
+    .services-overview-cta p {
+        max-width: 600px;
+        color: rgba(255, 255, 255, 0.85);
+    }
+
+    .services-overview-actions {
+        display: flex;
+        gap: var(--space-md);
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    @media (max-width: 640px) {
+        .services-overview-cta {
+            padding: var(--space-2xl);
+        }
+
+        .services-overview-actions {
+            flex-direction: column;
+            width: 100%;
+        }
+    }
+}
+
+.capabilities {
+    display: grid;
+    gap: var(--space-3xl);
+
+    .capabilities-intro,
+    .capabilities-download {
+        background: var(--white);
+        border-radius: var(--radius-xl);
+        border: 1px solid var(--gray-200);
+        padding: var(--space-3xl);
+        box-shadow: var(--shadow-md);
+    }
+
+    .capabilities-intro ul {
+        margin: var(--space-lg) 0 0;
+        padding-left: var(--space-xl);
+        color: var(--gray-600);
+    }
+
+    .capabilities-download {
+        text-align: center;
+    }
+
+    .capabilities-form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-md);
+        justify-content: center;
+        margin: var(--space-xl) 0;
+    }
+
+    .capabilities-form input {
+        flex: 1 1 280px;
+        padding: var(--space-md);
+        border: 2px solid var(--gray-200);
+        border-radius: var(--radius-lg);
+        font-size: var(--font-size-base);
+    }
+
+    .capabilities-form input:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.15);
+        outline: none;
+    }
+
+    .capabilities-note {
+        color: var(--gray-500);
+    }
+}
+
 /* Vulnerabilities Page Specific Styles */
 .vulnerabilities-page {
     .vulnerabilities-filters {
@@ -3134,6 +3257,40 @@ img[loading="lazy"].loaded {
 
 /* Documents Page Specific Styles */
 .documents-page {
+    .docs-lead {
+        background: var(--white);
+        border-radius: var(--radius-xl);
+        border: 1px solid var(--gray-200);
+        padding: var(--space-2xl);
+        box-shadow: var(--shadow-sm);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-md);
+        margin-bottom: var(--space-3xl);
+        align-items: center;
+        text-align: center;
+    }
+
+    .docs-lead-form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-md);
+        justify-content: center;
+    }
+
+    .docs-lead-form input {
+        flex: 1 1 280px;
+        padding: var(--space-md);
+        border: 2px solid var(--gray-200);
+        border-radius: var(--radius-lg);
+    }
+
+    .docs-lead-form input:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.15);
+        outline: none;
+    }
+
     .documents-filters {
         background: var(--white);
         padding: var(--space-xl);

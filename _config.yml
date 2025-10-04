@@ -93,7 +93,7 @@ navigation:
   - name: "Home"
     url: "/"
   - name: "Services"
-    url: "#"
+    url: "/services/"
     dropdown: true
     items:
       - name: "DevOps Consulting"
@@ -118,9 +118,12 @@ navigation:
       - name: "Tools"
         url: "/tools/"
         description: "Open source DevOps tools"
-      - name: "Security Alerts"
+      - name: "Vulnerabilities"
         url: "/vulnerabilities/"
         description: "Latest vulnerability reports"
+      - name: "Documents"
+        url: "/documents/"
+        description: "Technical guides and docs"
   - name: "About"
     url: "/about/"
   - name: "Contact"
@@ -149,7 +152,7 @@ contact:
   email: "hieu@1devops.io"
   phone: "+84 975 669 775"
   location: "Ho Chi Minh City, Vietnam"
-  availability: "Available for consulting projects"
+  availability: "Now booking Q1 2026"
 
 calendly:
   url: "https://calendly.com/1devops/discovery-call"
