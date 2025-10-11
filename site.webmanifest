@@ -1,0 +1,15 @@
+{
+  "name": "1DevOps - Professional DevOps Solutions",
+  "short_name": "1DevOps",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/assets/images/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
