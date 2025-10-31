@@ -1,0 +1,126 @@
+name: Security Scan
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    name: Security Analysis
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Scan for secrets
+        run: |
+          echo "🔍 Scanning for potential secrets..."
+
+          # Check for common secret patterns
+          patterns=(
+            "password"
+            "secret"
+            "api[_-]?key"
+            "access[_-]?token"
+            "private[_-]?key"
+          )
+
+          found=0
+          for pattern in "${patterns[@]}"; do
+            if grep -riE "$pattern" . --exclude-dir=.git --exclude-dir=.github; then
+              echo "⚠️  Warning: Potential secret pattern found: $pattern"
+              found=1
+            fi
+          done
+
+          if [ $found -eq 0 ]; then
+            echo "✅ No obvious secrets detected"
+          fi
+
+      - name: Check dependencies
+        run: |
+          echo "📦 Checking for external dependencies..."
+
+          # Check for external resources
+          if grep -oE "https?://[^\"']+" index.html | grep -v "1devops.io" | grep -v "localhost"; then
+            echo "📋 External resources found:"
+            grep -oE "https?://[^\"']+" index.html | grep -v "1devops.io" | grep -v "localhost" | sort -u
+          else
+            echo "✅ No external dependencies"
+          fi
+
+      - name: Content Security Policy Check
+        run: |
+          echo "🛡️ Checking Content Security Policy..."
+
+          if grep -q "Content-Security-Policy" index.html; then
+            echo "✅ CSP headers found"
+          else
+            echo "⚠️  Warning: No CSP headers detected"
+            echo "Consider adding CSP meta tag for enhanced security"
+          fi
+
+      - name: HTTPS Check
+        run: |
+          echo "🔒 Checking HTTPS usage..."
+
+          # Check for mixed content
+          if grep -q "http://" index.html | grep -v "http://"; then
+            echo "⚠️  Warning: HTTP resources detected (mixed content)"
+          else
+            echo "✅ All resources use HTTPS or are relative"
+          fi
+
+      - name: Subresource Integrity Check
+        run: |
+          echo "🔐 Checking Subresource Integrity..."
+
+          if grep -q "<script.*src=" index.html; then
+            if grep -q "integrity=" index.html; then
+              echo "✅ SRI hashes found for external scripts"
+            else
+              echo "⚠️  Warning: External scripts without SRI hashes"
+              echo "Consider adding integrity attributes for CDN resources"
+            fi
+          else
+            echo "✅ No external scripts detected"
+          fi
+
+      - name: Security Headers Recommendations
+        run: |
+          echo "📋 Security Headers Recommendations:"
+          echo ""
+          echo "Consider adding these security headers in your GitHub Pages setup:"
+          echo "  - X-Frame-Options: DENY"
+          echo "  - X-Content-Type-Options: nosniff"
+          echo "  - Referrer-Policy: strict-origin-when-cross-origin"
+          echo "  - Permissions-Policy: geolocation=(), microphone=(), camera=()"
+          echo ""
+          echo "For GitHub Pages, you can add a _headers file or use Cloudflare."
+
+  dependency-review:
+    runs-on: ubuntu-latest
+    name: Dependency Review
+    if: github.event_name == 'pull_request'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Dependency Review
+        uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: moderate

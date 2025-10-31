@@ -1,0 +1,181 @@
+name: CI - Quality Checks
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    name: Validate HTML & Links
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Validate HTML
+        run: |
+          echo "🔍 Validating HTML structure..."
+          if grep -q "<!DOCTYPE html>" index.html; then
+            echo "✅ DOCTYPE found"
+          else
+            echo "❌ DOCTYPE missing"
+            exit 1
+          fi
+
+          if grep -q "</html>" index.html; then
+            echo "✅ HTML structure valid"
+          else
+            echo "❌ HTML structure invalid"
+            exit 1
+          fi
+
+      - name: Check for CNAME
+        run: |
+          echo "🔍 Checking CNAME configuration..."
+          if [ -f "CNAME" ]; then
+            echo "✅ CNAME file exists"
+            echo "Domain: $(cat CNAME)"
+          else
+            echo "⚠️  CNAME file not found"
+          fi
+
+      - name: Verify required files
+        run: |
+          echo "🔍 Verifying required files..."
+          files=("index.html" ".nojekyll" "README.md")
+          for file in "${files[@]}"; do
+            if [ -f "$file" ]; then
+              echo "✅ $file exists"
+            else
+              echo "❌ $file missing"
+              exit 1
+            fi
+          done
+
+      - name: Check file sizes
+        run: |
+          echo "📊 File sizes:"
+          ls -lh index.html README.md
+
+          size=$(wc -c < index.html)
+          if [ $size -gt 1048576 ]; then
+            echo "⚠️  Warning: index.html is larger than 1MB"
+          else
+            echo "✅ File size is optimal"
+          fi
+
+      - name: Security scan
+        run: |
+          echo "🔒 Running basic security checks..."
+
+          # Check for potential XSS vulnerabilities
+          if grep -i "eval(" index.html; then
+            echo "⚠️  Warning: Found eval() - potential security risk"
+          fi
+
+          # Check for inline event handlers
+          if grep -iE "on(click|load|error|mouseover)=" index.html; then
+            echo "⚠️  Warning: Found inline event handlers"
+          else
+            echo "✅ No inline event handlers found"
+          fi
+
+          # Check for external scripts from untrusted sources
+          if grep -iE "src=\"http[^\"]*\"" index.html | grep -v "fonts.googleapis.com"; then
+            echo "⚠️  Warning: External scripts detected"
+          else
+            echo "✅ No external scripts from untrusted sources"
+          fi
+
+  performance:
+    runs-on: ubuntu-latest
+    name: Performance Check
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Analyze bundle
+        run: |
+          echo "📦 Analyzing page weight..."
+
+          total_size=0
+          for file in index.html README.md; do
+            if [ -f "$file" ]; then
+              size=$(wc -c < "$file")
+              total_size=$((total_size + size))
+              echo "  $file: $(numfmt --to=iec-i --suffix=B $size)"
+            fi
+          done
+
+          echo "Total size: $(numfmt --to=iec-i --suffix=B $total_size)"
+
+          if [ $total_size -lt 524288 ]; then
+            echo "✅ Excellent: Total size under 512KB"
+          elif [ $total_size -lt 1048576 ]; then
+            echo "✅ Good: Total size under 1MB"
+          else
+            echo "⚠️  Warning: Total size exceeds 1MB"
+          fi
+
+      - name: Check for optimization opportunities
+        run: |
+          echo "🎯 Checking optimization opportunities..."
+
+          # Check if CSS is minified
+          if grep -q "^[[:space:]]*$" index.html; then
+            lines=$(grep -c "^[[:space:]]*$" index.html || true)
+            echo "📝 Found $lines blank lines - consider minification"
+          fi
+
+          # Check for comments
+          comments=$(grep -c "<!--" index.html || true)
+          if [ $comments -gt 0 ]; then
+            echo "📝 Found $comments HTML comments"
+          fi
+
+          echo "✅ Analysis complete"
+
+  lint:
+    runs-on: ubuntu-latest
+    name: Lint Check
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check code style
+        run: |
+          echo "🎨 Checking code style..."
+
+          # Check indentation consistency
+          if grep -qP "^\t" index.html && grep -qP "^    " index.html; then
+            echo "⚠️  Warning: Mixed tabs and spaces detected"
+          else
+            echo "✅ Consistent indentation"
+          fi
+
+          # Check for trailing whitespace
+          if grep -q "[[:space:]]$" index.html; then
+            echo "⚠️  Warning: Trailing whitespace found"
+          else
+            echo "✅ No trailing whitespace"
+          fi
+
+          # Check line endings
+          if file index.html | grep -q "CRLF"; then
+            echo "⚠️  Warning: Windows line endings (CRLF) detected"
+          else
+            echo "✅ Unix line endings (LF)"
+          fi
