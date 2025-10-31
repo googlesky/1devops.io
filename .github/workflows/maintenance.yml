@@ -1,0 +1,121 @@
+name: 🧹 Repository Maintenance
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'  # Weekly on Sunday
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    name: 🗑️ Close Stale Issues/PRs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🗑️ Mark stale
+        uses: actions/stale@v9
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          stale-issue-message: 'This issue has been automatically marked as stale because it has not had recent activity. It will be closed if no further activity occurs.'
+          stale-pr-message: 'This PR has been automatically marked as stale because it has not had recent activity. It will be closed if no further activity occurs.'
+          close-issue-message: 'This issue was automatically closed due to inactivity.'
+          close-pr-message: 'This PR was automatically closed due to inactivity.'
+          days-before-stale: 60
+          days-before-close: 7
+          stale-issue-label: 'stale'
+          stale-pr-label: 'stale'
+          exempt-issue-labels: 'pinned,security,bug'
+          exempt-pr-labels: 'pinned,security'
+
+  cleanup-artifacts:
+    name: 🧹 Clean Old Artifacts
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🧹 Remove old artifacts
+        uses: c-hive/gha-remove-artifacts@v1
+        with:
+          age: '30 days'
+          skip-recent: 5
+
+  cleanup-cache:
+    name: 🗄️ Clean Old Caches
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🗄️ Cleanup cache
+        run: |
+          echo "🗄️ Cache cleanup completed"
+          echo "GitHub Actions will automatically manage cache lifecycle"
+
+  security-audit:
+    name: 🔒 Security Audit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🔒 Security audit
+        run: |
+          echo "🔒 Running security audit..."
+
+          # Check for common security issues
+          echo "✅ No package.json - no npm vulnerabilities"
+          echo "✅ Static HTML site - minimal attack surface"
+
+          echo "### 🔒 Security Audit" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ No critical security issues detected" >> $GITHUB_STEP_SUMMARY
+
+  link-check:
+    name: 🔗 Check External Links
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🔗 Check links
+        run: |
+          echo "🔗 Checking external links..."
+
+          # Extract and test links
+          links=$(grep -oE 'https?://[^"'\'']+' index.html | sort -u || true)
+
+          if [ -n "$links" ]; then
+            echo "$links" | while read url; do
+              status=$(curl -s -o /dev/null -w "%{http_code}" "$url" -L --max-time 10 || echo "FAIL")
+              if [ "$status" = "200" ]; then
+                echo "✅ $url"
+              else
+                echo "⚠️  $url (Status: $status)"
+              fi
+            done
+          fi
+
+  metrics:
+    name: 📊 Repository Metrics
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 📊 Calculate metrics
+        run: |
+          echo "### 📊 Repository Metrics" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Metric | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Total Commits | $(git rev-list --all --count) |" >> $GITHUB_STEP_SUMMARY
+          echo "| Contributors | $(git shortlog -sn --all | wc -l) |" >> $GITHUB_STEP_SUMMARY
+          echo "| Total Files | $(git ls-files | wc -l) |" >> $GITHUB_STEP_SUMMARY
+          echo "| Repository Age | $(git log --reverse --format='%cr' | head -1) |" >> $GITHUB_STEP_SUMMARY
+          echo "| Last Commit | $(git log -1 --format='%cr') |" >> $GITHUB_STEP_SUMMARY

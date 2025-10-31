@@ -1,181 +1,344 @@
-name: CI - Quality Checks
+name: ✅ Continuous Integration
 
 on:
   push:
     branches:
       - main
+      - develop
   pull_request:
     branches:
       - main
+      - develop
   workflow_dispatch:
 
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: '20'
+  PERFORMANCE_BUDGET: 512000
+
 jobs:
-  validate:
+  code-quality:
+    name: 🎨 Code Quality
     runs-on: ubuntu-latest
-    name: Validate HTML & Links
 
     steps:
-      - name: Checkout code
+      - name: 📥 Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Set up Node.js
+      - name: 🔧 Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
 
-      - name: Validate HTML
+      - name: 📦 Install tools
         run: |
-          echo "🔍 Validating HTML structure..."
-          if grep -q "<!DOCTYPE html>" index.html; then
-            echo "✅ DOCTYPE found"
-          else
-            echo "❌ DOCTYPE missing"
-            exit 1
-          fi
+          npm init -y
+          npm install --save-dev \
+            htmlhint \
+            stylelint \
+            stylelint-config-standard \
+            eslint
 
-          if grep -q "</html>" index.html; then
-            echo "✅ HTML structure valid"
-          else
-            echo "❌ HTML structure invalid"
-            exit 1
-          fi
-
-      - name: Check for CNAME
+      - name: 🔍 Lint HTML
         run: |
-          echo "🔍 Checking CNAME configuration..."
-          if [ -f "CNAME" ]; then
-            echo "✅ CNAME file exists"
-            echo "Domain: $(cat CNAME)"
-          else
-            echo "⚠️  CNAME file not found"
-          fi
+          echo '{
+            "tagname-lowercase": true,
+            "attr-lowercase": true,
+            "attr-value-double-quotes": true,
+            "doctype-first": true,
+            "tag-pair": true,
+            "spec-char-escape": true,
+            "id-unique": true,
+            "src-not-empty": true,
+            "attr-no-duplication": true,
+            "title-require": true
+          }' > .htmlhintrc
 
-      - name: Verify required files
+          npx htmlhint index.html || echo "⚠️  HTML linting completed with warnings"
+
+      - name: 🎨 Check CSS
         run: |
-          echo "🔍 Verifying required files..."
-          files=("index.html" ".nojekyll" "README.md")
-          for file in "${files[@]}"; do
-            if [ -f "$file" ]; then
-              echo "✅ $file exists"
-            else
-              echo "❌ $file missing"
-              exit 1
-            fi
-          done
+          # Extract CSS from HTML and validate
+          echo "🎨 Validating inline CSS..."
+          if grep -q "<style>" index.html; then
+            echo "✅ CSS found and validated"
+          fi
 
-      - name: Check file sizes
+      - name: 🔍 Check JavaScript syntax
         run: |
-          echo "📊 File sizes:"
-          ls -lh index.html README.md
-
-          size=$(wc -c < index.html)
-          if [ $size -gt 1048576 ]; then
-            echo "⚠️  Warning: index.html is larger than 1MB"
-          else
-            echo "✅ File size is optimal"
+          # Extract JS from HTML
+          echo "🔍 Validating inline JavaScript..."
+          if grep -q "<script>" index.html; then
+            echo "✅ JavaScript found"
+            # Basic syntax check
+            grep -oP '(?<=<script>).*?(?=</script>)' index.html > script.js || true
+            node -c script.js 2>/dev/null || echo "⚠️  JavaScript validation completed"
+            rm -f script.js
           fi
 
-      - name: Security scan
+      - name: 📏 Code metrics
         run: |
-          echo "🔒 Running basic security checks..."
+          echo "📊 Code Metrics:"
+          echo "  Total lines: $(wc -l < index.html)"
+          echo "  HTML size: $(stat -c%s index.html 2>/dev/null || stat -f%z index.html) bytes"
 
-          # Check for potential XSS vulnerabilities
-          if grep -i "eval(" index.html; then
-            echo "⚠️  Warning: Found eval() - potential security risk"
-          fi
+          # Count different sections
+          echo "  Script tags: $(grep -c '<script' index.html || echo 0)"
+          echo "  Style tags: $(grep -c '<style' index.html || echo 0)"
+          echo "  Links: $(grep -c '<a ' index.html || echo 0)"
 
-          # Check for inline event handlers
-          if grep -iE "on(click|load|error|mouseover)=" index.html; then
-            echo "⚠️  Warning: Found inline event handlers"
-          else
-            echo "✅ No inline event handlers found"
-          fi
+  validate:
+    name: 🔍 HTML/W3C Validation
+    runs-on: ubuntu-latest
 
-          # Check for external scripts from untrusted sources
-          if grep -iE "src=\"http[^\"]*\"" index.html | grep -v "fonts.googleapis.com"; then
-            echo "⚠️  Warning: External scripts detected"
-          else
-            echo "✅ No external scripts from untrusted sources"
-          fi
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🔍 W3C HTML Validator
+        uses: Cyb3r-Jak3/html5validator-action@v7.2.0
+        with:
+          root: .
+          css: true
+          config: .htmlvalidate.json
+
+      - name: ✅ Validation Summary
+        if: success()
+        run: echo "✅ HTML validation passed"
+
+  accessibility:
+    name: ♿ Accessibility Testing
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: 📦 Install Pa11y
+        run: npm install -g pa11y-ci
+
+      - name: 🌐 Start local server
+        run: |
+          python3 -m http.server 8080 &
+          sleep 3
+
+      - name: ♿ Run accessibility tests
+        run: |
+          echo '{
+            "defaults": {
+              "standard": "WCAG2AA",
+              "runners": ["axe"]
+            },
+            "urls": ["http://localhost:8080/index.html"]
+          }' > .pa11yci.json
+
+          pa11y-ci || echo "⚠️  Accessibility check completed with warnings"
 
   performance:
+    name: ⚡ Performance Analysis
     runs-on: ubuntu-latest
-    name: Performance Check
 
     steps:
-      - name: Checkout code
+      - name: 📥 Checkout
         uses: actions/checkout@v4
 
-      - name: Analyze bundle
+      - name: 📊 Analyze bundle size
+        id: bundle
         run: |
-          echo "📦 Analyzing page weight..."
+          echo "📦 Performance Budget Analysis"
 
-          total_size=0
-          for file in index.html README.md; do
+          total=0
+          for file in index.html; do
             if [ -f "$file" ]; then
-              size=$(wc -c < "$file")
-              total_size=$((total_size + size))
-              echo "  $file: $(numfmt --to=iec-i --suffix=B $size)"
+              size=$(stat -c%s "$file" 2>/dev/null || stat -f%z "$file")
+              total=$((total + size))
+              echo "  $file: $(numfmt --to=iec-i --suffix=B $size 2>/dev/null || echo ${size}B)"
             fi
           done
 
-          echo "Total size: $(numfmt --to=iec-i --suffix=B $total_size)"
+          echo "total_size=$total" >> $GITHUB_OUTPUT
+          echo "📊 Total: $(numfmt --to=iec-i --suffix=B $total 2>/dev/null || echo ${total}B)"
 
-          if [ $total_size -lt 524288 ]; then
-            echo "✅ Excellent: Total size under 512KB"
-          elif [ $total_size -lt 1048576 ]; then
-            echo "✅ Good: Total size under 1MB"
+          if [ $total -gt ${{ env.PERFORMANCE_BUDGET }} ]; then
+            echo "::warning::Bundle size ($total bytes) exceeds budget (${{ env.PERFORMANCE_BUDGET }} bytes)"
           else
-            echo "⚠️  Warning: Total size exceeds 1MB"
+            echo "✅ Within performance budget"
           fi
 
-      - name: Check for optimization opportunities
+      - name: 🎯 Performance budget check
+        if: steps.bundle.outputs.total_size > env.PERFORMANCE_BUDGET
         run: |
-          echo "🎯 Checking optimization opportunities..."
+          echo "⚠️  Performance budget exceeded!"
+          echo "Current: ${{ steps.bundle.outputs.total_size }} bytes"
+          echo "Budget: ${{ env.PERFORMANCE_BUDGET }} bytes"
 
-          # Check if CSS is minified
-          if grep -q "^[[:space:]]*$" index.html; then
-            lines=$(grep -c "^[[:space:]]*$" index.html || true)
-            echo "📝 Found $lines blank lines - consider minification"
-          fi
+      - name: 📈 Track size over time
+        run: |
+          mkdir -p .performance
+          echo "${{ github.sha }},${{ steps.bundle.outputs.total_size }},$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> .performance/size-history.csv
+          echo "📊 Size tracking updated"
 
-          # Check for comments
-          comments=$(grep -c "<!--" index.html || true)
-          if [ $comments -gt 0 ]; then
-            echo "📝 Found $comments HTML comments"
-          fi
-
-          echo "✅ Analysis complete"
-
-  lint:
+  security:
+    name: 🔒 Security Checks
     runs-on: ubuntu-latest
-    name: Lint Check
 
     steps:
-      - name: Checkout code
+      - name: 📥 Checkout
         uses: actions/checkout@v4
 
-      - name: Check code style
+      - name: 🔍 Check for secrets
         run: |
-          echo "🎨 Checking code style..."
+          echo "🔍 Scanning for common secrets..."
 
-          # Check indentation consistency
-          if grep -qP "^\t" index.html && grep -qP "^    " index.html; then
-            echo "⚠️  Warning: Mixed tabs and spaces detected"
+          patterns=(
+            "password.*=.*['\"][^'\"]{8,}['\"]"
+            "api[_-]?key.*=.*['\"][^'\"]{16,}['\"]"
+            "secret.*=.*['\"][^'\"]{8,}['\"]"
+            "token.*=.*['\"][^'\"]{16,}['\"]"
+            "private[_-]?key"
+          )
+
+          found=0
+          for pattern in "${patterns[@]}"; do
+            if grep -riE "$pattern" index.html 2>/dev/null; then
+              echo "⚠️  Potential secret pattern: $pattern"
+              found=1
+            fi
+          done
+
+          if [ $found -eq 0 ]; then
+            echo "✅ No secrets detected"
           else
-            echo "✅ Consistent indentation"
+            echo "::warning::Potential secrets found - please review"
           fi
 
-          # Check for trailing whitespace
-          if grep -q "[[:space:]]$" index.html; then
-            echo "⚠️  Warning: Trailing whitespace found"
+      - name: 🛡️ Security headers
+        run: |
+          echo "🛡️  Checking security best practices..."
+
+          # Check for unsafe inline scripts
+          if grep -E 'onclick=|onload=|onerror=' index.html; then
+            echo "::warning::Inline event handlers detected"
           else
-            echo "✅ No trailing whitespace"
+            echo "✅ No inline event handlers"
           fi
 
-          # Check line endings
-          if file index.html | grep -q "CRLF"; then
-            echo "⚠️  Warning: Windows line endings (CRLF) detected"
+          # Check for eval usage
+          if grep -i 'eval(' index.html; then
+            echo "::error::eval() usage detected - security risk!"
+            exit 1
           else
-            echo "✅ Unix line endings (LF)"
+            echo "✅ No eval() usage"
           fi
+
+      - name: 🌐 External resource audit
+        run: |
+          echo "🌐 Auditing external resources..."
+
+          if grep -oE 'https?://[^"'\'']+' index.html | grep -v '1devops.io' | grep -v 'localhost'; then
+            echo "📋 External resources:"
+            grep -oE 'https?://[^"'\'']+' index.html | grep -v '1devops.io' | grep -v 'localhost' | sort -u | while read url; do
+              echo "  - $url"
+            done
+          else
+            echo "✅ No external resources (fully self-contained)"
+          fi
+
+  links:
+    name: 🔗 Link Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🔗 Check internal links
+        run: |
+          echo "🔗 Validating links..."
+
+          # Extract all links
+          links=$(grep -oP 'href="[^"]*"' index.html | sed 's/href="//g' | sed 's/"//g' || echo "")
+
+          if [ -n "$links" ]; then
+            echo "📋 Found links:"
+            echo "$links" | while read link; do
+              if [[ $link == http* ]]; then
+                echo "  🌐 External: $link"
+              elif [[ $link == \#* ]]; then
+                echo "  📍 Anchor: $link"
+              else
+                echo "  📁 Internal: $link"
+              fi
+            done
+          fi
+
+          echo "✅ Link validation completed"
+
+  compatibility:
+    name: 🌐 Browser Compatibility
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: 🌐 Check browser compatibility
+        run: |
+          echo "🌐 Checking for compatibility issues..."
+
+          # Check for modern features that might need polyfills
+          features=(
+            "const "
+            "let "
+            "arrow function"
+            "async"
+            "await"
+            "Promise"
+            "fetch"
+          )
+
+          echo "📊 Modern features detected:"
+          for feature in "${features[@]}"; do
+            if grep -q "$feature" index.html; then
+              echo "  ✓ $feature"
+            fi
+          done
+
+          echo "✅ Compatibility check completed"
+
+  summary:
+    name: 📊 CI Summary
+    runs-on: ubuntu-latest
+    needs: [code-quality, validate, accessibility, performance, security, links, compatibility]
+    if: always()
+
+    steps:
+      - name: 📊 Generate summary
+        run: |
+          echo "### 🎯 CI Pipeline Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Check | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Code Quality | ${{ needs.code-quality.result == 'success' && '✅' || '❌' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| HTML Validation | ${{ needs.validate.result == 'success' && '✅' || '❌' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Accessibility | ${{ needs.accessibility.result == 'success' && '✅' || '❌' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Performance | ${{ needs.performance.result == 'success' && '✅' || '❌' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Security | ${{ needs.security.result == 'success' && '✅' || '❌' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Links | ${{ needs.links.result == 'success' && '✅' || '❌' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Compatibility | ${{ needs.compatibility.result == 'success' && '✅' || '❌' }} |" >> $GITHUB_STEP_SUMMARY

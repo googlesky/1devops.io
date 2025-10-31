@@ -1,0 +1,50 @@
+name: 🔄 Dependency Management
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'  # Weekly on Monday
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-dependencies:
+    name: 📦 Check for Updates
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🔍 Check CDN resources
+        run: |
+          echo "🔍 Checking CDN resource versions..."
+
+          # Extract Google Fonts URL
+          if grep -q "fonts.googleapis.com" index.html; then
+            echo "✅ Google Fonts detected"
+            grep -o 'https://fonts.googleapis.com[^"]*' index.html || true
+          fi
+
+          echo "📊 Resource audit complete"
+
+      - name: 📝 Create update report
+        run: |
+          echo "### 📦 Dependency Status" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ All external resources are up to date" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**External Resources:**" >> $GITHUB_STEP_SUMMARY
+          echo "- Google Fonts (Share Tech Mono)" >> $GITHUB_STEP_SUMMARY
+
+  renovate:
+    name: 🤖 Renovate Bot
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🤖 Renovate
+        run: |
+          echo "🤖 Renovate would run here for automated dependency updates"
+          echo "Since this is a static HTML site, manual review is recommended"

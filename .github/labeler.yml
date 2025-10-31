@@ -1,0 +1,20 @@
+# Configuration for actions/labeler
+
+documentation:
+  - '**/*.md'
+  - 'README.md'
+
+ci/cd:
+  - '.github/workflows/**'
+  - '.github/**'
+
+html:
+  - '**/*.html'
+  - 'index.html'
+
+configuration:
+  - '*.json'
+  - '*.yml'
+  - '*.yaml'
+  - '.gitignore'
+  - 'CNAME'

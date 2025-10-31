@@ -1,0 +1,244 @@
+name: 🤖 PR Automation
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  pr-labeler:
+    name: 🏷️ Auto Label PR
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🏷️ Apply labels
+        uses: actions/labeler@v5
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🏷️ Size label
+        uses: codelytv/pr-size-labeler@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          xs_label: 'size/XS'
+          xs_max_size: 10
+          s_label: 'size/S'
+          s_max_size: 100
+          m_label: 'size/M'
+          m_max_size: 500
+          l_label: 'size/L'
+          l_max_size: 1000
+          xl_label: 'size/XL'
+
+  pr-validation:
+    name: ✅ PR Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔍 Check PR title
+        uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          types: |
+            feat
+            fix
+            docs
+            style
+            refactor
+            perf
+            test
+            chore
+            ci
+            build
+            revert
+          requireScope: false
+
+      - name: 📝 Check PR description
+        run: |
+          PR_BODY="${{ github.event.pull_request.body }}"
+
+          if [ -z "$PR_BODY" ] || [ "$PR_BODY" = "null" ]; then
+            echo "::error::PR description is empty"
+            exit 1
+          fi
+
+          if [ ${#PR_BODY} -lt 20 ]; then
+            echo "::error::PR description is too short (minimum 20 characters)"
+            exit 1
+          fi
+
+          echo "✅ PR description is adequate"
+
+  pr-preview:
+    name: 🌐 Deploy PR Preview
+    runs-on: ubuntu-latest
+    if: github.event.action != 'closed'
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: ⚡ Build preview
+        run: |
+          # Add PR number to page
+          sed -i "s|</body>|<div style='position:fixed;bottom:10px;right:10px;background:#ff0;color:#000;padding:5px;font-size:12px;z-index:9999'>PR #${{ github.event.pull_request.number }}</div></body>|g" index.html
+
+      - name: 📤 Comment preview link
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            const comment = `## 🌐 PR Preview
+
+            **Preview URL:** This PR can be previewed locally by checking out this branch.
+
+            ### Quick Preview:
+            \`\`\`bash
+            git fetch origin pull/${prNumber}/head:pr-${prNumber}
+            git checkout pr-${prNumber}
+            python3 -m http.server 8080
+            # Open http://localhost:8080
+            \`\`\`
+
+            ### Changes in this PR:
+            - Files changed: ${{ github.event.pull_request.changed_files }}
+            - Additions: +${{ github.event.pull_request.additions }}
+            - Deletions: -${{ github.event.pull_request.deletions }}
+
+            ---
+            🤖 Auto-generated preview information`;
+
+            github.rest.issues.createComment({
+              issue_number: prNumber,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+
+  pr-checklist:
+    name: ✅ PR Checklist
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: ✅ Verify checklist
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.pull_request.body || '';
+
+            const checks = {
+              'Code quality': /\[x\].*code.*quality/i.test(body),
+              'Tests': /\[x\].*test/i.test(body),
+              'Documentation': /\[x\].*doc/i.test(body),
+            };
+
+            let message = '### ✅ PR Checklist Status\n\n';
+            Object.entries(checks).forEach(([check, passed]) => {
+              message += `- ${passed ? '✅' : '⚠️'} ${check}\n`;
+            });
+
+            console.log(message);
+
+  code-review-assistant:
+    name: 🤖 AI Code Review
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🤖 Analyze changes
+        run: |
+          echo "📊 PR Change Analysis:"
+          echo "  Files changed: ${{ github.event.pull_request.changed_files }}"
+          echo "  Additions: +${{ github.event.pull_request.additions }}"
+          echo "  Deletions: -${{ github.event.pull_request.deletions }}"
+
+          # Get changed files
+          git diff --name-only origin/${{ github.event.pull_request.base.ref }}...HEAD
+
+      - name: 📝 Generate review summary
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const changedFiles = ${{ github.event.pull_request.changed_files }};
+            const additions = ${{ github.event.pull_request.additions }};
+            const deletions = ${{ github.event.pull_request.deletions }};
+
+            let riskLevel = 'Low';
+            if (changedFiles > 10 || additions + deletions > 500) {
+              riskLevel = 'High';
+            } else if (changedFiles > 5 || additions + deletions > 200) {
+              riskLevel = 'Medium';
+            }
+
+            const summary = `## 🤖 Automated Review Summary
+
+            **Risk Level:** ${riskLevel}
+            **Complexity:**
+            - Files changed: ${changedFiles}
+            - Lines added: ${additions}
+            - Lines removed: ${deletions}
+            - Net change: ${additions - deletions}
+
+            **Recommendations:**
+            ${riskLevel === 'High' ? '⚠️ This is a large PR. Consider breaking it into smaller changes.' : ''}
+            ${changedFiles > 1 ? '✓ Review each file carefully for potential issues.' : ''}
+            ${additions > deletions ? '📈 Code size is increasing - ensure this is intentional.' : ''}
+
+            ---
+            🤖 This is an automated analysis. Human review is still required.`;
+
+            github.rest.issues.createComment({
+              issue_number: context.payload.pull_request.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: summary
+            });
+
+  pr-metrics:
+    name: 📊 PR Metrics
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 📊 Calculate metrics
+        run: |
+          echo "### 📊 PR Metrics" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Metric | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Files Changed | ${{ github.event.pull_request.changed_files }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Additions | +${{ github.event.pull_request.additions }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Deletions | -${{ github.event.pull_request.deletions }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Commits | ${{ github.event.pull_request.commits }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Author | @${{ github.event.pull_request.user.login }} |" >> $GITHUB_STEP_SUMMARY
