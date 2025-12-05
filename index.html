@@ -15,6 +15,58 @@
     <link rel="stylesheet" href="/assets/css/main.css?v=1764928688">
     <link rel="stylesheet" href="/assets/css/dropdown.css?v=1764928688">
 
+    <!-- Hero Stats Bar Override -->
+    <style>
+        .hero-stats-bar {
+            background: rgba(15, 23, 42, 0.95) !important;
+            backdrop-filter: none !important;
+            border-top: 1px solid rgba(255,255,255,0.1) !important;
+            padding: 2.5rem 0 !important;
+            margin-top: auto !important;
+        }
+        .hero-stats-bar .stats-grid {
+            display: grid !important;
+            grid-template-columns: repeat(4, 1fr) !important;
+            gap: 2rem !important;
+            text-align: center !important;
+        }
+        .hero-stats-bar .stat-item {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 1rem !important;
+            backdrop-filter: none !important;
+        }
+        .hero-stats-bar .stat-number {
+            display: block !important;
+            font-size: 2.5rem !important;
+            font-weight: 800 !important;
+            color: #ffffff !important;
+            background: none !important;
+            -webkit-background-clip: unset !important;
+            -webkit-text-fill-color: #ffffff !important;
+            background-clip: unset !important;
+            margin-bottom: 0.5rem !important;
+            line-height: 1.2 !important;
+        }
+        .hero-stats-bar .stat-number .counter {
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
+        }
+        .hero-stats-bar .stat-label {
+            display: block !important;
+            font-size: 0.8rem !important;
+            color: rgba(255,255,255,0.7) !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.08em !important;
+        }
+        @media (max-width: 768px) {
+            .hero-stats-bar .stats-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+    </style>
+
     <!-- Favicons & Manifest -->
     <link rel="icon" type="image/svg+xml" href="/assets/images/logo.svg">
     <link rel="alternate icon" type="image/png" href="/assets/images/favicon.png">
@@ -294,24 +346,24 @@
         </div>
 
         <!-- Stats Bar -->
-        <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-top: 1px solid rgba(255,255,255,0.1); padding: 3rem 0;">
+        <div class="hero-stats-bar">
             <div class="container">
-                <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
-                    <div data-count="12" style="text-align: center; flex: 1; min-width: 150px;">
-                        <div style="font-size: 3rem; font-weight: 800; color: #0ea5e9; line-height: 1;"><span class="counter">0</span>+</div>
-                        <div style="font-size: 0.875rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.5rem;">Years Experience</div>
+                <div class="stats-grid">
+                    <div class="stat-item" data-count="12">
+                        <span class="stat-number"><span class="counter">0</span>+</span>
+                        <span class="stat-label">Years Experience</span>
                     </div>
-                    <div data-count="100" style="text-align: center; flex: 1; min-width: 150px;">
-                        <div style="font-size: 3rem; font-weight: 800; color: #0ea5e9; line-height: 1;"><span class="counter">0</span>+</div>
-                        <div style="font-size: 0.875rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.5rem;">Projects Delivered</div>
+                    <div class="stat-item" data-count="100">
+                        <span class="stat-number"><span class="counter">0</span>+</span>
+                        <span class="stat-label">Projects Delivered</span>
                     </div>
-                    <div data-count="99" style="text-align: center; flex: 1; min-width: 150px;">
-                        <div style="font-size: 3rem; font-weight: 800; color: #0ea5e9; line-height: 1;"><span class="counter">0</span>.9%</div>
-                        <div style="font-size: 0.875rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.5rem;">Uptime Achieved</div>
+                    <div class="stat-item" data-count="99">
+                        <span class="stat-number"><span class="counter">0</span>.9%</span>
+                        <span class="stat-label">Uptime Achieved</span>
                     </div>
-                    <div data-count="50" style="text-align: center; flex: 1; min-width: 150px;">
-                        <div style="font-size: 3rem; font-weight: 800; color: #0ea5e9; line-height: 1;"><span class="counter">0</span>+</div>
-                        <div style="font-size: 0.875rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.5rem;">Teams Mentored</div>
+                    <div class="stat-item" data-count="50">
+                        <span class="stat-number"><span class="counter">0</span>+</span>
+                        <span class="stat-label">Teams Mentored</span>
                     </div>
                 </div>
             </div>
@@ -744,7 +796,7 @@ document.addEventListener('DOMContentLoaded', function() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const target = entry.target;
-                const parent = target.closest('[data-count]');
+                const parent = target.closest('.stat-item');
                 const countTo = parseInt(parent.dataset.count);
 
                 let count = 0;
