@@ -130,6 +130,60 @@
                 max-width: 260px;
             }
         }
+
+        /* Portfolio Section Fix */
+        .portfolio-card.large .portfolio-image {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%) !important;
+            position: relative;
+            overflow: hidden;
+        }
+        .portfolio-card.large .portfolio-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(16, 185, 129, 0.15) 0%, transparent 50%);
+            z-index: 0;
+        }
+        .portfolio-card.large .portfolio-overlay {
+            display: none !important;
+        }
+        .portfolio-card.large .portfolio-metrics {
+            position: relative;
+            z-index: 1;
+            padding: 3rem 2rem;
+        }
+        .portfolio-card.large .metric-value {
+            color: #60a5fa !important;
+            font-size: 3rem !important;
+            font-weight: 800 !important;
+        }
+        .portfolio-card.large .metric-label {
+            color: rgba(255,255,255,0.7) !important;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.75rem !important;
+        }
+        .portfolio-card {
+            background: rgba(30, 41, 59, 0.5) !important;
+            border: 1px solid rgba(255,255,255,0.1) !important;
+            border-radius: 16px !important;
+        }
+        .portfolio-card:hover {
+            border-color: rgba(96, 165, 250, 0.3) !important;
+        }
+        .portfolio-tag {
+            background: rgba(96, 165, 250, 0.2) !important;
+            color: #60a5fa !important;
+            border: none !important;
+        }
+        .portfolio-result .result-value {
+            color: #60a5fa !important;
+        }
     </style>
 
     <!-- Favicons & Manifest -->
