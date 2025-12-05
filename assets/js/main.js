@@ -697,52 +697,17 @@ class DevOpsApp {
     }
 
     // Counter Animation for Stats
+    // Note: Hero stats counter is handled by inline script in HTML
+    // This only handles elements with data-count that have a .counter child
     initCounterAnimations() {
-        const counters = document.querySelectorAll('[data-count]');
-        if (counters.length === 0) return;
-
-        const counterObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    this.animateCounter(entry.target);
-                    counterObserver.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.5
-        });
-
-        counters.forEach(counter => {
-            counterObserver.observe(counter);
-        });
+        // Skip - counter animation is handled inline in index.html
+        // to preserve the styled HTML structure
+        return;
     }
 
     animateCounter(element) {
-        const target = parseInt(element.getAttribute('data-count'));
-        const duration = parseInt(element.getAttribute('data-duration')) || 2000;
-        const suffix = element.getAttribute('data-suffix') || '';
-        const prefix = element.getAttribute('data-prefix') || '';
-        const start = 0;
-        const startTime = performance.now();
-
-        const updateCounter = (currentTime) => {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-
-            // Easing function (ease-out-cubic)
-            const easeOutCubic = 1 - Math.pow(1 - progress, 3);
-            const current = Math.floor(start + (target - start) * easeOutCubic);
-
-            element.textContent = prefix + current.toLocaleString() + suffix;
-
-            if (progress < 1) {
-                requestAnimationFrame(updateCounter);
-            } else {
-                element.textContent = prefix + target.toLocaleString() + suffix;
-            }
-        };
-
-        requestAnimationFrame(updateCounter);
+        // Disabled - was destroying styled HTML by replacing textContent
+        return;
     }
     
     // Filter functionality for lists and tables
