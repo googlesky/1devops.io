@@ -294,24 +294,24 @@
         </div>
 
         <!-- Stats Bar -->
-        <div class="hero-stats-bar">
+        <div class="hero-stats-bar" style="background: rgba(0,0,0,0.4); border-top: 1px solid rgba(255,255,255,0.1); padding: 2rem 0; margin-top: auto;">
             <div class="container">
-                <div class="stats-grid">
-                    <div class="stat-item" data-count="12">
-                        <span class="stat-number"><span class="counter">0</span>+</span>
-                        <span class="stat-label">Years Experience</span>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; text-align: center;">
+                    <div data-count="12" style="padding: 1rem;">
+                        <span style="display: block; font-size: 2.5rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem;"><span class="counter">0</span>+</span>
+                        <span style="display: block; font-size: 0.875rem; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.05em;">Years Experience</span>
                     </div>
-                    <div class="stat-item" data-count="100">
-                        <span class="stat-number"><span class="counter">0</span>+</span>
-                        <span class="stat-label">Projects Delivered</span>
+                    <div data-count="100" style="padding: 1rem;">
+                        <span style="display: block; font-size: 2.5rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem;"><span class="counter">0</span>+</span>
+                        <span style="display: block; font-size: 0.875rem; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.05em;">Projects Delivered</span>
                     </div>
-                    <div class="stat-item" data-count="99">
-                        <span class="stat-number"><span class="counter">0</span>.9%</span>
-                        <span class="stat-label">Uptime Achieved</span>
+                    <div data-count="99" style="padding: 1rem;">
+                        <span style="display: block; font-size: 2.5rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem;"><span class="counter">0</span>.9%</span>
+                        <span style="display: block; font-size: 0.875rem; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.05em;">Uptime Achieved</span>
                     </div>
-                    <div class="stat-item" data-count="50">
-                        <span class="stat-number"><span class="counter">0</span>+</span>
-                        <span class="stat-label">Teams Mentored</span>
+                    <div data-count="50" style="padding: 1rem;">
+                        <span style="display: block; font-size: 2.5rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem;"><span class="counter">0</span>+</span>
+                        <span style="display: block; font-size: 0.875rem; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.05em;">Teams Mentored</span>
                     </div>
                 </div>
             </div>
@@ -744,7 +744,7 @@ document.addEventListener('DOMContentLoaded', function() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const target = entry.target;
-                const parent = target.closest('.stat-item');
+                const parent = target.closest('[data-count]');
                 const countTo = parseInt(parent.dataset.count);
 
                 let count = 0;
