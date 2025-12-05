@@ -186,14 +186,25 @@
         }
 
         /* Fix gradient text clipping */
+        .hero-content {
+            overflow: visible !important;
+            max-width: none !important;
+        }
         .hero-title {
             overflow: visible !important;
+            width: auto !important;
+            max-width: none !important;
+        }
+        .hero-title .title-line {
+            display: block !important;
+            overflow: visible !important;
+            white-space: nowrap !important;
         }
         .hero-title .gradient-text {
-            display: inline-block !important;
-            padding-right: 0.1em !important;
-            -webkit-background-clip: text !important;
-            background-clip: text !important;
+            display: block !important;
+            padding-right: 0.2em !important;
+            overflow: visible !important;
+            width: fit-content !important;
         }
     </style>
 
