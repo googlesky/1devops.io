@@ -1,0 +1,587 @@
+---
+layout: default
+title: "Senior DevOps Engineer & Cloud Architect"
+description: "12+ years transforming infrastructure at scale. Expert in Kubernetes, AWS, Terraform, and building resilient cloud-native platforms."
+---
+
+<div class="homepage">
+    <section class="hero hero-devops">
+        <div class="hero-particles" id="particles"></div>
+        <div class="hero-gradient" aria-hidden="true"></div>
+
+        <!-- Floating Tech Icons -->
+        <div class="floating-icons" aria-hidden="true">
+            <div class="floating-icon icon-kubernetes" style="--delay: 0s; --x: 10%; --y: 20%;">
+                <svg viewBox="0 0 32 32" fill="currentColor"><path d="M15.9.476a2.14 2.14 0 0 0-.823.218L3.932 6.01c-.582.277-1.005.804-1.15 1.432L.054 19.373c-.13.564-.02 1.156.303 1.645l7.426 9.163c.374.462.94.756 1.548.804l11.836.931c.606.048 1.204-.16 1.638-.566l7.66-7.18c.436-.408.687-.99.688-1.598l.07-12.124a2.133 2.133 0 0 0-.753-1.636L22.296 1.39a2.13 2.13 0 0 0-1.074-.48L16.32.49a2.14 2.14 0 0 0-.422-.015zm.063 1.619l4.87.418c.13.011.255.06.357.144l8.173 6.863c.148.12.227.304.227.498l-.07 12.124c0 .188-.078.37-.215.5l-7.66 7.18c-.136.127-.322.19-.511.175l-11.836-.931a.71.71 0 0 1-.484-.252L1.49 19.65a.71.71 0 0 1-.096-.514l2.73-11.93c.045-.196.18-.361.36-.447L15.63 2.14a.713.713 0 0 1 .272-.068l.15.02z"/><path d="M16 7.042a.71.71 0 0 0-.54.26l-5.196 5.986a.71.71 0 0 0-.065.826l3.109 4.47a.71.71 0 0 0 .582.303h4.22a.71.71 0 0 0 .582-.302l3.11-4.47a.71.71 0 0 0-.066-.827l-5.196-5.985a.71.71 0 0 0-.54-.261zm0 1.89l4.05 4.667l-2.423 3.484h-3.254l-2.423-3.484z"/></svg>
+            </div>
+            <div class="floating-icon icon-docker" style="--delay: 0.5s; --x: 85%; --y: 15%;">
+                <svg viewBox="0 0 32 32" fill="currentColor"><path d="M18.286 13.714h2.857v-2.571h-2.857zM14.857 13.714h2.857v-2.571h-2.857zM11.429 13.714h2.857v-2.571h-2.857zM8 13.714h2.857v-2.571H8zM14.857 10.571h2.857V8h-2.857zM11.429 10.571h2.857V8h-2.857zM8 10.571h2.857V8H8zM11.429 7.429h2.857V4.857h-2.857zM30.286 14.857c-.914-1.143-2.4-1.486-3.543-1.371-.171-1.371-1.2-2.571-2.228-3.314l-.686-.571-.514.743c-.629.914-1.029 2.171-.914 3.371.057.514.229 1.143.571 1.714-.4.229-.857.457-1.371.629-.686.228-1.429.343-2.171.343H.057l-.057.457c-.171 1.886.114 3.771.914 5.486l.4.743v.057c2.457 4 6.571 5.714 11.086 5.714 9.143 0 16.457-4.114 19.886-13.029h1.714c1.943 0 3.2-.914 4-2.571l.171-.4-.514-.343c-.857-.571-2-1.029-3.371-.657z"/></svg>
+            </div>
+            <div class="floating-icon icon-aws" style="--delay: 1s; --x: 90%; --y: 60%;">
+                <svg viewBox="0 0 32 32" fill="currentColor"><path d="M9.016 13.38c0 .396.043.717.117.95.086.233.191.49.34.767.053.086.074.17.074.245 0 .107-.064.213-.202.32l-.67.447c-.096.064-.191.096-.277.096-.107 0-.213-.054-.32-.149-.149-.16-.277-.33-.383-.5-.107-.18-.213-.382-.33-.618-1.126 1.276-2.487 1.915-4.082 1.915-1.168 0-2.095-.33-2.778-.99-.682-.66-1.03-1.542-1.03-2.645 0-1.169.415-2.117 1.254-2.831.84-.713 1.957-1.07 3.364-1.07.468 0 .95.032 1.457.096.51.064 1.03.16 1.574.277v-1.003c0-1.051-.223-1.787-.66-2.213-.447-.426-1.2-.639-2.276-.639-.49 0-.99.054-1.51.17-.52.117-1.029.266-1.52.447-.226.096-.393.15-.49.17-.096.022-.17.032-.213.032-.19 0-.286-.138-.286-.426v-.522c0-.223.032-.383.107-.479.074-.096.202-.191.393-.287.49-.255 1.083-.468 1.776-.639.693-.181 1.43-.266 2.21-.266 1.68 0 2.906.383 3.693 1.147.776.767 1.169 1.925 1.169 3.482v4.587zM4.6 15.077c.447 0 .915-.085 1.402-.255.49-.17.925-.479 1.296-.905.22-.266.383-.564.479-.894.096-.33.15-.725.15-1.19v-.575c-.405-.085-.83-.159-1.275-.213-.447-.053-.883-.085-1.318-.085-.915 0-1.585.18-2.02.553-.437.373-.65.894-.65 1.574 0 .639.16 1.116.49 1.446.32.34.788.5 1.394.5h.053v.043zM15.465 16.49c-.245 0-.404-.043-.49-.138-.085-.085-.16-.266-.223-.5L12.1 5.383c-.064-.245-.096-.404-.096-.479 0-.191.096-.298.287-.298h1.041c.256 0 .426.043.5.138.086.085.15.266.213.5l1.883 7.426 1.75-7.426c.053-.245.117-.415.202-.5.086-.085.266-.139.51-.139h.852c.256 0 .426.043.51.139.087.085.16.255.214.5l1.776 7.522 1.935-7.522c.064-.245.139-.415.213-.5.086-.085.256-.138.5-.138h.99c.19 0 .297.096.297.298 0 .064-.011.128-.022.202-.01.075-.032.17-.085.298l-2.724 10.47c-.064.244-.138.414-.223.5-.085.085-.256.138-.49.138h-.915c-.256 0-.426-.043-.51-.138-.086-.096-.16-.266-.214-.51l-1.743-7.234-1.734 7.223c-.053.256-.117.426-.202.51-.085.097-.266.14-.51.14h-.914zM25.27 16.734c-.713 0-1.424-.085-2.113-.255-.692-.17-1.233-.352-1.606-.564-.224-.128-.383-.266-.436-.394-.053-.138-.085-.277-.085-.404v-.543c0-.287.107-.426.309-.426.085 0 .17.01.256.043.085.032.213.085.35.138.48.213.99.383 1.543.5.564.117 1.116.17 1.68.17.893 0 1.584-.16 2.074-.479.49-.32.745-.777.745-1.36 0-.404-.128-.734-.383-1.008-.256-.277-.734-.52-1.424-.756l-2.043-.639c-1.03-.32-1.797-.798-2.278-1.435-.479-.628-.724-1.33-.724-2.085 0-.606.128-1.148.383-1.616.256-.468.596-.873 1.03-1.2.436-.34.925-.59 1.5-.767.575-.17 1.18-.256 1.818-.256.32 0 .65.022.98.054.34.043.65.096.958.16.297.075.575.149.84.234.265.085.478.17.638.255.213.117.372.234.468.362.096.117.139.277.139.49v.5c0 .288-.108.437-.31.437-.107 0-.276-.054-.5-.16-.744-.34-1.583-.51-2.51-.51-.81 0-1.447.128-1.893.394-.447.266-.67.671-.67 1.234 0 .404.138.745.415 1.019.276.277.787.553 1.52.798l2 .639c1.02.32 1.756.766 2.202 1.34.447.575.67 1.235.67 1.968 0 .617-.128 1.19-.374 1.69-.256.5-.607.937-1.053 1.298-.447.373-.979.649-1.596.85-.65.202-1.34.298-2.085.298z"/></svg>
+            </div>
+            <div class="floating-icon icon-terraform" style="--delay: 1.5s; --x: 5%; --y: 70%;">
+                <svg viewBox="0 0 32 32" fill="currentColor"><path d="M11.292 6.788v7.762l6.755 3.89V10.68l-6.755-3.89zM18.759 10.68v7.76l6.755-3.89V6.79l-6.755 3.89zM4.486 2.69v7.762l6.755 3.89V6.58L4.486 2.69zM11.292 22.602l6.755 3.89v-7.76l-6.755-3.89v7.76z"/></svg>
+            </div>
+            <div class="floating-icon icon-github" style="--delay: 2s; --x: 15%; --y: 85%;">
+                <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 .396c-8.84 0-16 7.164-16 16 0 7.071 4.584 13.067 10.94 15.18.8.151 1.093-.344 1.093-.769l-.02-2.72c-4.451.965-5.389-2.145-5.389-2.145-.727-1.847-1.78-2.34-1.78-2.34-1.449-.992.116-.973.116-.973 1.6.116 2.444 1.645 2.444 1.645 1.423 2.44 3.74 1.736 4.649 1.329.145-1.033.56-1.74 1.017-2.14-3.553-.4-7.288-1.776-7.288-7.907 0-1.747.62-3.173 1.647-4.293-.18-.404-.72-2.031.14-4.235 0 0 1.34-.429 4.4 1.64 1.28-.356 2.64-.532 4-.54 1.36.008 2.72.184 4 .54 3.04-2.069 4.38-1.64 4.38-1.64.86 2.204.32 3.831.16 4.235 1.02 1.12 1.64 2.546 1.64 4.293 0 6.147-3.74 7.5-7.3 7.893.58.48 1.08 1.46 1.08 2.96l-.02 4.4c0 .424.28.92 1.1.76C27.42 29.457 32 23.462 32 16.396c0-8.836-7.164-16-16-16z"/></svg>
+            </div>
+            <div class="floating-icon icon-prometheus" style="--delay: 2.5s; --x: 80%; --y: 80%;">
+                <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 0C7.163 0 0 7.163 0 16s7.163 16 16 16 16-7.163 16-16S24.837 0 16 0zm0 29.867c-2.293 0-4.16-1.44-4.16-3.2h8.32c0 1.76-1.867 3.2-4.16 3.2zm6.827-4.267H9.173v-2.133h13.654v2.133zm-.053-3.2H9.227c-.053-.053-.107-.107-.16-.16-.853-.96-1.493-2.027-1.92-3.2-.427-1.173-.64-2.453-.64-3.84 0-.747.053-1.44.16-2.08.107-.64.267-1.227.48-1.76.213-.533.48-1.013.8-1.44.32-.427.693-.8 1.12-1.12.427-.32.907-.587 1.44-.8.533-.213 1.12-.373 1.76-.48.64-.107 1.333-.16 2.08-.16s1.44.053 2.08.16c.64.107 1.227.267 1.76.48.533.213 1.013.48 1.44.8.427.32.8.693 1.12 1.12.32.427.587.907.8 1.44.213.533.373 1.12.48 1.76.107.64.16 1.333.16 2.08 0 1.387-.213 2.667-.64 3.84-.427 1.173-1.067 2.24-1.92 3.2-.053.053-.107.107-.16.16z"/></svg>
+            </div>
+        </div>
+
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="hero-badge animate-fade-in">
+                    <span class="badge-dot"></span>
+                    <span>Available for new opportunities</span>
+                </div>
+
+                <h1 class="hero-title animate-fade-in-up">
+                    <span class="title-line">Senior DevOps</span>
+                    <span class="title-line gradient-text">Engineer</span>
+                </h1>
+
+                <p class="hero-subtitle animate-fade-in-up delay-1">
+                    Building resilient cloud infrastructure and automating everything in between.
+                    <strong>12+ years</strong> transforming how teams ship software.
+                </p>
+
+                <!-- Terminal Animation -->
+                <div class="terminal-container animate-fade-in-up delay-2">
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-buttons">
+                                <span class="terminal-btn red"></span>
+                                <span class="terminal-btn yellow"></span>
+                                <span class="terminal-btn green"></span>
+                            </div>
+                            <span class="terminal-title">devops@cloud:~</span>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="terminal-line">
+                                <span class="terminal-prompt">$</span>
+                                <span class="terminal-command" id="typed-text"></span>
+                                <span class="terminal-cursor">|</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-actions animate-fade-in-up delay-3">
+                    <a href="{{ site.calendly.url }}" target="_blank" rel="noopener" class="btn btn-primary btn-lg btn-glow">
+                        <svg class="btn-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        Schedule a Call
+                    </a>
+                    <a href="{{ '/profile/' | relative_url }}" class="btn btn-ghost btn-lg">
+                        <svg class="btn-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                        View Profile
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-visual animate-fade-in-right delay-2">
+                <div class="code-window">
+                    <div class="code-header">
+                        <span class="code-dot red"></span>
+                        <span class="code-dot yellow"></span>
+                        <span class="code-dot green"></span>
+                        <span class="code-filename">infrastructure.tf</span>
+                    </div>
+                    <pre class="code-content"><code><span class="code-keyword">resource</span> <span class="code-string">"aws_eks_cluster"</span> <span class="code-string">"main"</span> {
+  name     = <span class="code-string">"production"</span>
+  role_arn = aws_iam_role.eks.arn
+  version  = <span class="code-string">"1.28"</span>
+
+  vpc_config {
+    subnet_ids = var.subnet_ids
+    endpoint_private_access = <span class="code-bool">true</span>
+  }
+
+  <span class="code-comment"># Zero-downtime deployments</span>
+  encryption_config {
+    provider { key_arn = aws_kms_key.eks.arn }
+    resources = [<span class="code-string">"secrets"</span>]
+  }
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Bar -->
+        <div class="hero-stats-bar">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item" data-count="12">
+                        <span class="stat-number"><span class="counter">0</span>+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-item" data-count="100">
+                        <span class="stat-number"><span class="counter">0</span>+</span>
+                        <span class="stat-label">Projects Delivered</span>
+                    </div>
+                    <div class="stat-item" data-count="99">
+                        <span class="stat-number"><span class="counter">0</span>.9%</span>
+                        <span class="stat-label">Uptime Achieved</span>
+                    </div>
+                    <div class="stat-item" data-count="50">
+                        <span class="stat-number"><span class="counter">0</span>+</span>
+                        <span class="stat-label">Teams Mentored</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section class="tech-stack-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow">Technical Expertise</span>
+                <h2>Technologies I Work With</h2>
+                <p>Certified and battle-tested across the modern cloud-native stack</p>
+            </div>
+
+            <div class="tech-orbit">
+                <div class="orbit-center">
+                    <div class="center-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <span>DevOps</span>
+                </div>
+
+                <div class="tech-categories-grid">
+                    <div class="tech-category" data-aos="fade-up">
+                        <div class="category-icon cloud">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg>
+                        </div>
+                        <h3>Cloud Platforms</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag aws">AWS</span>
+                            <span class="tech-tag azure">Azure</span>
+                            <span class="tech-tag gcp">GCP</span>
+                            <span class="tech-tag oracle">Oracle Cloud</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-category" data-aos="fade-up" data-aos-delay="100">
+                        <div class="category-icon containers">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                        </div>
+                        <h3>Containers & Orchestration</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag kubernetes">Kubernetes</span>
+                            <span class="tech-tag docker">Docker</span>
+                            <span class="tech-tag helm">Helm</span>
+                            <span class="tech-tag argocd">ArgoCD</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-category" data-aos="fade-up" data-aos-delay="200">
+                        <div class="category-icon iac">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+                        </div>
+                        <h3>Infrastructure as Code</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag terraform">Terraform</span>
+                            <span class="tech-tag ansible">Ansible</span>
+                            <span class="tech-tag pulumi">Pulumi</span>
+                            <span class="tech-tag cloudformation">CloudFormation</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-category" data-aos="fade-up" data-aos-delay="300">
+                        <div class="category-icon cicd">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+                        </div>
+                        <h3>CI/CD & Automation</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag jenkins">Jenkins</span>
+                            <span class="tech-tag github-actions">GitHub Actions</span>
+                            <span class="tech-tag gitlab">GitLab CI</span>
+                            <span class="tech-tag circleci">CircleCI</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-category" data-aos="fade-up" data-aos-delay="400">
+                        <div class="category-icon monitoring">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                        </div>
+                        <h3>Observability</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag prometheus">Prometheus</span>
+                            <span class="tech-tag grafana">Grafana</span>
+                            <span class="tech-tag elk">ELK Stack</span>
+                            <span class="tech-tag datadog">Datadog</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-category" data-aos="fade-up" data-aos-delay="500">
+                        <div class="category-icon security">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <h3>Security & Compliance</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag vault">Vault</span>
+                            <span class="tech-tag falco">Falco</span>
+                            <span class="tech-tag trivy">Trivy</span>
+                            <span class="tech-tag soc2">SOC 2</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow">What I Deliver</span>
+                <h2>DevOps Services & Solutions</h2>
+                <p>End-to-end platform engineering and automation expertise</p>
+            </div>
+
+            <div class="services-grid">
+                <article class="service-card" data-aos="fade-up">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg>
+                    </div>
+                    <div class="service-number">01</div>
+                    <h3>Cloud Architecture</h3>
+                    <p>Design and implement scalable, cost-effective cloud infrastructure on AWS, Azure, or hybrid environments.</p>
+                    <ul class="service-features">
+                        <li>Multi-region deployment strategies</li>
+                        <li>Cost optimization & FinOps</li>
+                        <li>Disaster recovery planning</li>
+                        <li>Cloud migration roadmaps</li>
+                    </ul>
+                    <a href="{{ '/services/infrastructure/' | relative_url }}" class="service-link">
+                        Learn more
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </article>
+
+                <article class="service-card featured" data-aos="fade-up" data-aos-delay="100">
+                    <div class="featured-badge">Most Requested</div>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                    </div>
+                    <div class="service-number">02</div>
+                    <h3>Kubernetes & Containers</h3>
+                    <p>Build production-ready Kubernetes platforms with GitOps workflows, service mesh, and auto-scaling.</p>
+                    <ul class="service-features">
+                        <li>EKS, GKE, AKS deployment</li>
+                        <li>Helm charts & operators</li>
+                        <li>Service mesh (Istio, Linkerd)</li>
+                        <li>Multi-cluster management</li>
+                    </ul>
+                    <a href="{{ '/services/infrastructure/' | relative_url }}" class="service-link">
+                        Learn more
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </article>
+
+                <article class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                    </div>
+                    <div class="service-number">03</div>
+                    <h3>CI/CD Pipelines</h3>
+                    <p>Automate your entire software delivery lifecycle with secure, compliant, and fast pipelines.</p>
+                    <ul class="service-features">
+                        <li>Pipeline-as-code setup</li>
+                        <li>Blue/green & canary deployments</li>
+                        <li>Security scanning integration</li>
+                        <li>Artifact management</li>
+                    </ul>
+                    <a href="{{ '/services/cicd/' | relative_url }}" class="service-link">
+                        Learn more
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </article>
+
+                <article class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <div class="service-number">04</div>
+                    <h3>Security & Compliance</h3>
+                    <p>Implement DevSecOps practices with automated security scanning and compliance frameworks.</p>
+                    <ul class="service-features">
+                        <li>SOC 2, ISO 27001 readiness</li>
+                        <li>Vulnerability management</li>
+                        <li>Secrets management</li>
+                        <li>Security automation</li>
+                    </ul>
+                    <a href="{{ '/services/security/' | relative_url }}" class="service-link">
+                        Learn more
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio/Case Studies Section -->
+    <section class="portfolio-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow">Impact & Results</span>
+                <h2>Project Highlights</h2>
+                <p>Real-world transformations delivering measurable business outcomes</p>
+            </div>
+
+            <div class="portfolio-grid">
+                <article class="portfolio-card large" data-aos="fade-up">
+                    <div class="portfolio-image">
+                        <div class="portfolio-overlay"></div>
+                        <div class="portfolio-metrics">
+                            <div class="metric">
+                                <span class="metric-value">64%</span>
+                                <span class="metric-label">Faster Deployments</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">99.95%</span>
+                                <span class="metric-label">Uptime</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-tag">Fintech</span>
+                        <h3>Global Payment Platform Migration</h3>
+                        <p>Led the migration of a payment processing platform handling $2B+ annually to Kubernetes, achieving zero-downtime deployment and 64% faster release cycles.</p>
+                        <div class="portfolio-tech">
+                            <span>EKS</span>
+                            <span>Terraform</span>
+                            <span>ArgoCD</span>
+                            <span>Istio</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="portfolio-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="portfolio-content">
+                        <span class="portfolio-tag">SaaS</span>
+                        <h3>Multi-Region Platform</h3>
+                        <p>Architected a multi-region active-active deployment for a B2B SaaS platform, reducing latency by 70% for global customers.</p>
+                        <div class="portfolio-tech">
+                            <span>AWS</span>
+                            <span>Route53</span>
+                            <span>DynamoDB</span>
+                        </div>
+                        <div class="portfolio-result">
+                            <span class="result-value">70%</span>
+                            <span class="result-label">Latency Reduction</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="portfolio-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="portfolio-content">
+                        <span class="portfolio-tag">Healthcare</span>
+                        <h3>HIPAA-Compliant Infrastructure</h3>
+                        <p>Built compliant cloud infrastructure for a telehealth startup, enabling SOC 2 Type II certification within 6 months.</p>
+                        <div class="portfolio-tech">
+                            <span>Azure</span>
+                            <span>AKS</span>
+                            <span>Vault</span>
+                        </div>
+                        <div class="portfolio-result">
+                            <span class="result-value">6 mo</span>
+                            <span class="result-label">To SOC 2 Cert</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow">How I Work</span>
+                <h2>Engagement Process</h2>
+                <p>A structured approach to delivering transformative results</p>
+            </div>
+
+            <div class="process-timeline">
+                <div class="process-step" data-aos="fade-right">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Discovery & Assessment</h3>
+                        <p>Deep dive into your current infrastructure, pain points, and business objectives. Identify quick wins and long-term improvements.</p>
+                    </div>
+                    <div class="step-line"></div>
+                </div>
+
+                <div class="process-step" data-aos="fade-left">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Architecture & Planning</h3>
+                        <p>Design target architecture with clear milestones, risk mitigation strategies, and measurable success criteria.</p>
+                    </div>
+                    <div class="step-line"></div>
+                </div>
+
+                <div class="process-step" data-aos="fade-right">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Implementation</h3>
+                        <p>Iterative delivery with continuous integration, testing, and documentation. Regular demos and feedback loops.</p>
+                    </div>
+                    <div class="step-line"></div>
+                </div>
+
+                <div class="process-step" data-aos="fade-left">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3>Knowledge Transfer</h3>
+                        <p>Comprehensive training, runbooks, and ongoing support to ensure your team can maintain and evolve the platform.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow">Client Feedback</span>
+                <h2>What People Say</h2>
+            </div>
+
+            <div class="testimonials-slider">
+                <div class="testimonial-card" data-aos="fade-up">
+                    <div class="testimonial-content">
+                        <svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                        <p>"Transformed our deployment process from days to minutes. The Kubernetes platform they built handles 10x our previous traffic with half the cloud costs."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <strong>CTO, Series C Fintech</strong>
+                            <span>Payment Processing Platform</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-content">
+                        <svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                        <p>"Their combination of deep Kubernetes expertise and stakeholder empathy meant we finally shipped globally without firefighting."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <strong>Head of Platform, Global SaaS</strong>
+                            <span>B2B Enterprise Software</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-background">
+            <div class="cta-particles"></div>
+        </div>
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Infrastructure?</h2>
+                <p>Let's discuss how I can help your team ship faster, scale reliably, and sleep better at night.</p>
+                <div class="cta-actions">
+                    <a href="{{ site.calendly.url }}" target="_blank" rel="noopener" class="btn btn-primary btn-lg btn-glow">
+                        <svg class="btn-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        Book a Free Consultation
+                    </a>
+                    <a href="mailto:{{ site.contact.email }}" class="btn btn-outline btn-lg">
+                        <svg class="btn-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        Send an Email
+                    </a>
+                </div>
+                <p class="cta-note">No commitment required. Response within 24 hours.</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+// Terminal typing effect
+document.addEventListener('DOMContentLoaded', function() {
+    const commands = [
+        'kubectl get pods -A | grep Running',
+        'terraform plan -out=tfplan',
+        'helm upgrade --install app ./charts',
+        'aws eks update-kubeconfig --name prod',
+        'docker build -t app:latest .',
+        'ansible-playbook deploy.yml'
+    ];
+
+    let commandIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typedText = document.getElementById('typed-text');
+
+    function type() {
+        const currentCommand = commands[commandIndex];
+
+        if (!isDeleting) {
+            typedText.textContent = currentCommand.substring(0, charIndex + 1);
+            charIndex++;
+
+            if (charIndex === currentCommand.length) {
+                isDeleting = true;
+                setTimeout(type, 2000);
+                return;
+            }
+        } else {
+            typedText.textContent = currentCommand.substring(0, charIndex - 1);
+            charIndex--;
+
+            if (charIndex === 0) {
+                isDeleting = false;
+                commandIndex = (commandIndex + 1) % commands.length;
+            }
+        }
+
+        const speed = isDeleting ? 30 : 80;
+        setTimeout(type, speed);
+    }
+
+    type();
+
+    // Counter animation
+    const counters = document.querySelectorAll('.counter');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = entry.target;
+                const parent = target.closest('.stat-item');
+                const countTo = parseInt(parent.dataset.count);
+
+                let count = 0;
+                const increment = countTo / 50;
+
+                const updateCount = () => {
+                    count += increment;
+                    if (count < countTo) {
+                        target.textContent = Math.floor(count);
+                        requestAnimationFrame(updateCount);
+                    } else {
+                        target.textContent = countTo;
+                    }
+                };
+
+                updateCount();
+                observer.unobserve(target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(counter => observer.observe(counter));
+});
+</script>
