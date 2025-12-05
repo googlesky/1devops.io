@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Senior DevOps Engineer &amp; Cloud Architect - 1DevOps - Professional DevOps Solutions</title>
-    <meta name="description" content="12+ years transforming infrastructure at scale. Expert in Kubernetes, AWS, Terraform, and building resilient cloud-native platforms.">
+    <meta name="description" content="13+ years transforming infrastructure at scale. Expert in Kubernetes, AWS, Terraform, and building resilient cloud-native platforms.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -97,6 +97,48 @@
                 font-size: 2.2rem !important;
             }
         }
+
+        /* Profile Photo Styles */
+        .profile-photo-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .profile-photo-container::before {
+            content: '';
+            position: absolute;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #f472b6 100%);
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+        .profile-photo {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center top;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 1;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+        @media (max-width: 768px) {
+            .profile-photo-container::before {
+                width: 220px;
+                height: 220px;
+            }
+            .profile-photo {
+                width: 200px;
+                height: 200px;
+            }
+        }
     </style>
 
     <!-- Favicons & Manifest -->
@@ -109,13 +151,13 @@
     <!-- Open Graph & Twitter -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Senior DevOps Engineer & Cloud Architect">
-    <meta property="og:description" content="12+ years transforming infrastructure at scale. Expert in Kubernetes, AWS, Terraform, and building resilient cloud-native platforms.">
+    <meta property="og:description" content="13+ years transforming infrastructure at scale. Expert in Kubernetes, AWS, Terraform, and building resilient cloud-native platforms.">
     <meta property="og:url" content="https://1devops.io/">
     <meta property="og:image" content="https://1devops.io/assets/images/social-card.png">
     <meta property="og:site_name" content="1DevOps - Professional DevOps Solutions">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Senior DevOps Engineer & Cloud Architect">
-    <meta name="twitter:description" content="12+ years transforming infrastructure at scale. Expert in Kubernetes, AWS, Terraform, and building resilient cloud-native platforms.">
+    <meta name="twitter:description" content="13+ years transforming infrastructure at scale. Expert in Kubernetes, AWS, Terraform, and building resilient cloud-native platforms.">
     <meta name="twitter:image" content="https://1devops.io/assets/images/social-card.png">
 
     <!-- Begin Jekyll SEO tag v2.8.0 -->
@@ -124,8 +166,8 @@
 <meta property="og:title" content="Senior DevOps Engineer &amp; Cloud Architect" />
 <meta name="author" content="Le Phuong Hieu" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="12+ years transforming infrastructure at scale. Expert in Kubernetes, AWS, Terraform, and building resilient cloud-native platforms." />
-<meta property="og:description" content="12+ years transforming infrastructure at scale. Expert in Kubernetes, AWS, Terraform, and building resilient cloud-native platforms." />
+<meta name="description" content="13+ years transforming infrastructure at scale. Expert in Kubernetes, AWS, Terraform, and building resilient cloud-native platforms." />
+<meta property="og:description" content="13+ years transforming infrastructure at scale. Expert in Kubernetes, AWS, Terraform, and building resilient cloud-native platforms." />
 <link rel="canonical" href="https://1devops.io/" />
 <meta property="og:url" content="https://1devops.io/" />
 <meta property="og:site_name" content="1DevOps - Professional DevOps Solutions" />
@@ -136,7 +178,7 @@
 <meta property="twitter:title" content="Senior DevOps Engineer &amp; Cloud Architect" />
 <meta name="google-site-verification" content="" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"Le Phuong Hieu"},"description":"12+ years transforming infrastructure at scale. Expert in Kubernetes, AWS, Terraform, and building resilient cloud-native platforms.","headline":"Senior DevOps Engineer &amp; Cloud Architect","image":"https://1devops.io/assets/images/logo.png","name":"1DevOps - Professional DevOps Solutions","url":"https://1devops.io/"}</script>
+{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"Le Phuong Hieu"},"description":"13+ years transforming infrastructure at scale. Expert in Kubernetes, AWS, Terraform, and building resilient cloud-native platforms.","headline":"Senior DevOps Engineer &amp; Cloud Architect","image":"https://1devops.io/assets/images/logo.png","name":"1DevOps - Professional DevOps Solutions","url":"https://1devops.io/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -313,7 +355,7 @@
 
                 <p class="hero-subtitle animate-fade-in-up delay-1">
                     Building resilient cloud infrastructure and automating everything in between.
-                    <strong>12+ years</strong> transforming how teams ship software.
+                    <strong>13+ years</strong> transforming how teams ship software.
                 </p>
 
                 <!-- Terminal Animation -->
@@ -350,29 +392,8 @@
             </div>
 
             <div class="hero-visual animate-fade-in-right delay-2">
-                <div class="code-window">
-                    <div class="code-header">
-                        <span class="code-dot red"></span>
-                        <span class="code-dot yellow"></span>
-                        <span class="code-dot green"></span>
-                        <span class="code-filename">infrastructure.tf</span>
-                    </div>
-                    <pre class="code-content"><code><span class="code-keyword">resource</span> <span class="code-string">"aws_eks_cluster"</span> <span class="code-string">"main"</span> {
-  name     = <span class="code-string">"production"</span>
-  role_arn = aws_iam_role.eks.arn
-  version  = <span class="code-string">"1.28"</span>
-
-  vpc_config {
-    subnet_ids = var.subnet_ids
-    endpoint_private_access = <span class="code-bool">true</span>
-  }
-
-  <span class="code-comment"># Zero-downtime deployments</span>
-  encryption_config {
-    provider { key_arn = aws_kms_key.eks.arn }
-    resources = [<span class="code-string">"secrets"</span>]
-  }
-}</code></pre>
+                <div class="profile-photo-container">
+                    <img src="/assets/images/profile.jpg" alt="Le Phuong Hieu - Senior DevOps Engineer" class="profile-photo">
                 </div>
             </div>
         </div>
@@ -381,7 +402,7 @@
         <div class="hero-stats-bar">
             <div class="container">
                 <div class="stats-grid">
-                    <div class="stat-item" data-count="12">
+                    <div class="stat-item" data-count="13">
                         <span class="stat-number"><span class="counter">0</span>+</span>
                         <span class="stat-label">Years Experience</span>
                     </div>
@@ -868,7 +889,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <span>1DevOps</span>
                     </div>
                     <p class="footer-description">
-                        Professional DevOps consulting and solutions with 12+ years of experience. 
+                        Professional DevOps consulting and solutions with 13+ years of experience. 
                         Simplifying complex infrastructure for modern development teams.
                     </p>
                     <div class="footer-contact">
