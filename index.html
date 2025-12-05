@@ -393,8 +393,29 @@
             </div>
 
             <div class="hero-visual animate-fade-in-right delay-2">
-                <div class="profile-photo-container">
-                    <img src="/assets/images/profile.jpg" alt="Le Phuong Hieu - Senior DevOps Engineer" class="profile-photo">
+                <div class="code-window">
+                    <div class="code-header">
+                        <span class="code-dot red"></span>
+                        <span class="code-dot yellow"></span>
+                        <span class="code-dot green"></span>
+                        <span class="code-filename">infrastructure.tf</span>
+                    </div>
+                    <pre class="code-content"><code><span class="code-keyword">resource</span> <span class="code-string">"aws_eks_cluster"</span> <span class="code-string">"main"</span> {
+  name     = <span class="code-string">"production"</span>
+  role_arn = aws_iam_role.eks.arn
+  version  = <span class="code-string">"1.28"</span>
+
+  vpc_config {
+    subnet_ids = var.subnet_ids
+    endpoint_private_access = <span class="code-bool">true</span>
+  }
+
+  <span class="code-comment"># Zero-downtime deployments</span>
+  encryption_config {
+    provider { key_arn = aws_kms_key.eks.arn }
+    resources = [<span class="code-string">"secrets"</span>]
+  }
+}</code></pre>
                 </div>
             </div>
         </div>
