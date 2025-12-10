@@ -467,19 +467,47 @@
         }
         .card-3d {
             width: 100%;
-            max-width: 380px;
-            aspect-ratio: 3/4;
+            max-width: 420px;
+            aspect-ratio: 4/5;
             position: relative;
             transform-style: preserve-3d;
-            transition: transform 0.1s ease-out;
+            transition: transform 0.15s ease-out;
             cursor: pointer;
+        }
+        .card-3d::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            background: linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 50%, #0ea5e9 100%);
+            border-radius: 28px;
+            z-index: -1;
+            opacity: 0.7;
+            filter: blur(20px);
+            transition: opacity 0.3s ease, filter 0.3s ease;
+        }
+        .card-3d:hover::before {
+            opacity: 1;
+            filter: blur(30px);
         }
         .profile-art {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center top;
             border-radius: 24px;
-            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4), 0 0 80px rgba(14, 165, 233, 0.15);
+            border: 2px solid rgba(14, 165, 233, 0.3);
+            box-shadow:
+                0 25px 80px rgba(0, 0, 0, 0.5),
+                0 0 60px rgba(14, 165, 233, 0.2),
+                inset 0 0 60px rgba(0, 0, 0, 0.1);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-3d:hover .profile-art {
+            border-color: rgba(14, 165, 233, 0.6);
+            box-shadow:
+                0 30px 100px rgba(0, 0, 0, 0.6),
+                0 0 80px rgba(14, 165, 233, 0.3),
+                inset 0 0 60px rgba(0, 0, 0, 0.1);
         }
 
         /* ===== Fix gradient text clipping ===== */
@@ -579,8 +607,20 @@
                 margin-top: 2rem;
             }
             .card-3d {
-                max-width: 260px;
+                max-width: 280px;
             }
+        }
+
+        /* ===== Floating Icons Enhancement ===== */
+        .floating-icon {
+            opacity: 0.15 !important;
+            transition: opacity 0.3s ease !important;
+        }
+        .floating-icon:hover {
+            opacity: 0.4 !important;
+        }
+        .floating-icon svg {
+            filter: drop-shadow(0 0 10px rgba(14, 165, 233, 0.3));
         }
     </style>
 
