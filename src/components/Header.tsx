@@ -1,16 +1,55 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+
+const NAV_SECTIONS = ['services', 'portfolio', 'expertise', 'contact'] as const
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState<string>('home')
 
+  // Scroll spy using IntersectionObserver
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -60% 0px',
+      threshold: 0
+    }
+
+    const observerCallback: IntersectionObserverCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id)
+        }
+      })
+    }
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions)
+
+    // Observe all sections
+    NAV_SECTIONS.forEach((sectionId) => {
+      const element = document.getElementById(sectionId)
+      if (element) {
+        observer.observe(element)
+      }
+    })
+
+    return () => observer.disconnect()
+  }, [])
+
+  // Handle scroll for header background and reset to home when at top
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+      const scrollY = window.scrollY
+      setIsScrolled(scrollY > 50)
+
+      // Reset to home when at the very top
+      if (scrollY < 100) {
+        setActiveSection('home')
+      }
     }
 
     window.addEventListener('scroll', handleScroll)
@@ -54,19 +93,19 @@ export default function Header() {
           <nav className="main-nav" role="navigation">
             <ul className="nav-list">
               <li className="nav-item">
-                <Link href="/" className="nav-link active">Home</Link>
+                <Link href="/" className={`nav-link ${activeSection === 'home' ? 'active' : ''}`}>Home</Link>
               </li>
               <li className="nav-item">
-                <a href="#services" className="nav-link">Services</a>
+                <a href="#services" className={`nav-link ${activeSection === 'services' ? 'active' : ''}`}>Services</a>
               </li>
               <li className="nav-item">
-                <a href="#portfolio" className="nav-link">Portfolio</a>
+                <a href="#portfolio" className={`nav-link ${activeSection === 'portfolio' ? 'active' : ''}`}>Portfolio</a>
               </li>
               <li className="nav-item">
-                <a href="#expertise" className="nav-link">Expertise</a>
+                <a href="#expertise" className={`nav-link ${activeSection === 'expertise' ? 'active' : ''}`}>Expertise</a>
               </li>
               <li className="nav-item">
-                <a href="#contact" className="nav-link">Contact</a>
+                <a href="#contact" className={`nav-link ${activeSection === 'contact' ? 'active' : ''}`}>Contact</a>
               </li>
             </ul>
           </nav>
@@ -114,19 +153,19 @@ export default function Header() {
         <nav className={`mobile-nav ${isMobileMenuOpen ? 'active' : ''}`} role="navigation">
           <ul className="mobile-nav-list">
             <li className="mobile-nav-item">
-              <Link href="/" className="mobile-nav-link" onClick={handleNavClick}>Home</Link>
+              <Link href="/" className={`mobile-nav-link ${activeSection === 'home' ? 'active' : ''}`} onClick={handleNavClick}>Home</Link>
             </li>
             <li className="mobile-nav-item">
-              <a href="#services" className="mobile-nav-link" onClick={handleNavClick}>Services</a>
+              <a href="#services" className={`mobile-nav-link ${activeSection === 'services' ? 'active' : ''}`} onClick={handleNavClick}>Services</a>
             </li>
             <li className="mobile-nav-item">
-              <a href="#portfolio" className="mobile-nav-link" onClick={handleNavClick}>Portfolio</a>
+              <a href="#portfolio" className={`mobile-nav-link ${activeSection === 'portfolio' ? 'active' : ''}`} onClick={handleNavClick}>Portfolio</a>
             </li>
             <li className="mobile-nav-item">
-              <a href="#expertise" className="mobile-nav-link" onClick={handleNavClick}>Expertise</a>
+              <a href="#expertise" className={`mobile-nav-link ${activeSection === 'expertise' ? 'active' : ''}`} onClick={handleNavClick}>Expertise</a>
             </li>
             <li className="mobile-nav-item">
-              <a href="#contact" className="mobile-nav-link" onClick={handleNavClick}>Contact</a>
+              <a href="#contact" className={`mobile-nav-link ${activeSection === 'contact' ? 'active' : ''}`} onClick={handleNavClick}>Contact</a>
             </li>
 
             {/* Mobile Action Items */}
