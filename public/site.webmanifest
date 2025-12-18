@@ -1,18 +1,45 @@
----
-permalink: /site.webmanifest
----
 {
   "name": "1DevOps - Professional DevOps Solutions",
   "short_name": "1DevOps",
+  "description": "Senior DevOps Engineer & Cloud Architect - Professional DevOps consulting and cloud architecture services",
   "start_url": "/",
+  "id": "/",
   "display": "standalone",
-  "background_color": "#0f172a",
-  "theme_color": "#0f172a",
+  "background_color": "#050508",
+  "theme_color": "#050508",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["business", "productivity", "technology"],
   "icons": [
     {
-      "src": "{{ '/assets/images/favicon.png' | relative_url }}",
-      "sizes": "512x512",
-      "type": "image/png"
+      "src": "/assets/images/favicon.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/images/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/images/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
     }
-  ]
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/images/social-card.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "1DevOps Homepage"
+    }
+  ],
+  "prefer_related_applications": false
 }
