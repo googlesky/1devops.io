@@ -1,73 +1,66 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
+import { useReveal } from './useReveal'
 
 const steps = [
   {
     number: '01',
+    stage: 'discovery',
     title: 'Discovery & Assessment',
-    description: 'Deep dive into your current infrastructure, pain points, and business objectives. Identify quick wins and long-term improvements.'
+    description:
+      'A deep look at your current infrastructure, pain points, and goals — surfacing quick wins alongside the long game.',
   },
   {
     number: '02',
+    stage: 'design',
     title: 'Architecture & Planning',
-    description: 'Design target architecture with clear milestones, risk mitigation strategies, and measurable success criteria.'
+    description:
+      'A target architecture with clear milestones, risk mitigation, and success criteria you can actually measure.',
   },
   {
     number: '03',
+    stage: 'build',
     title: 'Implementation',
-    description: 'Iterative delivery with continuous integration, testing, and documentation. Regular demos and feedback loops.'
+    description:
+      'Iterative delivery with CI, testing, and docs from day one. Regular demos, tight feedback loops, no big-bang surprises.',
   },
   {
     number: '04',
+    stage: 'handover',
     title: 'Knowledge Transfer',
-    description: 'Comprehensive training, runbooks, and ongoing support to ensure your team can maintain and evolve the platform.'
-  }
+    description:
+      'Training, runbooks, and support so your team can own and evolve the platform long after I step back.',
+  },
 ]
 
 export default function Process() {
   const sectionRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('aos-animate')
-          }
-        })
-      },
-      { threshold: 0.05 }
-    )
-
-    const elements = sectionRef.current?.querySelectorAll('[data-aos]')
-    elements?.forEach((el) => observer.observe(el))
-
-    return () => observer.disconnect()
-  }, [])
+  useReveal(sectionRef)
 
   return (
-    <section className="process-section" id="process" ref={sectionRef}>
+    <section className="flow-section" id="process" ref={sectionRef}>
       <div className="container">
         <div className="section-header">
-          <span className="section-eyebrow">How I Work</span>
-          <h2>Engagement Process</h2>
-          <p>A structured approach to delivering transformative results</p>
+          <span className="section-eyebrow">engagement pipeline</span>
+          <h2>How the work flows</h2>
+          <p>A structured path from first conversation to a platform your team owns.</p>
         </div>
 
-        <div className="process-timeline">
-          {steps.map((step, index) => (
+        <div className="flow">
+          {steps.map((step, i) => (
             <div
               key={step.number}
-              className="process-step"
-              data-aos={index % 2 === 0 ? 'fade-right' : 'fade-left'}
+              className="flow-step"
+              data-aos="fade-up"
+              data-aos-delay={i * 80}
             >
-              <div className="step-number">{step.number}</div>
-              <div className="step-content">
+              <div className="flow-node">{step.number}</div>
+              <div className="flow-content">
+                <span className="flow-stage">stage · {step.stage}</span>
                 <h3>{step.title}</h3>
                 <p>{step.description}</p>
               </div>
-              {index < steps.length - 1 && <div className="step-line"></div>}
             </div>
           ))}
         </div>

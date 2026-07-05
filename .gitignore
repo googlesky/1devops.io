@@ -49,3 +49,7 @@ next-env.d.ts
 
 # Local
 .eslintcache
+
+# local preview artefacts
+.playwright-mcp/
+*.screenshot.jpeg

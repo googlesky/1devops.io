@@ -1,19 +1,29 @@
 import type { Metadata, Viewport } from 'next'
-import { Outfit, Inter } from 'next/font/google'
+import { Bricolage_Grotesque, Hanken_Grotesk, Martian_Mono } from 'next/font/google'
 import './globals.css'
 
-const outfit = Outfit({
+// Display — characterful editorial-technical grotesque
+const bricolage = Bricolage_Grotesque({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800', '900'],
+  weight: ['400', '600', '700', '800'],
   display: 'swap',
-  variable: '--font-outfit',
+  variable: '--font-display',
 })
 
-const inter = Inter({
+// Body — clean, warm workhorse grotesque
+const hanken = Hanken_Grotesk({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600'],
+  weight: ['400', '500', '600', '700'],
   display: 'swap',
-  variable: '--font-inter',
+  variable: '--font-body',
+})
+
+// Telemetry / labels / data — instrument monospace
+const martianMono = Martian_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-mono',
 })
 
 const siteUrl = 'https://1devops.io'
@@ -26,8 +36,8 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   themeColor: [
-    { media: '(prefers-color-scheme: dark)', color: '#050508' },
-    { media: '(prefers-color-scheme: light)', color: '#050508' },
+    { media: '(prefers-color-scheme: dark)', color: '#060D0F' },
+    { media: '(prefers-color-scheme: light)', color: '#060D0F' },
   ],
 }
 
@@ -148,7 +158,7 @@ export const metadata: Metadata = {
 
   // Other
   other: {
-    'msapplication-TileColor': '#050508',
+    'msapplication-TileColor': '#060D0F',
     'format-detection': 'telephone=no',
   },
 }
@@ -305,7 +315,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${outfit.variable} ${inter.variable}`}>
+    <html lang="en" className={`${bricolage.variable} ${hanken.variable} ${martianMono.variable}`}>
       <head>
         <script
           type="application/ld+json"

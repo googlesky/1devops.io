@@ -1,101 +1,93 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
+import { useReveal } from './useReveal'
 
 const projects = [
   {
+    id: 'case/fintech-payments',
     type: 'large',
     tag: 'Fintech',
     title: 'Global Payment Platform Migration',
-    description: 'Led the migration of a payment processing platform handling $2B+ annually to Kubernetes, achieving zero-downtime deployment and 64% faster release cycles.',
+    description:
+      'Moved a payment platform processing $2B+ a year onto Kubernetes with zero downtime — and cut release cycles by nearly two-thirds.',
     tech: ['EKS', 'Terraform', 'ArgoCD', 'Istio'],
     metrics: [
-      { value: '64%', label: 'Faster Deployments' },
-      { value: '99.95%', label: 'Uptime' }
-    ]
+      { value: '64%', label: 'faster deployments' },
+      { value: '99.95%', label: 'uptime held' },
+    ],
   },
   {
+    id: 'case/multiregion-saas',
     type: 'small',
     tag: 'SaaS',
     title: 'Multi-Region Platform',
-    description: 'Architected a multi-region active-active deployment for a B2B SaaS platform, reducing latency by 70% for global customers.',
+    description:
+      'Architected an active-active, multi-region deployment for a B2B SaaS — cutting latency 70% for customers worldwide.',
     tech: ['AWS', 'Route53', 'DynamoDB'],
-    result: { value: '70%', label: 'Latency Reduction' }
+    result: { value: '70%', label: 'latency reduction' },
   },
   {
+    id: 'case/hipaa-health',
     type: 'small',
     tag: 'Healthcare',
     title: 'HIPAA-Compliant Infrastructure',
-    description: 'Built compliant cloud infrastructure for a telehealth startup, enabling SOC 2 Type II certification within 6 months.',
+    description:
+      'Built compliant cloud infrastructure for a telehealth startup, clearing SOC 2 Type II in six months.',
     tech: ['Azure', 'AKS', 'Vault'],
-    result: { value: '6 mo', label: 'To SOC 2 Cert' }
-  }
+    result: { value: '6 mo', label: 'to SOC 2 cert' },
+  },
 ]
 
 export default function Portfolio() {
   const sectionRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('aos-animate')
-          }
-        })
-      },
-      { threshold: 0.05 }
-    )
-
-    const elements = sectionRef.current?.querySelectorAll('[data-aos]')
-    elements?.forEach((el) => observer.observe(el))
-
-    return () => observer.disconnect()
-  }, [])
+  useReveal(sectionRef)
 
   return (
-    <section className="portfolio-section" id="portfolio" ref={sectionRef}>
+    <section className="work-section" id="portfolio" ref={sectionRef}>
       <div className="container">
         <div className="section-header">
-          <span className="section-eyebrow">Impact & Results</span>
-          <h2>Project Highlights</h2>
-          <p>Real-world transformations delivering measurable business outcomes</p>
+          <span className="section-eyebrow">field record</span>
+          <h2>Work that shipped</h2>
+          <p>Real transformations, measured in outcomes the business could feel.</p>
         </div>
 
-        <div className="portfolio-grid">
-          {projects.map((project, index) => (
+        <div className="work-grid">
+          {projects.map((p, i) => (
             <article
-              key={project.title}
-              className={`portfolio-card ${project.type}`}
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
+              key={p.id}
+              className={`work-card ${p.type}`}
+              data-aos={p.type === 'large' ? 'fade-up' : 'fade-up'}
+              data-aos-delay={i * 80}
             >
-              {project.type === 'large' && project.metrics && (
-                <div className="portfolio-image">
-                  <div className="portfolio-overlay"></div>
-                  <div className="portfolio-metrics">
-                    {project.metrics.map((metric) => (
-                      <div key={metric.label} className="metric">
-                        <span className="metric-value">{metric.value}</span>
-                        <span className="metric-label">{metric.label}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-              <div className="portfolio-content">
-                <span className="portfolio-tag">{project.tag}</span>
-                <h3>{project.title}</h3>
-                <p>{project.description}</p>
-                <div className="portfolio-tech">
-                  {project.tech.map((t) => (
-                    <span key={t}>{t}</span>
+              {p.type === 'large' && p.metrics && (
+                <div className="work-metrics">
+                  {p.metrics.map((m) => (
+                    <div className="metric-big" key={m.label}>
+                      <span className="mv">{m.value}</span>
+                      <span className="ml">{m.label}</span>
+                    </div>
                   ))}
                 </div>
-                {project.result && (
-                  <div className="portfolio-result">
-                    <span className="result-value">{project.result.value}</span>
-                    <span className="result-label">{project.result.label}</span>
+              )}
+              <div className="work-body">
+                <div className="work-head">
+                  <span className="work-tag">{p.tag}</span>
+                  <span className="work-id">{p.id}</span>
+                </div>
+                <h3 className="work-title">{p.title}</h3>
+                <p className="work-desc">{p.description}</p>
+                <div className="work-tech">
+                  {p.tech.map((t) => (
+                    <span key={t} className="leaf">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                {p.result && (
+                  <div className="work-result">
+                    <span className="rv">{p.result.value}</span>
+                    <span className="rl">{p.result.label}</span>
                   </div>
                 )}
               </div>

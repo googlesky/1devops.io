@@ -1,68 +1,50 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
+import { useReveal } from './useReveal'
 
 const testimonials = [
   {
-    quote: 'Transformed our deployment process from days to minutes. The Kubernetes platform they built handles 10x our previous traffic with half the cloud costs.',
+    label: 'signal · fintech',
+    quote:
+      'Transformed our deployment process from days to minutes. The Kubernetes platform they built handles 10x our previous traffic at half the cloud cost.',
     author: 'CTO, Series C Fintech',
-    company: 'Payment Processing Platform'
+    company: 'payment-processing platform',
   },
   {
-    quote: 'Their combination of deep Kubernetes expertise and stakeholder empathy meant we finally shipped globally without firefighting.',
+    label: 'signal · saas',
+    quote:
+      'Deep Kubernetes expertise paired with real stakeholder empathy — we finally shipped globally without firefighting every release.',
     author: 'Head of Platform, Global SaaS',
-    company: 'B2B Enterprise Software'
-  }
+    company: 'b2b enterprise software',
+  },
 ]
 
 export default function Testimonials() {
   const sectionRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('aos-animate')
-          }
-        })
-      },
-      { threshold: 0.05 }
-    )
-
-    const elements = sectionRef.current?.querySelectorAll('[data-aos]')
-    elements?.forEach((el) => observer.observe(el))
-
-    return () => observer.disconnect()
-  }, [])
+  useReveal(sectionRef)
 
   return (
-    <section className="testimonials-section" id="testimonials" ref={sectionRef}>
+    <section className="voices-section" id="testimonials" ref={sectionRef}>
       <div className="container">
         <div className="section-header">
-          <span className="section-eyebrow">Client Feedback</span>
-          <h2>What People Say</h2>
+          <span className="section-eyebrow">from the field</span>
+          <h2>What teams say</h2>
         </div>
 
-        <div className="testimonials-slider">
-          {testimonials.map((testimonial, index) => (
+        <div className="voices-grid">
+          {testimonials.map((t, i) => (
             <div
-              key={testimonial.author}
-              className="testimonial-card"
+              key={t.author}
+              className="voice-card"
               data-aos="fade-up"
-              data-aos-delay={index * 100}
+              data-aos-delay={i * 100}
             >
-              <div className="testimonial-content">
-                <svg className="quote-icon" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                </svg>
-                <p>{testimonial.quote}</p>
-              </div>
-              <div className="testimonial-author">
-                <div className="author-info">
-                  <strong>{testimonial.author}</strong>
-                  <span>{testimonial.company}</span>
-                </div>
+              <span className="voice-label">{t.label}</span>
+              <p className="voice-quote">{t.quote}</p>
+              <div className="voice-author">
+                <strong>{t.author}</strong>
+                <span>{t.company}</span>
               </div>
             </div>
           ))}
